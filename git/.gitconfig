@@ -1,0 +1,7 @@
+[user]
+	name = Evan Petousis
+	email = evan@petousis.net
+[init]
+	defaultBranch = main
+[alias]
+	log-graph = log --graph --oneline --all
