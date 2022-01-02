@@ -23,7 +23,9 @@ bindkey -v # vim mode
 bindkey "^H" backward-delete-char
 bindkey "^?" backward-delete-char
 
-eval "$(fnm env)"
+# fnm
+[[ ! -d ~/.fnm ]] || export PATH=/home/epetousis/.fnm:$PATH
+eval "`fnm env`"
 
 export PATH="$PATH:$(yarn global bin)"
 
@@ -32,7 +34,8 @@ export PATH="$HOME/.poetry/bin:$PATH"
 alias poetry="python3 $HOME/.poetry/bin/poetry"
 
 fpath+=~/.zfunc
-source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -d /opt/homebrew ]] || source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -d ~/.powerlevel10k ]] || source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -40,5 +43,9 @@ source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 export iCloudDrive="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init -)"
+
 eval $(thefuck --alias)
