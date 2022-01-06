@@ -23,6 +23,9 @@ bindkey -v # vim mode
 bindkey "^H" backward-delete-char
 bindkey "^?" backward-delete-char
 
+# Kill key timeout so escape is instant
+KEYTIMEOUT=1
+
 # fnm
 [[ ! -d ~/.fnm ]] || export PATH=/home/epetousis/.fnm:$PATH
 eval "`fnm env`"
