@@ -23,6 +23,10 @@ fi
 
 export TERM="screen-256color"
 
+# Set default editor
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
 bindkey -v # vim mode
 bindkey "^H" backward-delete-char
 bindkey "^?" backward-delete-char
