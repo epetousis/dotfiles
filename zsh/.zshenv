@@ -1,1 +1,1 @@
-. "$HOME/.cargo/env"
+[[ ! -d ~/.cargo ]] || . "$HOME/.cargo/env"
