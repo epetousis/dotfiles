@@ -17,4 +17,5 @@ While not required to use these dotfiles, the zsh config provides support for th
 - [Pyenv](https://github.com/pyenv/pyenv-installer#installation--update--uninstallation)
 - [fnm](https://github.com/Schniz/fnm#installation) and `npm install -g yarn` after installing a Node version
 - [Rust](https://www.rust-lang.org/tools/install)
+- [keychain](https://www.funtoo.org/Keychain) - not recommended on macOS as the provided ssh config will use the macOS Keychain
 

@@ -56,3 +56,5 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc
 ! iscommand "pyenv" || eval "$(pyenv init -)"
 
 ! iscommand "thefuck" || eval $(thefuck --alias)
+
+! iscommand "keychain" || eval `keychain --eval --agents ssh id_rsa`
