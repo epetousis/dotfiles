@@ -2,7 +2,9 @@
 
 ## How to install
 
-Install GNU stow. Then, clone this repo to `~/.dotfiles`. Then, run `cd ~/.dotfiles && stow *`.
+1. Install GNU stow.
+2. Clone this repo to `~/.dotfiles`.
+3. Run `cd ~/.dotfiles && setopt extended_glob && stow ^README.md`.
 
 You'll also need to [install vim-plug](https://github.com/junegunn/vim-plug) before opening nvim.
 
