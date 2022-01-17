@@ -43,7 +43,7 @@ alias poetry="python3 $HOME/.poetry/bin/poetry"
 fpath+=~/.zfunc
 [[ ! -d /opt/homebrew ]] || source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -d ~/.powerlevel10k ]] || source ~/.powerlevel10k/powerlevel10k.zsh-theme
-[[ -d ~/.powerlevel10k ]] || PROMPT='%n@%m:%3~ %% '
+[[ -d ~/.powerlevel10k ]] || PROMPT='%n@%m:%(4~|...|)%3~ %% '
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
