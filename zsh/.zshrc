@@ -10,6 +10,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+iscommand() {
+  type "$1" > /dev/null
+}
+
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
   
@@ -28,9 +32,9 @@ KEYTIMEOUT=1
 
 # fnm
 [[ ! -d ~/.fnm ]] || export PATH=/home/epetousis/.fnm:$PATH
-eval "`fnm env`"
+! iscommand "fnm" || eval "`fnm env`"
 
-export PATH="$PATH:$(yarn global bin)"
+! iscommand "yarn" || export PATH="$PATH:$(yarn global bin)"
 
 
 export PATH="$HOME/.poetry/bin:$PATH"
@@ -47,8 +51,8 @@ fpath+=~/.zfunc
 export iCloudDrive="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv virtualenv-init -)"
-eval "$(pyenv init -)"
+[[ ! -d ~/.pyenv ]] || export PATH="$HOME/.pyenv/bin:$PATH"
+! iscommand "pyenv" || eval "$(pyenv virtualenv-init -)"
+! iscommand "pyenv" || eval "$(pyenv init -)"
 
-eval $(thefuck --alias)
+! iscommand "thefuck" || eval $(thefuck --alias)
