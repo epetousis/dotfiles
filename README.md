@@ -1,5 +1,7 @@
 # Dotfiles
 
+My dotfiles. My primary shell is zsh, and so these dotfiles currently only support zsh (where applicable).
+
 ## How to install
 
 1. Install GNU stow.
