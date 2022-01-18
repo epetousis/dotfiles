@@ -57,8 +57,9 @@ export iCloudDrive="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 [[ ! -d ~/.pyenv ]] || export PATH="$HOME/.pyenv/bin:$PATH"
-! iscommand "pyenv" || eval "$(pyenv virtualenv-init -)"
 ! iscommand "pyenv" || eval "$(pyenv init -)"
+# Check for Homebrew pyenv-virtualenv, or the plugin installation method
+! (iscommand "pyenv-activate" || (iscommand "pyenv" && [[ -d $(pyenv root)/plugins/pyenv-virtualenv ]])) || eval "$(pyenv virtualenv-init -)"
 
 ! iscommand "thefuck" || eval $(thefuck --alias)
 
