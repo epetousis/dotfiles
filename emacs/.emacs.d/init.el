@@ -17,19 +17,6 @@
 (unless (package-installed-p 'evil-collection)
   (package-install 'evil-collection))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(evil-collection fzf undo-fu evil)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 ;; Evil mode related settings
 (setq evil-undo-system 'undo-fu)
 ;; `evil-collection' assumes `evil-want-keybinding' is set to
@@ -54,3 +41,13 @@
 
 (evil-define-key nil 'global (kbd "C-j") 'next-buffer)
 (evil-define-key nil 'global (kbd "C-k") 'previous-buffer)
+
+;; Move all autosaves to a directory
+(setq auto-save-file-name-transforms
+  `((".*" "~/.emacs-saves/" t)))
+
+;; Move custom vars to separate file - create if needed
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(unless (file-exists-p custom-file)
+  (write-region "" nil custom-file))
+(load custom-file)
