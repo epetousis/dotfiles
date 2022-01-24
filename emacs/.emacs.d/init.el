@@ -47,7 +47,7 @@
 (unless (file-exists-p autosave-dir)
   (make-directory autosave-dir t))
 (setq auto-save-file-name-transforms
-  `((".*" autosave-dir t)))
+  `((".*" ,autosave-dir t)))
 
 ;; Move custom vars to separate file - create if needed
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
