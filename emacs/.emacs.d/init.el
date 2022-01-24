@@ -43,8 +43,11 @@
 (evil-define-key nil 'global (kbd "C-k") 'previous-buffer)
 
 ;; Move all autosaves to a directory
+(setq autosave-dir "~/.emacs-saves/")
+(unless (file-exists-p autosave-dir)
+  (make-directory autosave-dir t))
 (setq auto-save-file-name-transforms
-  `((".*" "~/.emacs-saves/" t)))
+  `((".*" autosave-dir t)))
 
 ;; Move custom vars to separate file - create if needed
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
