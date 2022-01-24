@@ -39,6 +39,9 @@
 ;; to quit fzf with ESC key
 (define-key term-raw-map (kbd "<escape>") 'term-send-esc)
 
+;; Change evil's initial state in term mode to emacs (zsh should be in vi-mode anyway)
+(evil-set-initial-state 'term-mode 'emacs)
+
 (evil-define-key nil 'global (kbd "C-j") 'next-buffer)
 (evil-define-key nil 'global (kbd "C-k") 'previous-buffer)
 
