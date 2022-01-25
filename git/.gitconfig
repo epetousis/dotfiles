@@ -7,3 +7,5 @@
 	log-graph = log --graph --oneline --all
 [pull]
 	rebase = true
+[merge]
+	ff = only
