@@ -53,6 +53,7 @@ vim.opt.statusline = "%f %m %r %l,%c %= %p%%" -- filename, modified flag, readon
 vim.g.re = 0 -- Enable new regexp engine to stop syntax highlighting breaking on fast scrolls
 
 -- Language servers
+vim.g.coq_settings = { ['auto_start'] = 'shut-up' }
 local coq = require "coq"
 require'lspconfig'.tsserver.setup(coq.lsp_ensure_capabilities{})
 require'lspconfig'.eslint.setup(coq.lsp_ensure_capabilities{})
