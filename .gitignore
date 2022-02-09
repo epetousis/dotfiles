@@ -1,3 +1,7 @@
 # Ignore all emacs files except the ones we care about
 emacs/.emacs.d/**/*
 !emacs/.emacs.d/init.el
+
+# ssh
+ssh/.ssh/**/*
+!ssh/.ssh/config
