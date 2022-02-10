@@ -3,22 +3,22 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
   Plug 'vimwiki/vimwiki'
-  -- Begin org mode related plugins
-  Plug 'nvim-treesitter/nvim-treesitter'
-  Plug 'nvim-orgmode/orgmode'
-  Plug 'akinsho/org-bullets.nvim'
-  -- End org mode related plugins
-  Plug('michaelb/sniprun', {['do'] = 'bash install.sh'})
   Plug 'neovim/nvim-lspconfig'
+
   Plug('ms-jpq/coq_nvim', {['branch'] = 'coq'})
   Plug('ms-jpq/coq.artifacts', {['branch'] = 'artifacts'})
+
   Plug('junegunn/fzf', { ['do'] = vim.fn['fzf#install()'] })
   Plug 'junegunn/fzf.vim'
+
   Plug('glacambre/firenvim', { ['do'] = vim.fn['firenvim#install(0)'] })
   Plug 'folke/which-key.nvim'
   Plug 'justinmk/vim-sneak'
   Plug 'lervag/vimtex'
 	Plug 'numToStr/Comment.nvim'
+
+  -- treesitter: faster/better syntax highlighting
+  Plug('nvim-treesitter/nvim-treesitter', { ['do'] = vim.fn['TSUpdate'] })
 vim.call('plug#end')
 
 -- Set up comment.nvim bindings
@@ -26,6 +26,53 @@ require('Comment').setup()
 
 -- Label mode for vim-sneak
 vim.g["sneak#label"] = 1
+
+-- Treesitter setup
+require'nvim-treesitter.configs'.setup {
+  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
+
+  -- Install languages synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- List of parsers to ignore installing
+  -- ignore_install = { "javascript" },
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- list of language that will be disabled
+    -- disable = { "c", "rust" },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+
+  indent = {
+    enable = true
+  },
+}
+
+-- Treesitter based folding
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = vim.fn['nvim_treesitter#foldexpr']()
+
+-- Language servers
+vim.g.coq_settings = { ['auto_start'] = 'shut-up' }
+local coq = require "coq"
+require'lspconfig'.tsserver.setup(coq.lsp_ensure_capabilities{
+  handlers = {
+    ['window/showMessageRequest'] = function(_, result, params) return result end
+  }
+})
+require'lspconfig'.eslint.setup(coq.lsp_ensure_capabilities{})
+require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities{})
+require'lspconfig'.vuels.setup(coq.lsp_ensure_capabilities{})
+require'lspconfig'.rust_analyzer.setup(coq.lsp_ensure_capabilities{})
 
 -- MAPPINGS
 -- open FZF
@@ -94,40 +141,6 @@ vim.opt.splitbelow = true -- open window splits below
 vim.opt.laststatus = 2 -- enable statusline
 vim.opt.statusline = "%f %m %r %l,%c %= %p%%" -- filename, modified flag, readonly flag, line/column number, file percentage on right
 
+
 vim.g.re = 0 -- Enable new regexp engine to stop syntax highlighting breaking on fast scrolls
-
--- Language servers
-vim.g.coq_settings = { ['auto_start'] = 'shut-up' }
-local coq = require "coq"
-require'lspconfig'.tsserver.setup(coq.lsp_ensure_capabilities{})
-require'lspconfig'.eslint.setup(coq.lsp_ensure_capabilities{})
-require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities{})
-require'lspconfig'.vuels.setup(coq.lsp_ensure_capabilities{})
-require'lspconfig'.rust_analyzer.setup(coq.lsp_ensure_capabilities{})
-
--- Setup for nvim-orgmode
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.org = {
-  install_info = {
-    url = 'https://github.com/milisims/tree-sitter-org',
-    revision = 'f110024d539e676f25b72b7c80b0fd43c34264ef',
-    files = {'src/parser.c', 'src/scanner.cc'},
-  },
-  filetype = 'org',
-}
-
-require'nvim-treesitter.configs'.setup {
-  -- If TS highlights are not enabled at all, or disabled via `disable` prop, highlighting will fallback to default Vim syntax highlighting
-  highlight = {
-    enable = true,
-    disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental)
-    additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
-  },
-  ensure_installed = {'org'}, -- Or run :TSUpdate org
-}
-
-require('orgmode').setup({
-  org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
-  org_default_notes_file = '~/Dropbox/org/refile.org',
-})
 
