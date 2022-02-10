@@ -1,4 +1,3 @@
--- vim: set tabstop=2:softtabstop=2:shiftwidth=2:expandtab:smarttab
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
@@ -16,6 +15,9 @@ vim.call('plug#begin')
   Plug 'justinmk/vim-sneak'
   Plug 'lervag/vimtex'
   Plug 'numToStr/Comment.nvim'
+
+  -- vim-sleuth: automatically determine indentation from file
+  Plug 'tpope/vim-sleuth'
 
   -- treesitter: faster/better syntax highlighting
   Plug('nvim-treesitter/nvim-treesitter', { ['do'] = vim.fn['TSUpdate'] })
