@@ -52,7 +52,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 alias poetry="python3 $HOME/.poetry/bin/poetry"
 
 fpath+=~/.zfunc
-[[ ! -d /opt/homebrew ]] || source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -d /opt/homebrew/opt/powerlevel10k ]] || source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -d ~/.powerlevel10k ]] || source ~/.powerlevel10k/powerlevel10k.zsh-theme
 [[ -d ~/.powerlevel10k ]] || PROMPT='%n@%m:%(4~|...|)%3~ %% '
 
