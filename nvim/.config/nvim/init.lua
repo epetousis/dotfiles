@@ -15,7 +15,7 @@ vim.call('plug#begin')
   Plug 'folke/which-key.nvim'
   Plug 'justinmk/vim-sneak'
   Plug 'lervag/vimtex'
-	Plug 'numToStr/Comment.nvim'
+  Plug 'numToStr/Comment.nvim'
 
   -- treesitter: faster/better syntax highlighting
   Plug('nvim-treesitter/nvim-treesitter', { ['do'] = vim.fn['TSUpdate'] })
@@ -140,7 +140,6 @@ vim.opt.splitbelow = true -- open window splits below
 
 vim.opt.laststatus = 2 -- enable statusline
 vim.opt.statusline = "%f %m %r %l,%c %= %p%%" -- filename, modified flag, readonly flag, line/column number, file percentage on right
-
 
 vim.g.re = 0 -- Enable new regexp engine to stop syntax highlighting breaking on fast scrolls
 
