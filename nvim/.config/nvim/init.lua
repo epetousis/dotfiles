@@ -147,3 +147,5 @@ vim.opt.statusline = "%f %m %r %l,%c %= %p%%" -- filename, modified flag, readon
 
 vim.g.re = 0 -- Enable new regexp engine to stop syntax highlighting breaking on fast scrolls
 
+vim.opt.number = true -- enable line numbering
+
