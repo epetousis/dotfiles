@@ -24,6 +24,9 @@ vim.call('plug#begin')
 
   -- fugitive: Git wrapper
   Plug 'tpope/vim-fugitive'
+
+  -- vim-surround: enables creating, editing and deleting matching tokens, e.g. cs"'
+  Plug 'tpope/vim-surround'
 vim.call('plug#end')
 
 -- Set up comment.nvim bindings
