@@ -85,6 +85,8 @@ require'lspconfig'.rust_analyzer.setup(coq.lsp_ensure_capabilities{})
 -- MAPPINGS
 -- open FZF
 vim.api.nvim_set_keymap('n', ',z', '<Cmd>FZF<CR>', {})
+-- open fzf buffer menu
+vim.api.nvim_set_keymap('n', ',b', '<Cmd>Buffers<CR>', {})
 -- goto next buffer
 vim.api.nvim_set_keymap('n', '<C-J>', ':bnext<CR>', {})
 -- goto prev buffer
