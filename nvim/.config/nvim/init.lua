@@ -21,6 +21,9 @@ vim.call('plug#begin')
 
   -- treesitter: faster/better syntax highlighting
   Plug('nvim-treesitter/nvim-treesitter', { ['do'] = vim.fn['TSUpdate'] })
+
+  -- fugitive: Git wrapper
+  Plug 'tpope/vim-fugitive'
 vim.call('plug#end')
 
 -- Set up comment.nvim bindings
