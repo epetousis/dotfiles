@@ -19,3 +19,5 @@ alias poetry="python3 $HOME/.poetry/bin/poetry"
 
 # Pyenv
 [[ ! -d ~/.pyenv ]] || export PATH="$HOME/.pyenv/bin:$PATH"
+
+export FZF_DEFAULT_COMMAND="rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*}'"
