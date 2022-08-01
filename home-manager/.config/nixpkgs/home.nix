@@ -102,4 +102,13 @@
       };
     };
   };
+
+  home.file.ideavimrc = {
+    target = ".ideavimrc";
+    text = "
+    source ~/.vimrc
+    map gh <Action>(ShowErrorDescription)
+    map gd <Action>(GotoDeclaration)
+    ";
+  };
 }
