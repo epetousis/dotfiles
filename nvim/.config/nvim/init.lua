@@ -37,8 +37,18 @@ vim.g["sneak#label"] = 1
 
 -- Treesitter setup
 require'nvim-treesitter.configs'.setup {
-  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "maintained",
+  -- One of "all", or a list of languages
+  ensure_installed = {
+    "typescript",
+    "javascript",
+    "json",
+    "jsonc",
+    "vue",
+    "vim",
+    "scss",
+    "css",
+    "dockerfile",
+  },
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -70,6 +80,7 @@ vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = vim.fn['nvim_treesitter#foldexpr']()
 
 -- Language servers
+-- NB: When adding a server, don't forget to update the "servers" variable below!
 vim.g.coq_settings = { ['auto_start'] = 'shut-up' }
 local coq = require "coq"
 require'lspconfig'.tsserver.setup(coq.lsp_ensure_capabilities{
@@ -79,7 +90,7 @@ require'lspconfig'.tsserver.setup(coq.lsp_ensure_capabilities{
 })
 require'lspconfig'.eslint.setup(coq.lsp_ensure_capabilities{})
 require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities{})
-require'lspconfig'.vuels.setup(coq.lsp_ensure_capabilities{})
+require'lspconfig'.volar.setup(coq.lsp_ensure_capabilities{})
 require'lspconfig'.rust_analyzer.setup(coq.lsp_ensure_capabilities{})
 
 -- MAPPINGS
@@ -103,8 +114,16 @@ vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<C
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+-- END lspconfig bindings
 -- escape terminal
 vim.api.nvim_set_keymap('t', '<C-,><C-n>', '<C-\\><C-n>', { noremap=true })
+-- restart LSP
+vim.api.nvim_set_keymap('n', '<space>rr', '<cmd>LspRestart<CR>', opts)
+-- reload vimrc
+vim.api.nvim_set_keymap('n', '<leader>sv', '<cmd>source $MYVIMRC<CR>', { noremap=true })
+-- background bindings
+vim.api.nvim_set_keymap('n', '<leader>bd', '<cmd>set bg=dark<CR>', { noremap=true })
+vim.api.nvim_set_keymap('n', '<leader>bl', '<cmd>set bg=light<CR>', { noremap=true })
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -131,7 +150,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'vuels' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'volar' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
