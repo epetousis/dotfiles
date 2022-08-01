@@ -4,6 +4,18 @@ My dotfiles. My primary shell is zsh, and so these dotfiles currently only suppo
 
 ## How to install
 
+###### home-manager
+
+1. [Install Nix.](https://nixos.org/download.html)
+2. Install home-manager by adding it to your `environment.systemPackages` in configuration.nix, or by running `nix-env -iA nixpkgs.home-manager` (`nix-env -iA nixos.home-manager` on NixOS).
+3. Clone this repo to `~/.dotfiles`.
+4. Run `cd ~/.dotfiles && setopt extended_glob && stow ^README.md`.
+5. Run `home-manager switch`.
+
+You'll also need to [install vim-plug](https://github.com/junegunn/vim-plug) before opening nvim.
+
+###### Stow
+
 1. Install GNU stow.
 2. Clone this repo to `~/.dotfiles`.
 3. Run `cd ~/.dotfiles && setopt extended_glob && stow ^README.md`.
