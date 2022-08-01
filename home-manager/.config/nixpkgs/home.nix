@@ -62,4 +62,30 @@
       };
     };
   };
+
+  programs.zsh = {
+    enable = true;
+    defaultKeymap = "viins";
+    sessionVariables = {
+      iCloudDrive = "$HOME/Library/Mobile Documents/com~apple~CloudDocs";
+      FZF_DEFAULT_COMMAND = "rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*}'";
+    };
+    localVariables = {
+      VISUAL = "nvim";
+      EDITOR = "nvim";
+      # Kill key timeout so escape is instant
+      KEYTIMEOUT = 1;
+      PROMPT = "%n@%m:%(4~|...|)%3~ %% ";
+    };
+    initExtra = ''
+    # Discourage instinctively opening default macOS Terminal
+    if [[ $TERM_PROGRAM == "Apple_Terminal" ]]; then
+      tput setab 3;echo "=== STOP! You are using the built-in macOS terminal when you have opted for an alternative terminal. ==="
+      tput setab 3;echo "Disregard if opening Terminal was intended."
+    fi
+
+    bindkey "^H" backward-delete-char
+    bindkey "^?" backward-delete-char
+    '';
+  };
 }
