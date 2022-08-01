@@ -1,6 +1,7 @@
 [user]
 	name = Evan Petousis
 	email = evan@petousis.net
+	signingkey = 89F675EAFEFE6CA5
 [init]
 	defaultBranch = main
 [alias]
@@ -9,3 +10,7 @@
 	rebase = true
 [merge]
 	ff = only
+[gpg]
+	program = /Users/epetousis/.nix-profile/bin/gpg
+[commit]
+	gpgsign = true
