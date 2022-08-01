@@ -88,4 +88,18 @@
     bindkey "^?" backward-delete-char
     '';
   };
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "*" = {
+        identityFile = "~/.ssh/id_rsa";
+        extraOptions = {
+          IgnoreUnknown = "AddKeysToAgent,UseKeychain";
+          UseKeychain = "yes";
+          AddKeysToAgent = "yes";
+        };
+      };
+    };
+  };
 }
