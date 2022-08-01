@@ -27,6 +27,9 @@ vim.call('plug#begin')
 
   -- vim-surround: enables creating, editing and deleting matching tokens, e.g. cs"'
   Plug 'tpope/vim-surround'
+
+  -- vim-obsession: automatically save sessions, use :Obsess to record and :Obsess! to stop
+  Plug 'tpope/vim-obsession'
 vim.call('plug#end')
 
 -- Set up comment.nvim bindings
