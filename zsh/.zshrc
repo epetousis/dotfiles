@@ -1,10 +1,3 @@
-# Start tmux
-# Adapted from https://unix.stackexchange.com/a/113768
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  # No exec is used here, just in case we don't actually want tmux (or it's broken)
-  tmux
-fi
-
 # Discourage instinctively opening default macOS Terminal
 if [[ $TERM_PROGRAM == "Apple_Terminal" ]]; then
   tput setab 3;echo "=== STOP! You are using the built-in macOS terminal when you have opted for an alternative terminal. ==="
