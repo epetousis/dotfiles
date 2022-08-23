@@ -33,6 +33,7 @@
 
   environment.systemPackages = with pkgs; [
     neovim
+    git
     wget
     wireguard-tools
   ];
