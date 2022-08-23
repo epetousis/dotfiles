@@ -35,7 +35,7 @@
 
     nixosConfigurations.raspberry = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
-      modules = [ ./hosts/raspberry.nix ];
+      modules = [ ./hosts/raspberry ];
     };
   };
 }
