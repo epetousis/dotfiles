@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   # This value determines the Home Manager release that your
@@ -24,7 +24,6 @@
     neovim
     openvscode-server
     pinentry
-    pinentry_mac
     rclone
     ripgrep
     streamlink
@@ -32,6 +31,9 @@
     tmux
     wget
     yt-dlp
+  ] ++ lib.optionals stdenv.isDarwin [
+    # macOS dependencies
+    pinentry_mac
   ];
 
   programs.git = {
