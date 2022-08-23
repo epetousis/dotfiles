@@ -1,8 +1,15 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  home.username = "epetousis";
-  home.homeDirectory = "/Users/epetousis";
+  # This value determines the Home Manager release that your
+  # configuration is compatible with. This helps avoid breakage
+  # when a new Home Manager release introduces backwards
+  # incompatible changes.
+  #
+  # You can update Home Manager without changing this value. See
+  # the Home Manager release notes for a list of state version
+  # changes in each release.
+  home.stateVersion = "22.05";
 
   home.packages = with pkgs; [
     axel
@@ -26,18 +33,6 @@
     wget
     yt-dlp
   ];
-
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "22.05";
-
-  programs.home-manager.enable = true;
 
   programs.git = {
     enable = true;
@@ -132,5 +127,20 @@
     bind % split-window -h -c "#{pane_current_path}"
     bind c new-window -c "#{pane_current_path}"
     '';
+  };
+
+  home.file.emacs = {
+    source = ../configs/emacs/.emacs.d/init.el;
+    target = ".emacs.d/init.el";
+  };
+
+  home.file.p10k = {
+    source = ../configs/p10k/.p10k.zsh;
+    target = ".p10k.zsh";
+  };
+
+  home.file.nvim = {
+    source = ../configs/nvim/.config/nvim/init.lua;
+    target = ".config/nvim/init.lua";
   };
 }

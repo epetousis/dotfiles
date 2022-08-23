@@ -1,3 +1,0 @@
-source ~/.vimrc
-map gh <Action>(ShowErrorDescription)
-map gd <Action>(GotoDeclaration)

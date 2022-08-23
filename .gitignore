@@ -5,3 +5,6 @@ emacs/.emacs.d/**/*
 # ssh
 ssh/.ssh/**/*
 !ssh/.ssh/config
+
+# Nix flake build result
+/result
