@@ -7,9 +7,11 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = github:nix-community/home-manager/release-22.05;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-wsl.url = github:nix-community/nixos-wsl/main;
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, darwin, nixpkgs, home-manager }: {
+  outputs = { self, darwin, nixpkgs, home-manager, nixos-wsl }: {
     # NB: nix-darwin doesn't work with flakes OOB yet.
     # You'll have to install it first through its darwin-installer before building this Flake, and
     # then switch with:
@@ -19,6 +21,15 @@
       modules = [
         home-manager.darwinModules.home-manager
         ./hosts/evan-mba.nix
+      ];
+    };
+
+    nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        nixos-wsl.nixosModules.wsl
+        home-manager.nixosModules.home-manager
+        ./hosts/evan-pc.nix
       ];
     };
   };
