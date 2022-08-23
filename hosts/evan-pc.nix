@@ -16,6 +16,9 @@ with lib;
     # docker.enable = true;
   };
 
+  # Define our hostname so switches don't reset it
+  networking.hostName = "evan-pc";
+
   # Enable nix flakes
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
