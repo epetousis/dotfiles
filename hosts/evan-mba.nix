@@ -110,6 +110,18 @@
     ];
   };
 
+  # Speed up Dock autohide
+  system.defaults.dock = {
+    autohide = true;
+    autohide-delay = "0.4";
+    autohide-time-modifier = "0.15";
+    mineffect = "scale";
+    show-recents = false;
+    mru-spaces = false;
+    # Disable the default quick note hot corner
+    wvous-br-corner = 1;
+  };
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
