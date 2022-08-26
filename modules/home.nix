@@ -36,6 +36,25 @@
     pinentry_mac
   ];
 
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [
+      # emacs packages
+      epkgs.use-package
+      epkgs.fzf
+      epkgs.lsp-mode
+      epkgs.lsp-ui
+      epkgs.company
+      epkgs.evil
+      epkgs.evil-collection
+      epkgs.which-key
+      epkgs.vue-mode
+      epkgs.typescript-mode
+      epkgs.dtrt-indent
+      epkgs.envrc
+    ];
+  };
+
   programs.git = {
     enable = true;
     userName = "Evan Petousis";

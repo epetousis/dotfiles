@@ -63,7 +63,6 @@
       "displaylink-login-extension"
       "dosbox-x"
       "element"
-      "emacs"
       "firefox"
       "font-fira-code"
       "font-fira-code-nerd-font"
