@@ -100,6 +100,9 @@ apps are not started from a shell."
 ;; Guess indentation automatically
 (use-package dtrt-indent :config (setq dtrt-indent-global-mode t))
 
+;; Switch to dark mode automatically
+(use-package auto-dark)
+
 ;; direnv integration - allows us to easily use Nix packages
 ;; Place this late in the startup since minor modes prepend themselves to hooks
 (use-package envrc

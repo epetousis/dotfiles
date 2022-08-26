@@ -54,6 +54,7 @@
       epkgs.typescript-mode
       epkgs.dtrt-indent
       epkgs.envrc
+      epkgs.auto-dark
     ];
   };
 
