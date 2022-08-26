@@ -123,6 +123,19 @@
     wvous-br-corner = 1;
   };
 
+  # Symlink macOS apps - taken from https://github.com/nix-community/home-manager/issues/1341#issuecomment-1190875080
+  system.activationScripts.applications.text = pkgs.lib.mkForce (
+    ''
+      echo "setting up ~/Applications..." >&2
+      rm -rf ~/Applications/Nix\ Apps
+      mkdir -p ~/Applications/Nix\ Apps
+      for app in $(find ${config.system.build.applications}/Applications -maxdepth 1 -type l); do
+        src="$(/usr/bin/stat -f%Y "$app")"
+        cp -r "$src" ~/Applications/Nix\ Apps
+      done
+    ''
+  );
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
