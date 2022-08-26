@@ -83,6 +83,8 @@
 
     bindkey "^H" backward-delete-char
     bindkey "^?" backward-delete-char
+
+    eval "$(direnv hook zsh)"
     '';
   };
 
@@ -145,4 +147,8 @@
     source = ../configs/nvim/.config/nvim/init.lua;
     target = ".config/nvim/init.lua";
   };
+
+  # Add direnv support - among other things, this can be used for automatically loading shell.nix files
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 }
