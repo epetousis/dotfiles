@@ -11,7 +11,8 @@
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
   networking.hostName = "evan-mba";
-  networking.computerName = "Evan's MacBook Air";
+  # Use U+2019 apostrophe due to string not being escaped by nix-darwin
+  networking.computerName = "Evan’s MacBook Air";
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
