@@ -37,6 +37,11 @@ apps are not started from a shell."
     (vue-mode . lsp-deferred)
     (typescript-mode . lsp))
   :commands (lsp lsp-deferred))
+(use-package lsp-pyright
+  :after lsp-mode
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))
 (use-package lsp-ui :after lsp-mode
   :commands lsp-ui-mode)
 (use-package company :after lsp-mode)

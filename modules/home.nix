@@ -22,6 +22,7 @@
     heroku
     jq
     neovim
+    nodePackages.pyright
     openvscode-server
     pinentry
     rclone
@@ -43,6 +44,7 @@
       epkgs.use-package
       epkgs.fzf
       epkgs.lsp-mode
+      epkgs.lsp-pyright
       epkgs.lsp-ui
       epkgs.company
       epkgs.evil
