@@ -40,5 +40,16 @@ with lib;
     neovim
   ];
 
+  fonts = {
+    fonts = with pkgs; [
+      liberation_ttf
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "Liberation Mono" ];
+      };
+    };
+  };
+
   system.stateVersion = "21.11";
 }
