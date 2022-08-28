@@ -165,17 +165,17 @@
   };
 
   home.file.emacs = {
-    source = ../configs/emacs/.emacs.d/init.el;
+    source = ../configs/emacs/init.el;
     target = ".emacs.d/init.el";
   };
 
   home.file.p10k = {
-    source = ../configs/p10k/.p10k.zsh;
+    source = ../configs/p10k/p10k.zsh;
     target = ".p10k.zsh";
   };
 
   home.file.nvim = {
-    source = ../configs/nvim/.config/nvim/init.lua;
+    source = ../configs/nvim/init.lua;
     target = ".config/nvim/init.lua";
   };
 
