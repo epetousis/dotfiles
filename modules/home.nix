@@ -54,6 +54,7 @@
       epkgs.dtrt-indent
       epkgs.envrc
       epkgs.auto-dark
+      epkgs.nix-mode
     ];
   };
 

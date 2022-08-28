@@ -96,6 +96,7 @@ apps are not started from a shell."
   :init
   (setq mmm-submode-decoration-level 0))
 (use-package typescript-mode :mode "\\.ts\\'")
+(use-package nix-mode :mode "\\.nix\\'")
 
 ;; Guess indentation automatically
 (use-package dtrt-indent :config (setq dtrt-indent-global-mode t))
