@@ -39,6 +39,7 @@
 
   programs.emacs = {
     enable = true;
+    package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.emacs else pkgs.emacsUnstable;
     extraPackages = epkgs: [
       # emacs packages
       epkgs.use-package
