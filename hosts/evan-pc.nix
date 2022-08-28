@@ -40,6 +40,10 @@ with lib;
     neovim
   ];
 
+  environment.sessionVariables = rec {
+    GDK_DPI_SCALE = "1.5";
+  };
+
   fonts = {
     fonts = with pkgs; [
       liberation_ttf
