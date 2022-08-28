@@ -104,6 +104,9 @@ apps are not started from a shell."
 ;; Switch to dark mode automatically
 (use-package auto-dark)
 
+;; Add ability to use a project directory
+(use-package projectile :config (projectile-mode +1))
+
 ;; direnv integration - allows us to easily use Nix packages
 ;; Place this late in the startup since minor modes prepend themselves to hooks
 (use-package envrc
