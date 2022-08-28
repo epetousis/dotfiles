@@ -18,13 +18,11 @@
     fzf
     git
     git-filter-repo
-    gnupg
     heroku
     jq
     neovim
     nodePackages.pyright
     openvscode-server
-    pinentry
     rclone
     ripgrep
     streamlink
@@ -57,6 +55,14 @@
       epkgs.envrc
       epkgs.auto-dark
     ];
+  };
+
+  programs.gpg = {
+    enable = true;
+  };
+
+  services.gpg-agent = {
+    enable = true;
   };
 
   programs.git = {
