@@ -64,7 +64,7 @@
   };
 
   services.gpg-agent = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
   };
 
   programs.git = {
