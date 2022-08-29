@@ -113,6 +113,16 @@ apps are not started from a shell."
   :config
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 
+;;; UI Configuration
+;; Hide window toolbar icons
+(tool-bar-mode -1)
+;; Make title bar blend into document on macOS
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+;; Hide icon on macOS
+(setq ns-use-proxy-icon nil)
+;; Display line numbers
+(global-display-line-numbers-mode)
+
 ;; direnv integration - allows us to easily use Nix packages
 ;; Place this late in the startup since minor modes prepend themselves to hooks
 (use-package envrc
