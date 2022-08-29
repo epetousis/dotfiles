@@ -107,6 +107,12 @@ apps are not started from a shell."
 ;; Add ability to use a project directory
 (use-package projectile :config (projectile-mode +1))
 
+;; Add ability to see errors without showing entire buffer
+(use-package flymake-diagnostic-at-point
+  :after flymake
+  :config
+  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
+
 ;; direnv integration - allows us to easily use Nix packages
 ;; Place this late in the startup since minor modes prepend themselves to hooks
 (use-package envrc

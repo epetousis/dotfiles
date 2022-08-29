@@ -56,6 +56,7 @@
       epkgs.auto-dark
       epkgs.nix-mode
       epkgs.projectile
+      epkgs.flymake-diagnostic-at-point
     ];
   };
 
