@@ -35,7 +35,7 @@ apps are not started from a shell."
 (use-package lsp-mode
   :hook (
     (vue-mode . lsp-deferred)
-    (typescript-mode . lsp)
+    (typescript-mode . lsp-deferred)
     (python-mode . lsp-deferred))
   :commands (lsp lsp-deferred))
 (use-package lsp-pyright
