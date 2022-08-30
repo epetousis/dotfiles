@@ -121,6 +121,10 @@
     wvous-br-corner = 1;
   };
 
+  nixpkgs.overlays = [
+    (import ../overlays/yabai.nix)
+  ];
+
   services.yabai = {
     enable = true;
     package = pkgs.yabai;
