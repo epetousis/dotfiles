@@ -76,25 +76,10 @@ apps are not started from a shell."
   ;; Register evil-collection bindings
   (evil-collection-init))
 
+;; Show available keybinds after a prefix keypress
 (use-package which-key
   :config
   (which-key-mode))
-
-;; Close FZF with esc (https://github.com/bling/fzf.el/issues/45#issuecomment-429893494)
-(require 'term)
-(defun term-send-esc ()
-  "Send ESC in term mode."
-  (interactive)
-  (term-send-raw-string "\e"))
-;; to quit fzf with ESC key
-(define-key term-raw-map (kbd "<escape>") 'term-send-esc)
-
-;; Move all autosaves to a directory
-(setq autosave-dir "~/.emacs-saves/")
-(unless (file-exists-p autosave-dir)
-  (make-directory autosave-dir t))
-(setq auto-save-file-name-transforms
-  `((".*" ,autosave-dir t)))
 
 ;; Language specific major modes
 (use-package typescript-mode :mode "\\.ts\\'")
@@ -135,6 +120,23 @@ apps are not started from a shell."
 ;;; Keybinds
 ;; Ignore F18 (used for PTT)
 (global-set-key (kbd "<f18>") 'ignore)
+
+;; Close FZF with esc (https://github.com/bling/fzf.el/issues/45#issuecomment-429893494)
+(require 'term)
+(defun term-send-esc ()
+  "Send ESC in term mode."
+  (interactive)
+  (term-send-raw-string "\e"))
+;; to quit fzf with ESC key
+(define-key term-raw-map (kbd "<escape>") 'term-send-esc)
+
+;;; Extra configuration
+;; Move all autosaves to a directory
+(setq autosave-dir "~/.emacs-saves/")
+(unless (file-exists-p autosave-dir)
+  (make-directory autosave-dir t))
+(setq auto-save-file-name-transforms
+  `((".*" ,autosave-dir t)))
 
 ;; direnv integration - allows us to easily use Nix packages
 ;; Place this late in the startup since minor modes prepend themselves to hooks
