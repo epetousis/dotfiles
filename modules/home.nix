@@ -49,7 +49,6 @@
       epkgs.evil
       epkgs.evil-collection
       epkgs.which-key
-      epkgs.vue-mode
       epkgs.typescript-mode
       epkgs.dtrt-indent
       epkgs.envrc
@@ -57,6 +56,7 @@
       epkgs.nix-mode
       epkgs.projectile
       epkgs.flymake-diagnostic-at-point
+      epkgs.web-mode
     ];
   };
 

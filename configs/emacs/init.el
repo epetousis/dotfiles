@@ -34,7 +34,7 @@ apps are not started from a shell."
 ;; LSP
 (use-package lsp-mode
   :hook (
-    (vue-mode . lsp-deferred)
+    (web-mode . lsp-deferred)
     (typescript-mode . lsp-deferred)
     (python-mode . lsp-deferred))
   :commands (lsp lsp-deferred))
@@ -92,12 +92,10 @@ apps are not started from a shell."
   `((".*" ,autosave-dir t)))
 
 ;; Language specific major modes
-(use-package vue-mode :mode "\\.vue\\'"
-  ;; Disable that fugly mmm-mode background default
-  :init
-  (setq mmm-submode-decoration-level 0))
 (use-package typescript-mode :mode "\\.ts\\'")
 (use-package nix-mode :mode "\\.nix\\'")
+(use-package web-mode
+  :config (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode)))
 
 ;; Guess indentation automatically
 (use-package dtrt-indent :config (setq dtrt-indent-global-mode t))
