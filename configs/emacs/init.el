@@ -125,6 +125,10 @@ apps are not started from a shell."
 ;; Display line numbers
 (global-display-line-numbers-mode)
 
+;;; Keybinds
+;; Ignore F18 (used for PTT)
+(global-set-key (kbd "<f18>") 'ignore)
+
 ;; direnv integration - allows us to easily use Nix packages
 ;; Place this late in the startup since minor modes prepend themselves to hooks
 (use-package envrc
