@@ -95,6 +95,7 @@
       "sf-symbols"
       "signal"
       "soulseek"
+      "soundsource"
       "spotify"
       "sublime-text"
       "syncthing"
