@@ -33,6 +33,9 @@ apps are not started from a shell."
 
 ;; LSP
 (use-package lsp-mode
+  :init
+  ;; Turn this horrible feature off so my life is good again
+  (setq lsp-enable-on-type-formatting nil)
   :hook (
     (web-mode . lsp-deferred)
     (typescript-mode . lsp-deferred)
@@ -98,7 +101,7 @@ apps are not started from a shell."
   :config (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode)))
 
 ;; Guess indentation automatically
-(use-package dtrt-indent :config (setq dtrt-indent-global-mode t))
+(use-package dtrt-indent :config (dtrt-indent-global-mode))
 
 ;; Switch to dark mode automatically
 (use-package auto-dark)
