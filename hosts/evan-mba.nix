@@ -168,6 +168,10 @@
     ctrl + alt + cmd - h : yabai -m window --warp west
     ctrl + alt + cmd - l : yabai -m window --warp east
 
+    # move focused window to monitor
+    ctrl + alt + cmd - i : yabai -m window --display prev
+    ctrl + alt + cmd - o : yabai -m window --display next
+
     # resize active window outwards
     shift + alt - h : yabai -m window --resize left:-20:0
     shift + alt - j : yabai -m window --resize bottom:0:20
