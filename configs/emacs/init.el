@@ -41,6 +41,8 @@ apps are not started from a shell."
     (typescript-mode . lsp-deferred)
     (python-mode . lsp-deferred))
   :commands (lsp lsp-deferred))
+;; Set vscode-eslint
+(setq lsp-eslint-server-command `("node" ,(expand-file-name (car (last (file-expand-wildcards "~/.vscode/extensions/dbaeumer.vscode-eslint-*/server/out/eslintServer.js")))) "--stdio"))
 (use-package lsp-pyright
   :after lsp-mode
   :hook (python-mode . (lambda ()
@@ -114,6 +116,10 @@ apps are not started from a shell."
   :after flymake
   :config
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
+
+;; Add modern syntax checking
+(use-package flycheck
+  :init (global-flycheck-mode))
 
 ;;; UI Configuration
 ;; Hide window toolbar icons

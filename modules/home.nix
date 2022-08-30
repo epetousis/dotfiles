@@ -57,6 +57,7 @@
       epkgs.projectile
       epkgs.flymake-diagnostic-at-point
       epkgs.web-mode
+      epkgs.flycheck
     ];
   };
 
