@@ -49,7 +49,6 @@
     casks = [
       "1password"
       "altserver"
-      "amethyst"
       "anki"
       "balenaetcher"
       "barrier"
@@ -89,7 +88,6 @@
       "plex"
       "protonvpn"
       "pycharm"
-      "rectangle"
       "rekordbox"
       "runelite"
       "sf-symbols"
@@ -121,6 +119,66 @@
     mru-spaces = false;
     # Disable the default quick note hot corner
     wvous-br-corner = 1;
+  };
+
+  services.yabai = {
+    enable = true;
+    package = pkgs.yabai;
+    config = {
+      layout = "bsp";
+      mouse_follows_focus = "on";
+      window_placement    = "second_child";
+      window_opacity      = "off";
+      top_padding         = 10;
+      bottom_padding      = 10;
+      left_padding        = 10;
+      right_padding       = 10;
+      window_gap          = 10;
+    };
+    extraConfig = ''
+    yabai -m rule --add app=Emacs manage=on
+    '';
+  };
+
+  services.skhd = {
+    enable = true;
+    package = pkgs.skhd;
+    skhdConfig = ''
+    # mode switching
+    ctrl + alt - e : yabai -m space --layout bsp
+    ctrl + alt - s : yabai -m space --layout stack
+
+    # move focus
+    ctrl + alt - j : yabai -m window --focus stack.next || yabai -m window --focus south
+    ctrl + alt - k : yabai -m window --focus stack.prev || yabai -m window --focus north
+    ctrl + alt - h : yabai -m window --focus west
+    ctrl + alt - l : yabai -m window --focus east
+
+    # move focus to display
+    ctrl + alt - i : yabai -m display --focus prev
+    ctrl + alt - o : yabai -m display --focus next
+
+    # move focused window
+    ctrl + alt + cmd - j : yabai -m window --warp stack.next || yabai -m window --warp south
+    ctrl + alt + cmd - k : yabai -m window --warp stack.prev || yabai -m window --warp north
+    ctrl + alt + cmd - h : yabai -m window --warp west
+    ctrl + alt + cmd - l : yabai -m window --warp east
+
+    # resize active window outwards
+    shift + alt - h : yabai -m window --resize left:-20:0
+    shift + alt - j : yabai -m window --resize bottom:0:20
+    shift + alt - k : yabai -m window --resize top:0:-20
+    shift + alt - l : yabai -m window --resize right:20:0
+
+    # resize active window inwards
+    shift + alt + ctrl - h : yabai -m window --resize left:20:0
+    shift + alt + ctrl - j : yabai -m window --resize bottom:0:-20
+    shift + alt + ctrl - k : yabai -m window --resize top:0:20
+    shift + alt + ctrl - l : yabai -m window --resize right:-20:0
+
+    # full screen
+    ctrl + alt - f : yabai -m window --toggle zoom-fullscreen
+    '';
   };
 
   # Symlink macOS apps - taken from https://github.com/nix-community/home-manager/issues/1341#issuecomment-1190875080
