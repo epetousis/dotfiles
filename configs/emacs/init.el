@@ -118,6 +118,7 @@ apps are not started from a shell."
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 
 ;; Add modern syntax checking
+;; Can be removed when/if https://github.com/emacs-lsp/lsp-mode/issues/2808 is fixed
 (use-package flycheck
   :init (global-flycheck-mode))
 
