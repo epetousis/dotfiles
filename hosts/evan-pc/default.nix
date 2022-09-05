@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../modules/gnome-shell-suspend-fix.nix
     ];
 
   # Bootloader.
@@ -37,6 +38,10 @@
   # Enable the (unfortunately proprietary) Nvidia driver.
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
+  # Enables systemd-based suspend to avoid graphical corruption on wake
+  # Temporary bug related to https://forums.developer.nvidia.com/t/corrupted-graphics-upon-resume-gnome-41-x-org-495-44-driver/194565/17
+  hardware.nvidia.powerManagement.enable = true;
+  services.gnome-shell-suspend-fix.enable = true;
 
   # Enable Wayland on Nvidia.
   hardware.nvidia.modesetting.enable = true;
