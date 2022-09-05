@@ -113,6 +113,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (import ../../overlays/discord.nix { inherit pkgs; })
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
