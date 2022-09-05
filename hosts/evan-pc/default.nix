@@ -48,6 +48,13 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Enable fractional scaling on Gnome Wayland.
+  services.xserver.desktopManager.gnome.extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
+  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+     [org.gnome.mutter]
+     experimental-features=['scale-monitor-framebuffer']
+   '';
+
   # Configure keymap in X11
   services.xserver = {
     layout = "au";
