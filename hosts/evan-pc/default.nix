@@ -92,9 +92,22 @@
     packages = with pkgs; [
       firefox-wayland
       git
-    #  thunderbird
+      spotify
+      discord
     ];
+    shell = pkgs.zsh;
   };
+
+  # Enable Steam
+  # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.
+  programs.steam.enable = true;
+
+  # Enable flatpak support
+  services.flatpak.enable = true;
+
+  # Enable zsh
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [ zsh ];
 
   home-manager.users.epetousis = import ../../modules/home.nix;
 
@@ -105,9 +118,12 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
     gnomeExtensions.gsconnect
+    gnomeExtensions.appindicator
   ];
+
+  # Enable NTFS support
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
