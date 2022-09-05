@@ -48,13 +48,22 @@
       ];
     };
 
-    nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."evan-pc-wsl" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         nix-defaults
         nixos-wsl.nixosModules.wsl
         home-manager.nixosModules.home-manager
-        ./hosts/evan-pc.nix
+        ./hosts/evan-pc-wsl.nix
+      ];
+    };
+
+    nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        nix-defaults
+        home-manager.nixosModules.home-manager
+        ./hosts/evan-pc
       ];
     };
 
