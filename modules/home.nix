@@ -40,7 +40,8 @@
 
   programs.emacs = {
     enable = true;
-    package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.emacsPgtkNativeComp else pkgs.emacs;
+    # FIXME: emacsPgtkNativeComp seems to be broken on aarch64
+    package = if pkgs.stdenv.hostPlatform.isLinux && pkgs.stdenv.hostPlatform.isx86 then pkgs.emacsPgtkNativeComp else pkgs.emacs;
     extraPackages = epkgs: [
       # emacs packages
       epkgs.use-package

@@ -164,6 +164,36 @@
         "type": "github"
       }
     },
+    "m1-firmware": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653143483,
+        "narHash": "sha256-7XEf6q9/YUr0Ij+9deB7cjjY/C3SSPDpExOFnqcC62g=",
+        "path": "/etc/nixos/m1-support",
+        "type": "path"
+      },
+      "original": {
+        "path": "/etc/nixos/m1-support",
+        "type": "path"
+      }
+    },
+    "m1-support": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1661305666,
+        "narHash": "sha256-yJIdZLWopT6iP6Tc3VyPsPM4i1uN6bCqK9VETbs/kG4=",
+        "owner": "tpwrules",
+        "repo": "nixos-m1",
+        "rev": "9311ef974e9acb718723d5cd54abeb70659a62ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tpwrules",
+        "ref": "main",
+        "repo": "nixos-m1",
+        "type": "github"
+      }
+    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -203,6 +233,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-cross-stdenv": {
+      "locked": {
+        "lastModified": 1660305968,
+        "narHash": "sha256-r0X1pZCSEA6mzt5OuTA7nHuLmvnbkwgpFAh1iLIx4GU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c4a0efdd5a728e20791b8d8d2f26f90ac228ee8d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c4a0efdd5a728e20791b8d8d2f26f90ac228ee8d",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1665763903,
@@ -225,8 +271,11 @@
         "emacs": "emacs",
         "emacs-mac": "emacs-mac",
         "home-manager": "home-manager",
+        "m1-firmware": "m1-firmware",
+        "m1-support": "m1-support",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-cross-stdenv": "nixpkgs-cross-stdenv",
         "nixpkgs-stable": "nixpkgs-stable"
       }
     },
