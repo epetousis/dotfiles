@@ -141,6 +141,7 @@
     };
     extraConfig = ''
     yabai -m rule --add app=Emacs manage=on
+      yabai -m rule --add label="Firefox PIP" app="^Firefox$" title="^(Picture-in-Picture)$" manage=off
     '';
   };
 
