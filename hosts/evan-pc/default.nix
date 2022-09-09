@@ -99,6 +99,7 @@
       git
       spotify
       discord
+      easyeffects
     ];
     shell = pkgs.zsh;
   };
