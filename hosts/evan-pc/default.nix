@@ -38,6 +38,7 @@
   # Enable the (unfortunately proprietary) Nvidia driver.
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
   # Enables systemd-based suspend to avoid graphical corruption on wake
   # Temporary bug related to https://forums.developer.nvidia.com/t/corrupted-graphics-upon-resume-gnome-41-x-org-495-44-driver/194565/17
   hardware.nvidia.powerManagement.enable = true;
