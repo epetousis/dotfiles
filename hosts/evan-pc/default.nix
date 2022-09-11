@@ -100,6 +100,7 @@
       spotify
       discord
       easyeffects
+      lutris
     ];
     shell = pkgs.zsh;
   };
