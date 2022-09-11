@@ -37,7 +37,8 @@
 
   programs.emacs = {
     enable = true;
-    package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.emacsPgtkNativeComp else pkgs.emacs;
+    # FIXME: emacsPgtkNativeComp awaiting a fix https://github.com/nix-community/emacs-overlay/issues/244
+    package = pkgs.emacs;
     extraPackages = epkgs: [
       # emacs packages
       epkgs.use-package
