@@ -122,7 +122,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
-    (import ../../overlays/discord.nix { inherit pkgs; })
+    (import ../../overlays)
   ];
 
   # Allow Nix command

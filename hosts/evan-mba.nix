@@ -122,7 +122,7 @@
   };
 
   nixpkgs.overlays = [
-    (import ../overlays/yabai.nix)
+    (import ../overlays)
   ];
 
   services.yabai = {
