@@ -35,7 +35,6 @@
 
       nixpkgs.overlays = [
         emacs.overlay
-        emacs-mac.overlay
       ];
     };
   in {
