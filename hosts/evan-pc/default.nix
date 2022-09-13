@@ -47,6 +47,9 @@
   # Enable Wayland on Nvidia.
   hardware.nvidia.modesetting.enable = true;
 
+  # Enable Wayland support for apps.
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # Enable Xwayland for X compatibility.
   programs.xwayland.enable = true;
 
