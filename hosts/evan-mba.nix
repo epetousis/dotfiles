@@ -130,7 +130,6 @@
     package = pkgs.yabai;
     config = {
       layout = "bsp";
-      mouse_follows_focus = "on";
       window_placement    = "second_child";
       window_opacity      = "off";
       top_padding         = 10;
