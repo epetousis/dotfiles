@@ -105,6 +105,7 @@
       discord
       easyeffects
       lutris
+      webcord
     ];
     shell = pkgs.zsh;
   };
