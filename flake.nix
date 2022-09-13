@@ -11,9 +11,10 @@
     nixos-wsl.url = github:nix-community/nixos-wsl/main;
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     emacs.url = github:nix-community/emacs-overlay/master;
+    emacs-mac.url = github:cmacrae/emacs;
   };
 
-  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, emacs }:
+  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, emacs, emacs-mac }:
   let
     nix-defaults = {
       home-manager.useGlobalPkgs = true;
@@ -23,15 +24,18 @@
           substituters = [
             "https://nix-community.cachix.org"
             "https://cache.nixos.org/"
+            "https://cachix.org/api/v1/cache/emacs"
           ];
           trusted-public-keys = [
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+            "emacs.cachix.org-1:b1SMJNLY/mZF6GxQE+eDBeps7WnkT0Po55TAyzwOxTY="
           ];
         };
       };
 
       nixpkgs.overlays = [
         emacs.overlay
+        emacs-mac.overlay
       ];
     };
   in {
