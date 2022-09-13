@@ -74,7 +74,6 @@
     nixosConfigurations.raspberry = nixpkgs-stable.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
-        nix-defaults
         ./hosts/raspberry
       ];
     };
