@@ -16,5 +16,5 @@ symlinkJoin {
   buildInputs = [ makeWrapper ];
   postBuild = ''wrapProgram $out/bin/spotify \
   --set LD_PRELOAD ${callPackage (import ./xcbstub) {}}/lib/xcbstub.so \
-  --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"'';
+  --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--enable-features=UseOzonePlatform --ozone-platform=wayland}}"'';
 }
