@@ -5,5 +5,7 @@ final: prev: {
 
   spotify = if prev.stdenv.hostPlatform.isLinux then prev.callPackage ./spotify { spotify = prev.spotify; } else prev.spotify;
 
+  discord-screenaudio = prev.callPackage ./discord-screenaudio {};
+
   webcord = prev.callPackage ./webcord {};
 }
