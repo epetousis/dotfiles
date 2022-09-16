@@ -105,7 +105,7 @@
       discord
       easyeffects
       lutris
-      webcord
+      webcord-keybinds
     ];
     shell = pkgs.zsh;
   };

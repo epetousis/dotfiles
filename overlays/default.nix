@@ -8,4 +8,6 @@ final: prev: {
   discord-screenaudio = prev.callPackage ./discord-screenaudio {};
 
   webcord = prev.callPackage ./webcord {};
+
+  webcord-keybinds = prev.callPackage ./webcord/keybinds.nix { webcord = final.webcord; };
 }
