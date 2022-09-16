@@ -106,6 +106,7 @@
       easyeffects
       lutris
       webcord-keybinds
+      rtorrent
     ];
     shell = pkgs.zsh;
   };
@@ -165,6 +166,9 @@
   # Enable Tailscale service
   services.tailscale.enable = true;
   networking.firewall.allowedUDPPorts = [ 41641 ];
+  networking.firewall.allowedTCPPorts = [
+    7772  # rtorrent
+  ];
   networking.firewall.checkReversePath = "loose";
 
   # Enable Docker
