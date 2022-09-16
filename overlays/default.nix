@@ -10,4 +10,6 @@ final: prev: {
   webcord = prev.callPackage ./webcord {};
 
   webcord-keybinds = prev.callPackage ./webcord/keybinds.nix { webcord = final.webcord; };
+
+  mpv = prev.callPackage ./mpv {};
 }

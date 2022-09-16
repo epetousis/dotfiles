@@ -107,6 +107,7 @@
       lutris
       webcord-keybinds
       rtorrent
+      mpv
     ];
     shell = pkgs.zsh;
   };
