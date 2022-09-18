@@ -57,6 +57,7 @@
       epkgs.flymake-diagnostic-at-point
       epkgs.web-mode
       epkgs.flycheck
+      epkgs.magit
     ];
   };
 

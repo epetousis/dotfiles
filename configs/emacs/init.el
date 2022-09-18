@@ -85,6 +85,9 @@ apps are not started from a shell."
 (use-package flycheck
   :init (global-flycheck-mode))
 
+;; Add a Git wrapper
+(use-package magit)
+
 ;;; UI Configuration
 ;; Hide window toolbar icons
 (tool-bar-mode -1)
