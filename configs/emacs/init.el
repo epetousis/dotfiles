@@ -109,13 +109,6 @@ apps are not started from a shell."
 (define-key term-raw-map (kbd "<escape>") 'term-send-esc)
 
 ;;; Extra configuration
-;; Move all autosaves to a directory
-(setq autosave-dir "~/.emacs-saves/")
-(unless (file-exists-p autosave-dir)
-  (make-directory autosave-dir t))
-(setq auto-save-file-name-transforms
-  `((".*" ,autosave-dir t)))
-
 ;; direnv integration - allows us to easily use Nix packages
 ;; Place this late in the startup since minor modes prepend themselves to hooks
 (use-package envrc
