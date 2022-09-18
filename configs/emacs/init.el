@@ -30,6 +30,7 @@ apps are not started from a shell."
 
 ;; Install packages
 (use-package fzf)
+(global-set-key (kbd "C-x ,") 'fzf)
 
 ;; LSP
 (use-package lsp-mode
@@ -52,30 +53,6 @@ apps are not started from a shell."
 (use-package lsp-ui :after lsp-mode
   :commands lsp-ui-mode)
 (use-package company :after lsp-mode)
-
-;; Evil mode related settings
-; Enable evil mode
-;; `evil-collection' assumes `evil-want-keybinding' is set to
-;; `nil' before loading `evil' and `evil-collection'
-;; @see https://github.com/emacs-evil/evil-collection#installation
-(use-package evil
-  :init
-  (setq evil-want-keybinding nil)
-  (setq evil-undo-system 'undo-redo)
-  :config
-  (evil-mode 1)
-  ;; Change evil's initial state in term mode to emacs (zsh should be in vi-mode anyway)
-  (evil-set-initial-state 'term-mode 'emacs)
-  ;; Define keybinds in evil
-  (evil-define-key nil 'global (kbd "C-j") 'next-buffer)
-  (evil-define-key nil 'global (kbd "C-k") 'previous-buffer)
-  (define-key evil-normal-state-map (kbd "g h") 'lsp-ui-doc-glance)
-  (define-key evil-normal-state-map (kbd ", z") 'fzf))
-(use-package evil-collection
-  :after evil
-  :config
-  ;; Register evil-collection bindings
-  (evil-collection-init))
 
 ;; Show available keybinds after a prefix keypress
 (use-package which-key

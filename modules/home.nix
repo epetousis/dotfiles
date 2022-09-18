@@ -46,8 +46,6 @@
       epkgs.lsp-pyright
       epkgs.lsp-ui
       epkgs.company
-      epkgs.evil
-      epkgs.evil-collection
       epkgs.which-key
       epkgs.typescript-mode
       epkgs.dtrt-indent
