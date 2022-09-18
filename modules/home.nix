@@ -21,6 +21,7 @@
     heroku
     jq
     neovim
+    nodejs
     nodePackages.pyright
     openvscode-server
     rclone
