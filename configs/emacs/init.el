@@ -102,6 +102,8 @@ apps are not started from a shell."
 ;;; Keybinds
 ;; Ignore F18 (used for PTT)
 (global-set-key (kbd "<f18>") 'ignore)
+;; Unset easily pressable suspend key
+(global-unset-key (kbd "C-z"))
 
 ;; Close FZF with esc (https://github.com/bling/fzf.el/issues/45#issuecomment-429893494)
 (require 'term)
