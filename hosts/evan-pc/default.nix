@@ -16,6 +16,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  # Add custom kernel modules
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    # Add video loopback
+    v4l2loopback.out
+  ];
+
   networking.hostName = "evan-pc"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
