@@ -40,7 +40,8 @@ apps are not started from a shell."
   :hook (
     (web-mode . lsp-deferred)
     (typescript-mode . lsp-deferred)
-    (python-mode . lsp-deferred))
+    (python-mode . lsp-deferred)
+    (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred))
 ;; Set vscode-eslint server, but only if it exists
 (setq eslint-server-location (car (last (file-expand-wildcards "~/.vscode/extensions/dbaeumer.vscode-eslint-*/server/out/eslintServer.js"))))
