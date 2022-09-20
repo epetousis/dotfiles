@@ -11,5 +11,5 @@ final: prev: {
 
   webcord-keybinds = prev.callPackage ./webcord/keybinds.nix { webcord = final.webcord; };
 
-  mpv = prev.callPackage ./mpv {};
+  mpv = prev.callPackage ./mpv { mpv = prev.mpv; };
 }
