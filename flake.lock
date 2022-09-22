@@ -164,19 +164,6 @@
         "type": "github"
       }
     },
-    "m1-firmware": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1653143483,
-        "narHash": "sha256-7XEf6q9/YUr0Ij+9deB7cjjY/C3SSPDpExOFnqcC62g=",
-        "path": "/etc/nixos/m1-support",
-        "type": "path"
-      },
-      "original": {
-        "path": "/etc/nixos/m1-support",
-        "type": "path"
-      }
-    },
     "m1-support": {
       "flake": false,
       "locked": {
@@ -271,7 +258,6 @@
         "emacs": "emacs",
         "emacs-mac": "emacs-mac",
         "home-manager": "home-manager",
-        "m1-firmware": "m1-firmware",
         "m1-support": "m1-support",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",

@@ -21,11 +21,9 @@
     nixpkgs-cross-stdenv.url = "github:nixos/nixpkgs/f677051b8dc0b5e2a9348941c99eea8c4b0ff28f";
     m1-support.url = github:tpwrules/nixos-m1/main;
     m1-support.flake = false;
-    m1-firmware.url = "/etc/nixos/m1-support";
-    m1-firmware.flake = false;
   };
 
-  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, emacs, emacs-mac, m1-support, m1-firmware, nixpkgs-cross-stdenv }:
+  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, emacs, emacs-mac, m1-support, nixpkgs-cross-stdenv }:
   let
     nix-defaults = {
       home-manager.useGlobalPkgs = true;
@@ -62,17 +60,14 @@
       ];
     };
 
-    nixosConfigurations."evan-mba-nix" = nixpkgs-cross-stdenv.lib.nixosSystem rec {
+    nixosConfigurations."evan-mba-nix" = nixpkgs.lib.nixosSystem rec {
       system = "aarch64-linux";
       modules = [
         nix-defaults
         home-manager.nixosModules.home-manager
-        # Include the necessary packages and configuration for Apple M1 support.
-        # M1 builds currently require a cross-compiled stdenv.
-        (m1-support + "/nix/m1-support")
-        (m1-firmware + "/firmware")
         ./hosts/evan-mba-nix
       ];
+      specialArgs = { inherit m1-support nixpkgs-cross-stdenv; };
     };
 
     nixosConfigurations."evan-pc-wsl" = nixpkgs.lib.nixosSystem {

@@ -89,3 +89,6 @@ Temporary Items
 
 # Nix flake build result
 /result
+
+# Apple Firmware
+modules/m1-firmware/firmware.tar

@@ -2,12 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, m1-support, nixpkgs-cross-stdenv, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # Include the necessary packages and configuration for Apple M1 support.
+      # M1 kernel builds currently require a cross-compiled stdenv.
+      (import (m1-support + "/nix/m1-support") { pkgs = nixpkgs-cross-stdenv; lib = nixpkgs-cross-stdenv.lib; inherit config; })
+      ../../modules/m1-firmware
     ];
 
   # Use the systemd-boot EFI boot loader.
