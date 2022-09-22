@@ -43,6 +43,13 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.enable = true;
 
+  # Map caps lock to control in Gnome
+  # Caveat: this only works as a defaults override. Gnome sets this as `['terminate:ctrl_alt_bksp']' by default - you must reset with gsettings reset.
+  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+     [org.gnome.desktop.input-sources]
+     xkb-options=['caps:ctrl_modifier', 'terminate:ctrl_alt_bksp']
+   '';
+
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = {
