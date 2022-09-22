@@ -172,11 +172,21 @@
 
   # Enable Tailscale service
   services.tailscale.enable = true;
-  networking.firewall.allowedUDPPorts = [ 41641 ];
+  networking.firewall.allowedUDPPorts = [
+    41641  # tailscale
+  ];
   networking.firewall.allowedTCPPorts = [
     7772  # rtorrent
   ];
   networking.firewall.checkReversePath = "loose";
+
+  # Allow port ranges
+  networking.firewall.allowedTCPPortRanges = [
+    { from = 1714; to = 1764; }  # KDE Connect
+  ];
+  networking.firewall.allowedUDPPortRanges = [
+    { from = 1714; to = 1764; }  # KDE Connect
+  ];
 
   # Enable Docker
   virtualisation.docker.enable = true;
