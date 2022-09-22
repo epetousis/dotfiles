@@ -18,7 +18,7 @@
     # This is a specific revision of nixpkgs with a cross-compiled stdenv.
     # Without this, you'll likely see random linker errors.
     # See https://github.com/tpwrules/nixos-m1/blob/main/nix/pins.nix
-    nixpkgs-cross-stdenv.url = "github:nixos/nixpkgs/c4a0efdd5a728e20791b8d8d2f26f90ac228ee8d";
+    nixpkgs-cross-stdenv.url = "github:nixos/nixpkgs/f677051b8dc0b5e2a9348941c99eea8c4b0ff28f";
     m1-support.url = github:tpwrules/nixos-m1/main;
     m1-support.flake = false;
     m1-firmware.url = "/etc/nixos/m1-support";
