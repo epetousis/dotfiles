@@ -105,7 +105,7 @@
     description = "Evangelos Petousis";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox-wayland
+      (firefox-wayland.override { extraNativeMessagingHosts = [ gnomeExtensions.gsconnect ]; })
       git
       spotify
       discord
