@@ -20,19 +20,20 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 {
   hardware.firmware = [
     (pkgs.stdenvNoCC.mkDerivation {
       name = "firmware";
       buildCommand = ''
         mkdir -p $out/lib/firmware
-        FIRMWARE=`echo ${./.}/*firmware*.tar`
+        FIRMWARE=`echo ${/etc/nixos/m1-support/firmware}/*firmware*.tar`
         if [ -e "$FIRMWARE" ]; then
           tar xf "$FIRMWARE" -C $out/lib/firmware
         else
           # stop nixos infra from breaking when it doesn't have any firmware
-          touch $out/lib/firmware/.dummy
+          # touch $out/lib/firmware/.dummy
+          exit 1
         fi
       '';
     })
