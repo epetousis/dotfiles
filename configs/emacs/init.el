@@ -89,6 +89,11 @@ apps are not started from a shell."
 ;; Add a Git wrapper
 (use-package magit)
 
+;; Add editorconfig support
+(use-package editorconfig
+  :config
+  (editorconfig-mode 1))
+
 ;;; UI Configuration
 ;; Hide window toolbar icons
 (tool-bar-mode -1)

@@ -58,6 +58,7 @@
       epkgs.web-mode
       epkgs.flycheck
       epkgs.magit
+      epkgs.editorconfig
     ];
   };
 
