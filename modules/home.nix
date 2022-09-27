@@ -40,8 +40,9 @@
 
   programs.emacs = {
     enable = true;
-    # FIXME: emacsPgtkNativeComp seems to be broken on aarch64
-    package = if pkgs.stdenv.hostPlatform.isLinux && pkgs.stdenv.hostPlatform.isx86 then pkgs.emacsPgtkNativeComp else pkgs.emacs;
+    package = if pkgs.stdenv.hostPlatform.isLinux then
+        if pkgs.stdenv.hostPlatform.isx86 then pkgs.emacsPgtkNativeComp else (pkgs.emacs.override { withSQLite3 = true; withGTK3 = true; })
+    else pkgs.emacs;
     extraPackages = epkgs: [
       # emacs packages
       epkgs.use-package
