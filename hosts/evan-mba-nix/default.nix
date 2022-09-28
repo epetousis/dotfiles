@@ -98,6 +98,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #   wget
+    gnomeExtensions.gsconnect
   ];
 
   # Enable iOS USB support
@@ -121,6 +122,14 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # Allow port ranges
+  networking.firewall.allowedTCPPortRanges = [
+    { from = 1714; to = 1764; }  # KDE Connect
+  ];
+  networking.firewall.allowedUDPPortRanges = [
+    { from = 1714; to = 1764; }  # KDE Connect
+  ];
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
