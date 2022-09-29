@@ -114,6 +114,7 @@
       webcord-keybinds
       rtorrent
       mpv
+      clang-tools
     ];
     shell = pkgs.zsh;
   };

@@ -41,6 +41,7 @@ apps are not started from a shell."
     (web-mode . lsp-deferred)
     (typescript-mode . lsp-deferred)
     (python-mode . lsp-deferred)
+    (c++-mode . lsp-deferred)
     (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred))
 ;; Set vscode-eslint server, but only if it exists
