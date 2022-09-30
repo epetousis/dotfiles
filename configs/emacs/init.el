@@ -120,6 +120,16 @@ apps are not started from a shell."
 ;; to quit fzf with ESC key
 (define-key term-raw-map (kbd "<escape>") 'term-send-esc)
 
+;;; Custom functions
+(defun web-mode-set-universal-padding (p)
+  "Set a single padding value for all different web-mode padding options.
+The argument P can be any number."
+  (interactive "nSet padding to: ")
+  (setq web-mode-block-padding p)
+  (setq web-mode-part-padding p)
+  (setq web-mode-script-padding p)
+  (setq web-mode-style-padding p))
+
 ;;; Extra configuration
 ;; direnv integration - allows us to easily use Nix packages
 ;; Place this late in the startup since minor modes prepend themselves to hooks
