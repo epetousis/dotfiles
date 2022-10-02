@@ -115,6 +115,7 @@
       rtorrent
       mpv
       clang-tools
+      signal-desktop
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
