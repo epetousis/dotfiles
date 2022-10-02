@@ -177,11 +177,6 @@
     target = ".p10k.zsh";
   };
 
-  home.file.nvim = {
-    source = ../configs/nvim/init.lua;
-    target = ".config/nvim/init.lua";
-  };
-
   # Add direnv support - among other things, this can be used for automatically loading shell.nix files
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
