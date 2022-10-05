@@ -12,4 +12,8 @@ final: prev: {
   webcord-keybinds = final.callPackage ./webcord/keybinds.nix { webcord = final.webcord; };
 
   mpv = final.callPackage ./mpv { mpv = prev.mpv; };
+
+  lutris = prev.lutris.override {
+    extraPkgs = pkgs: [ pkgs.libunwind ];
+  };
 }
