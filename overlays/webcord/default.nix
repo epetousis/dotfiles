@@ -25,7 +25,6 @@ SOFTWARE.
 {
   lib,
   pkgs,
-  withKeybindSupport ? false,
   ...
 }:
 
@@ -44,23 +43,14 @@ pkgs.mkYarnPackage rec {
   name = "webcord";
   version = "3.8.6";
 
-  src = if withKeybindSupport
-    then pkgs.fetchFromGitHub {
-      owner = "epetousis";
-      repo = name;
-      rev = "be430bbe656a955f73c09480074e4b118b1be16a";
-      sha256 = "sha256-uelRH0a/fSkwOCjlGJ7nelIqDqeVPotO9ZwMCpvEGqI=";
-    }
-    else pkgs.fetchFromGitHub {
-      owner = "SpacingBat3";
-      repo = name;
-      rev = "v${version}";
-      sha256 = "sha256-1lqW55dRmkFrNzXR0+Lb1gxz3WZEzw7iB36MFRpKtUk=";
-    };
+  src = pkgs.fetchFromGitHub {
+    owner = "SpacingBat3";
+    repo = name;
+    rev = "v${version}";
+    sha256 = "sha256-1lqW55dRmkFrNzXR0+Lb1gxz3WZEzw7iB36MFRpKtUk=";
+  };
 
-  yarnLock = if withKeybindSupport
-             then ./yarn-keybinds.lock
-             else ./yarn.lock;
+  yarnLock = ./yarn.lock;
 
   nativeBuildInputs = with pkgs; [
     autoPatchelfHook

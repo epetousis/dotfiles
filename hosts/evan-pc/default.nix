@@ -111,7 +111,7 @@
       discord
       easyeffects
       lutris
-      webcord-keybinds
+      webcord
       rtorrent
       mpv
       clang-tools
