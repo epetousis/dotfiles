@@ -42,7 +42,8 @@ apps are not started from a shell."
     (typescript-mode . lsp-deferred)
     (python-mode . lsp-deferred)
     (c++-mode . lsp-deferred)
-    (lsp-mode . lsp-enable-which-key-integration))
+    (lsp-mode . lsp-enable-which-key-integration)
+    (rust-mode . lsp-deferred))
   :commands (lsp lsp-deferred))
 ;; Set vscode-eslint server, but only if it exists
 (setq eslint-server-location (car (last (file-expand-wildcards "~/.vscode/extensions/dbaeumer.vscode-eslint-*/server/out/eslintServer.js"))))
@@ -66,6 +67,7 @@ apps are not started from a shell."
 (use-package nix-mode :mode "\\.nix\\'")
 (use-package web-mode
   :config (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode)))
+(use-package rust-mode :mode "\\.rs\\'")
 
 ;; Guess indentation automatically
 (use-package dtrt-indent :config (dtrt-indent-global-mode))

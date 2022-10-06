@@ -26,6 +26,7 @@
     openvscode-server
     rclone
     ripgrep
+    rust-analyzer
     streamlink
     thefuck
     tmux
@@ -59,6 +60,7 @@
       epkgs.flycheck
       epkgs.magit
       epkgs.editorconfig
+      epkgs.rust-mode
     ];
   };
 
