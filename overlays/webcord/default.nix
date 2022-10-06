@@ -42,7 +42,7 @@ let
 in
 pkgs.mkYarnPackage rec {
   name = "webcord";
-  version = "3.8.3";
+  version = "3.8.6";
 
   src = if withKeybindSupport
     then pkgs.fetchFromGitHub {
@@ -55,7 +55,7 @@ pkgs.mkYarnPackage rec {
       owner = "SpacingBat3";
       repo = name;
       rev = "v${version}";
-      sha256 = "sha256-6LtYPc0VV4AagYPErYUQv1A8UX6to1AuDlAqrsJI7EQ=";
+      sha256 = "sha256-1lqW55dRmkFrNzXR0+Lb1gxz3WZEzw7iB36MFRpKtUk=";
     };
 
   yarnLock = if withKeybindSupport
