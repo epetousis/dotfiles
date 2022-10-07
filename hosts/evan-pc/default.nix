@@ -186,6 +186,7 @@
   ];
   networking.firewall.allowedTCPPorts = [
     7772  # rtorrent
+    8080  # development
   ];
   networking.firewall.checkReversePath = "loose";
 
