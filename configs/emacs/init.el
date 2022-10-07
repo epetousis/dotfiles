@@ -34,6 +34,7 @@ apps are not started from a shell."
 
 ;; LSP
 (use-package lsp-mode
+  :after envrc
   :init
   ;; Turn this horrible feature off so my life is good again
   (setq lsp-enable-on-type-formatting nil)
