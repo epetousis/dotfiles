@@ -76,6 +76,9 @@
 
   # Allow unfree packages.
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (import ../../overlays)
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.epetousis = {
@@ -83,6 +86,7 @@
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox-wayland
+      webcord
   #     thunderbird
     ];
     shell = pkgs.zsh;
