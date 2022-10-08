@@ -85,7 +85,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      firefox-wayland
+      (firefox-wayland.override { extraNativeMessagingHosts = [ gnomeExtensions.gsconnect ]; })
       webcord
   #     thunderbird
     ];
