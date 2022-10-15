@@ -116,6 +116,7 @@
       mpv
       clang-tools
       signal-desktop
+      gimp
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
