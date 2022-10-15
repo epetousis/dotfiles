@@ -95,6 +95,8 @@ apps are not started from a shell."
 (setq ns-use-proxy-icon nil)
 ;; Display line numbers
 (global-display-line-numbers-mode)
+;; Disable splash screen
+(setq inhibit-splash-screen t)
 
 ;;; Keybinds
 ;; Ignore F18 (used for PTT)
