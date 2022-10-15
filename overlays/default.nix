@@ -16,4 +16,8 @@ final: prev: {
   lutris = prev.lutris.override {
     extraPkgs = pkgs: [ pkgs.libunwind ];
   };
+
+  gnomeExtensions = prev.gnomeExtensions // {
+    scaletoggle = final.callPackage ./scaletoggle {};
+  };
 }

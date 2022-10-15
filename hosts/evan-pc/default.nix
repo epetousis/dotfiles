@@ -151,6 +151,7 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     gnomeExtensions.gsconnect
     gnomeExtensions.appindicator
+    gnomeExtensions.scaletoggle
   ];
 
   # Enable NTFS support
