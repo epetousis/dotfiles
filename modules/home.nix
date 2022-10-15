@@ -177,6 +177,11 @@
     target = ".emacs.d/init.el";
   };
 
+  home.file.gnus = {
+    source = ../configs/emacs/gnus.el;
+    target = ".gnus.el";
+  };
+
   home.file.p10k = {
     source = ../configs/p10k/p10k.zsh;
     target = ".p10k.zsh";
