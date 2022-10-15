@@ -98,17 +98,16 @@
 
   programs.zsh = {
     enable = true;
-    defaultKeymap = "viins";
     sessionVariables = {
       iCloudDrive = "$HOME/Library/Mobile Documents/com~apple~CloudDocs";
       FZF_DEFAULT_COMMAND = "rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*}'";
     };
     localVariables = {
-      VISUAL = "nvim";
-      EDITOR = "nvim";
+      VISUAL = "emacsclient -a emacs";
+      EDITOR = "emacs";
       # Kill key timeout so escape is instant
       KEYTIMEOUT = 1;
-      PROMPT = "%n@%m:%(4~|...|)%3~ %% ";
+      PROMPT = "%n@%m:%(4~|...|)%3~ %(!.#.$) ";
     };
     initExtra = ''
     # Discourage instinctively opening default macOS Terminal
