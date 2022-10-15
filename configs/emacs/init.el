@@ -1,12 +1,3 @@
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
-
-(package-refresh-contents t)
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
 ;; This is only needed once, near the top of the file
 (eval-when-compile
   (require 'use-package))
