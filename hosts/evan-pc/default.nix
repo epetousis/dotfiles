@@ -128,6 +128,9 @@
   # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.
   programs.steam.enable = true;
 
+  # Enable Game Mode.
+  programs.gamemode.enable = true;
+
   # Enable flatpak support
   services.flatpak.enable = true;
 
