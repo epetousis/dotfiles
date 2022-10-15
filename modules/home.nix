@@ -62,6 +62,10 @@
       epkgs.editorconfig
       epkgs.rust-mode
     ];
+    extraConfig = ''
+    ;; Use magit autoloads
+    (load "${pkgs.emacsPackages.magit}/share/emacs/site-lisp/elpa/magit-${pkgs.emacsPackages.magit.version}/magit-autoloads")
+    '';
   };
 
   programs.gpg = {
