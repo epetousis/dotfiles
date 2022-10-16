@@ -64,9 +64,6 @@ apps are not started from a shell."
 ;; Guess indentation automatically
 (use-package dtrt-indent :config (dtrt-indent-global-mode))
 
-;; Switch to dark mode automatically
-(use-package auto-dark)
-
 ;; Add ability to use a project directory
 (use-package projectile :config (projectile-mode +1))
 
@@ -90,6 +87,26 @@ apps are not started from a shell."
   (editorconfig-mode 1))
 
 ;;; UI Configuration
+;;; Theme
+;; Add frame padding from Nano theme
+(setq default-frame-alist
+      (append (list
+	       '(min-height . 1)
+               '(height     . 45)
+	       '(min-width  . 1)
+               '(width      . 81)
+               '(vertical-scroll-bars . nil)
+               '(internal-border-width . 24)
+               '(left-fringe    . 1)
+               '(right-fringe   . 1)
+               '(tool-bar-lines . 0)
+               '(menu-bar-lines . 0))))
+;; Load monokai theme
+(load-theme 'monokai t)
+;; Hide scroll bars
+(set-scroll-bar-mode nil)
+;; Hide menubar
+(menu-bar-mode -1)
 ;; Hide window toolbar icons
 (tool-bar-mode -1)
 ;; Make title bar blend into document on macOS

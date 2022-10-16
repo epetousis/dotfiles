@@ -52,7 +52,6 @@
       epkgs.typescript-mode
       epkgs.dtrt-indent
       epkgs.envrc
-      epkgs.auto-dark
       epkgs.nix-mode
       epkgs.projectile
       epkgs.flymake-diagnostic-at-point
@@ -61,6 +60,7 @@
       epkgs.magit
       epkgs.editorconfig
       epkgs.rust-mode
+      epkgs.monokai-theme
     ];
   };
 
