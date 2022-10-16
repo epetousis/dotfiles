@@ -19,6 +19,7 @@ final: prev: {
 
   gnomeExtensions = prev.gnomeExtensions // {
     scaletoggle = final.callPackage ./scaletoggle {};
+    pop-shell = final.callPackage ./pop-shell {};
   };
 
   emacsPackages = prev.emacsPackages // {
