@@ -104,6 +104,8 @@ apps are not started from a shell."
 (setq ns-use-proxy-icon nil)
 ;; Display line numbers
 (global-display-line-numbers-mode)
+;; Display column numbers
+(setq column-number-mode t)
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
 
