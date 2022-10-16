@@ -81,6 +81,9 @@ apps are not started from a shell."
 (use-package flycheck
   :init (global-flycheck-mode))
 
+;; Add a Git wrapper
+(require 'magit-autoloads)
+
 ;; Add editorconfig support
 (use-package editorconfig
   :config
