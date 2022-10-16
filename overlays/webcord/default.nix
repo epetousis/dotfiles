@@ -130,8 +130,9 @@ pkgs.mkYarnPackage rec {
     ln -s "${desktopItem}/share/applications" $out/share/
   '';
 
+  # Use Electron 20 as there appears to be a bug in 21 that causes crashing on longer voice calls
   postFixup = ''
-    makeWrapper ${pkgs.electron}/bin/electron $out/bin/webcord \
+    makeWrapper ${pkgs.electron_20}/bin/electron $out/bin/webcord \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" \
       --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [pkgs.pipewire]}" \
       --prefix PATH : "${lib.makeBinPath [pkgs.xdg-utils]}" \
