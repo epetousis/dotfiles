@@ -4,8 +4,6 @@ My dotfiles. My primary shell is zsh, and so these dotfiles currently only suppo
 
 ## How to install
 
-Note that with any method of installation, you'll also need to [install vim-plug](https://github.com/junegunn/vim-plug) before opening nvim.
-
 ###### macOS Host
 
 1. [Install Nix.](https://nixos.org/download.html)
