@@ -2,7 +2,7 @@
   description = "Evan's system";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -11,7 +11,9 @@
     nixos-wsl.url = github:nix-community/nixos-wsl/main;
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     emacs.url = github:nix-community/emacs-overlay/master;
+    emacs.inputs.nixpkgs.follows = "nixpkgs";
     emacs-mac.url = github:cmacrae/emacs;
+    emacs-mac.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, emacs, emacs-mac }:
