@@ -134,6 +134,15 @@ The argument P can be any number."
   (setq web-mode-script-padding p)
   (setq web-mode-style-padding p))
 
+(defun nixos-rebuild (location)
+  "Run a system nixos-rebuild from a particular flake.
+The argument LOCATION can be any path to a Nix flake."
+  (interactive "DWhere is the Nix flake? ")
+  (with-temp-buffer
+    (cd "/sudo::/")
+    (async-shell-command (concat "nixos-rebuild switch --flake " (expand-file-name location)))))
+
+
 ;;; Extra configuration
 ;; direnv integration - allows us to easily use Nix packages
 ;; Place this late in the startup since minor modes prepend themselves to hooks
