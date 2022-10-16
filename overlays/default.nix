@@ -20,4 +20,8 @@ final: prev: {
   gnomeExtensions = prev.gnomeExtensions // {
     scaletoggle = final.callPackage ./scaletoggle {};
   };
+
+  emacsPackages = prev.emacsPackages // {
+    nano-theme-git = final.emacsPackages.callPackage ./emacs-nano-theme {};
+  };
 }
