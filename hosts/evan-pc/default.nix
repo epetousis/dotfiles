@@ -157,6 +157,7 @@
     gnomeExtensions.gsconnect
     gnomeExtensions.appindicator
     gnomeExtensions.scaletoggle
+    gnomeExtensions.pop-shell
   ];
 
   # Enable NTFS support
