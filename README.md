@@ -9,14 +9,13 @@ My dotfiles. My primary shell is zsh, and so these dotfiles currently only suppo
 1. [Install Nix.](https://nixos.org/download.html)
 2. [Install nix-darwin.](https://github.com/LnL7/nix-darwin#install)
 3. Clone this repo to `~/.dotfiles`.
-4. Run `cd ~/.dotfiles && nix build .\#darwinConfigurations.<hostname>.system`.
-5. Run `./result/sw/bin/darwin-rebuild switch --flake .`.
+4. Run `darwin-rebuild switch --flake .dotfiles`.
 
 ###### NixOS Host
 
 1. [Install NixOS.](https://nixos.org/download.html)
 2. Clone this repo to `~/.dotfiles`.
-3. Run `cd ~/.dotfiles && sudo nixos-rebuild switch --flake .`.
+3. Run `sudo nixos-rebuild switch --flake .dotfiles`.
 
 ## Optional Dependencies
 
