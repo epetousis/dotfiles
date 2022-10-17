@@ -58,7 +58,6 @@
       epkgs.monokai-theme
       epkgs.eglot
       epkgs.flymake-eslint
-      epkgs.helm
     ];
   };
 

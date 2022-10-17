@@ -19,10 +19,6 @@ apps are not started from a shell."
 
 (set-exec-path-from-shell-PATH)
 
-;; Install packages
-(use-package helm
-  :bind ("C-x ," . helm-find))
-
 ;; LSP
 (use-package eglot
   :config (add-to-list 'eglot-server-programs
@@ -103,6 +99,8 @@ apps are not started from a shell."
 (setq column-number-mode t)
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
+;; Enable icomplete-mode everywhere
+(icomplete-mode 1)
 
 ;;; Keybinds
 ;; Ignore F18 (used for PTT)
