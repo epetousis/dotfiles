@@ -222,17 +222,17 @@
     },
     "nixpkgs-cross-stdenv": {
       "locked": {
-        "lastModified": 1663494472,
-        "narHash": "sha256-fSowlaoXXWcAM8m9wA6u+eTJJtvruYHMA+Lb/tFi/qM=",
+        "lastModified": 1665259268,
+        "narHash": "sha256-ONFhHBLv5nZKhwV/F2GOH16197PbvpyWhoO0AOyktkU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f677051b8dc0b5e2a9348941c99eea8c4b0ff28f",
+        "rev": "c5924154f000e6306030300592f4282949b2db6c",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f677051b8dc0b5e2a9348941c99eea8c4b0ff28f",
+        "rev": "c5924154f000e6306030300592f4282949b2db6c",
         "type": "github"
       }
     },
