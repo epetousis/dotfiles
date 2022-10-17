@@ -1,6 +1,8 @@
 # Dotfiles
 
-My dotfiles. My primary shell is zsh, and so these dotfiles currently only support zsh (where applicable).
+My dotfiles.
+
+Please feel free to use my overlays, modules, or any part of my dotfiles you feel you need. If you'd like to modify and submit any of it to nixpkgs, you are free to do so.
 
 ## How to install
 
