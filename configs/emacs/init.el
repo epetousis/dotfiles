@@ -24,30 +24,32 @@ apps are not started from a shell."
 (global-set-key (kbd "C-x ,") 'fzf)
 
 ;; LSP
-(use-package lsp-mode
-  :after envrc
-  :init
-  ;; Turn this horrible feature off so my life is good again
-  (setq lsp-enable-on-type-formatting nil)
-  :hook (
-    (web-mode . lsp-deferred)
-    (typescript-mode . lsp-deferred)
-    (python-mode . lsp-deferred)
-    (c++-mode . lsp-deferred)
-    (lsp-mode . lsp-enable-which-key-integration)
-    (rust-mode . lsp-deferred))
-  :commands (lsp lsp-deferred))
-;; Set vscode-eslint server, but only if it exists
-(setq eslint-server-location (car (last (file-expand-wildcards "~/.vscode/extensions/dbaeumer.vscode-eslint-*/server/out/eslintServer.js"))))
-(if eslint-server-location (setq lsp-eslint-server-command `("node" ,(expand-file-name eslint-server-location) "--stdio")) nil)
-(use-package lsp-pyright
-  :after lsp-mode
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp-deferred))))
-(use-package lsp-ui :after lsp-mode
-  :commands lsp-ui-mode)
-(use-package company :after lsp-mode)
+(use-package eglot
+  :config (add-to-list 'eglot-server-programs
+                       '(web-mode . (eglot-volar "vue-language-server" "--stdio"))))
+;; Using :hook causes an error - no idea why...
+(add-hook 'web-mode-hook 'eglot-ensure)
+(add-hook 'typescript-mode-hook 'eglot-ensure)
+;; Always start Company when eglot runs
+(add-hook 'eglot-managed-mode-hook 'company-mode)
+
+(defclass eglot-volar (eglot-lsp-server) ()
+  :documentation "A custom class for Volar's langserver.")
+
+(cl-defmethod eglot-initialization-options ((server eglot-volar))
+  "Passes through required Volar initialization options"
+  (let* ((tsdk (concat (projectile-project-root) "node_modules/typescript/lib")))
+    (list :typescript (list :tsdk (file-name-as-directory tsdk)))))
+(use-package company)
+(use-package flymake-eslint
+  :after eglot
+  :hook
+  (web-mode . (lambda ()
+                     ;; Make sure flymake-eslint uses our project-local eslint
+                     (setq flymake-eslint-executable-name (concat (projectile-project-root) "node_modules/.bin/eslint"))
+                     (flymake-eslint-enable)))
+  (typescript-mode . (lambda ()
+                            (flymake-eslint-enable))))
 
 ;; Show available keybinds after a prefix keypress
 (use-package which-key
@@ -72,11 +74,6 @@ apps are not started from a shell."
   :after flymake
   :config
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
-
-;; Add modern syntax checking
-;; Can be removed when/if https://github.com/emacs-lsp/lsp-mode/issues/2808 is fixed
-(use-package flycheck
-  :init (global-flycheck-mode))
 
 ;; Add a Git wrapper
 (require 'magit-autoloads)

@@ -44,9 +44,6 @@
       # emacs packages
       epkgs.use-package
       epkgs.fzf
-      epkgs.lsp-mode
-      epkgs.lsp-pyright
-      epkgs.lsp-ui
       epkgs.company
       epkgs.which-key
       epkgs.typescript-mode
@@ -56,11 +53,12 @@
       epkgs.projectile
       epkgs.flymake-diagnostic-at-point
       epkgs.web-mode
-      epkgs.flycheck
       epkgs.magit
       epkgs.editorconfig
       epkgs.rust-mode
       epkgs.monokai-theme
+      epkgs.eglot
+      epkgs.flymake-eslint
     ];
   };
 
