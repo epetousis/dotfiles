@@ -5,13 +5,13 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "gnome-shell-extension-scaletoggle";
-  version = "unstable-2022-10-15";
+  version = "unstable-2022-10-17";
 
   src = fetchFromGitHub {
     owner = "epetousis";
     repo = "ScaleToggle";
-    rev = "82f6a366919911e33274b39ad0ebde3063fdf3a1";
-    sha256 = "sha256-oNJkeZaa6yYQwhpmUinNJXG6YD/k0vvAOQ4UAfuixSc=";
+    rev = "47f429137cc4d0e7892f85d9e9fe2457def9fa02";
+    sha256 = "sha256-Y2MfuVwjb3YGLWbn7JdwNt5ivmebamqN3vFqKxrYeHI=";
   };
 
   nativeBuildInputs = [ python ];
