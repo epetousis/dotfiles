@@ -20,8 +20,8 @@ apps are not started from a shell."
 (set-exec-path-from-shell-PATH)
 
 ;; Install packages
-(use-package fzf)
-(global-set-key (kbd "C-x ,") 'fzf)
+(use-package helm
+  :bind ("C-x ," . helm-find))
 
 ;; LSP
 (use-package eglot
@@ -111,15 +111,6 @@ apps are not started from a shell."
 (global-set-key (kbd "<f18>") 'ignore)
 ;; Unset easily pressable suspend key
 (global-unset-key (kbd "C-z"))
-
-;; Close FZF with esc (https://github.com/bling/fzf.el/issues/45#issuecomment-429893494)
-(require 'term)
-(defun term-send-esc ()
-  "Send ESC in term mode."
-  (interactive)
-  (term-send-raw-string "\e"))
-;; to quit fzf with ESC key
-(define-key term-raw-map (kbd "<escape>") 'term-send-esc)
 
 ;;; Custom functions
 (defun web-mode-set-universal-padding (p)

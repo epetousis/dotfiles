@@ -43,7 +43,6 @@
     extraPackages = epkgs: [
       # emacs packages
       epkgs.use-package
-      epkgs.fzf
       epkgs.company
       epkgs.which-key
       epkgs.typescript-mode
@@ -59,6 +58,7 @@
       epkgs.monokai-theme
       epkgs.eglot
       epkgs.flymake-eslint
+      epkgs.helm
     ];
   };
 
