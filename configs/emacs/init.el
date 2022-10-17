@@ -41,15 +41,16 @@ apps are not started from a shell."
   (let* ((tsdk (concat (projectile-project-root) "node_modules/typescript/lib")))
     (list :typescript (list :tsdk (file-name-as-directory tsdk)))))
 (use-package company)
+
+(defun flymake-eslint-enable-project ()
+  " Ensure flymake-eslint uses our project-local eslint. "
+  (setq flymake-eslint-executable-name (concat (projectile-project-root) "node_modules/.bin/eslint"))
+  (flymake-eslint-enable))
 (use-package flymake-eslint
   :after eglot
   :hook
-  (web-mode . (lambda ()
-                     ;; Make sure flymake-eslint uses our project-local eslint
-                     (setq flymake-eslint-executable-name (concat (projectile-project-root) "node_modules/.bin/eslint"))
-                     (flymake-eslint-enable)))
-  (typescript-mode . (lambda ()
-                            (flymake-eslint-enable))))
+  (web-mode . flymake-eslint-enable-project)
+  (typescript-mode . flymake-eslint-enable-project))
 
 ;; Show available keybinds after a prefix keypress
 (use-package which-key
