@@ -50,7 +50,6 @@
       epkgs.dtrt-indent
       epkgs.envrc
       epkgs.nix-mode
-      epkgs.projectile
       epkgs.flymake-diagnostic-at-point
       epkgs.web-mode
       epkgs.magit

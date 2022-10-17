@@ -38,13 +38,13 @@ apps are not started from a shell."
 
 (cl-defmethod eglot-initialization-options ((server eglot-volar))
   "Passes through required Volar initialization options"
-  (let* ((tsdk (concat (projectile-project-root) "node_modules/typescript/lib")))
-    (list :typescript (list :tsdk (file-name-as-directory tsdk)))))
+  (let* ((tsdk (concat (current-project-root) "node_modules/typescript/lib")))
+    (list :typescript (list :tsdk tsdk))))
 (use-package company)
 
 (defun flymake-eslint-enable-project ()
   " Ensure flymake-eslint uses our project-local eslint. "
-  (setq flymake-eslint-executable-name (concat (projectile-project-root) "node_modules/.bin/eslint"))
+  (setq flymake-eslint-executable-name (concat (current-project-root) "node_modules/.bin/eslint"))
   (flymake-eslint-enable))
 (use-package flymake-eslint
   :after eglot
@@ -66,9 +66,6 @@ apps are not started from a shell."
 
 ;; Guess indentation automatically
 (use-package dtrt-indent :config (dtrt-indent-global-mode))
-
-;; Add ability to use a project directory
-(use-package projectile :config (projectile-mode +1))
 
 ;; Add ability to see errors without showing entire buffer
 (use-package flymake-diagnostic-at-point
@@ -114,6 +111,9 @@ apps are not started from a shell."
 (global-unset-key (kbd "C-z"))
 
 ;;; Custom functions
+(defun current-project-root ()
+  "Gets the root of the current project."
+  (file-name-as-directory (expand-file-name (project-root (project-current)))))
 (defun web-mode-set-universal-padding (p)
   "Set a single padding value for all different web-mode padding options.
 The argument P can be any number."
