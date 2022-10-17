@@ -167,11 +167,11 @@
     "m1-support": {
       "flake": false,
       "locked": {
-        "lastModified": 1663731495,
-        "narHash": "sha256-TcZx45CkIGIF7+a3TVk7HrJSPKuZwORe94jx32490xY=",
+        "lastModified": 1665528527,
+        "narHash": "sha256-BEnPCtrSB8F7AgvsK/QZuAIJizXMAh5eEEDBMZBFYGk=",
         "owner": "tpwrules",
         "repo": "nixos-m1",
-        "rev": "b6bc034b5726551a0eb593a5f44ff0b401a7e380",
+        "rev": "267f23b3b79614edaa87b05d5253fc78acfb054c",
         "type": "github"
       },
       "original": {
