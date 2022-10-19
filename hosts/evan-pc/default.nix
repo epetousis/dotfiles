@@ -134,6 +134,9 @@
   # Enable flatpak support
   services.flatpak.enable = true;
 
+  # Enable iOS device support
+  services.usbmuxd.enable = true;
+
   # Enable zsh
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
