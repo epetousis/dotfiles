@@ -117,6 +117,7 @@
       clang-tools
       signal-desktop
       gimp
+      libreoffice
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
