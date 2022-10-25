@@ -5,7 +5,7 @@ final: prev: {
 
   spotify = if prev.stdenv.hostPlatform.isLinux then final.callPackage ./spotify { spotify = prev.spotify; } else prev.spotify;
 
-  discord-screenaudio = final.callPackage ./discord-screenaudio {};
+  discord-screenaudio = final.libsForQt5.callPackage ./discord-screenaudio {};
 
   webcord = final.callPackage ./webcord {};
 
