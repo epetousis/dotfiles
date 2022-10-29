@@ -121,6 +121,7 @@
       signal-desktop
       gimp
       libreoffice
+      obs-studio
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
