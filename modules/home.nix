@@ -46,7 +46,6 @@
       # emacs packages
       epkgs.use-package
       epkgs.company
-      epkgs.which-key
       epkgs.typescript-mode
       epkgs.dtrt-indent
       epkgs.envrc

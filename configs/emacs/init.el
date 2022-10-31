@@ -50,11 +50,6 @@ apps are not started from a shell."
   (web-mode . flymake-eslint-enable-project)
   (typescript-mode . flymake-eslint-enable-project))
 
-;; Show available keybinds after a prefix keypress
-(use-package which-key
-  :config
-  (which-key-mode))
-
 ;; Language specific major modes
 (use-package typescript-mode :mode "\\.ts\\'")
 (use-package nix-mode :mode "\\.nix\\'")
