@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # Include the necessary packages and configuration for Apple M1 support.
-      # M1 kernel builds currently require a cross-compiled stdenv.
       (import (m1-support + "/nix/m1-support"))
       ../../modules/m1-firmware
     ];
