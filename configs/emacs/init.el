@@ -71,9 +71,6 @@ apps are not started from a shell."
   :config
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 
-;; Add a Git wrapper
-(require 'magit-autoloads)
-
 ;; Add editorconfig support
 (use-package editorconfig
   :config
