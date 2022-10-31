@@ -81,9 +81,7 @@ apps are not started from a shell."
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 ;; Hide icon on macOS
 (setq ns-use-proxy-icon nil)
-;; Display line numbers
-(global-display-line-numbers-mode)
-;; Display column numbers
+;; Display column numbers in modeline
 (setq column-number-mode t)
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
