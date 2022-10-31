@@ -136,29 +136,12 @@
     };
   };
 
-  home.file.ideavimrc = {
-    target = ".ideavimrc";
-    text = "
-    source ~/.vimrc
-    map gh <Action>(ShowErrorDescription)
-    map gd <Action>(GotoDeclaration)
-    ";
-  };
-
   programs.tmux = {
     enable = true;
     terminal = "screen-256color";
-    prefix = "`";
-    keyMode = "vi";
     escapeTime = 0;
     extraConfig = ''
     set -g set-clipboard external
-
-    # Copy vim-style
-    bind P paste-buffer
-    bind-key -T copy-mode-vi v send-keys -X begin-selection
-    bind-key -T copy-mode-vi y send-keys -X copy-selection
-    bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
 
     # Modify bindings that create new shells to ensure they use PWD
     bind '"' split-window -c "#{pane_current_path}"
