@@ -44,20 +44,22 @@
     else pkgs.emacs;
     extraPackages = epkgs: [
       # emacs packages
-      epkgs.use-package
       epkgs.company
-      epkgs.typescript-mode
       epkgs.dtrt-indent
-      epkgs.envrc
-      epkgs.nix-mode
-      epkgs.flymake-diagnostic-at-point
-      epkgs.web-mode
-      epkgs.magit
       epkgs.editorconfig
-      epkgs.rust-mode
-      epkgs.monokai-theme
       epkgs.eglot
+      epkgs.envrc
+      epkgs.flymake-diagnostic-at-point
       epkgs.flymake-eslint
+      epkgs.magit
+      epkgs.monokai-theme
+      epkgs.use-package
+
+      # Modes
+      epkgs.nix-mode
+      epkgs.rust-mode
+      epkgs.typescript-mode
+      epkgs.web-mode
     ];
   };
 
