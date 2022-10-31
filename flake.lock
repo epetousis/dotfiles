@@ -164,7 +164,7 @@
         "type": "github"
       }
     },
-    "m1-support": {
+    "nixos-m1": {
       "flake": false,
       "locked": {
         "lastModified": 1667100472,
@@ -242,7 +242,7 @@
         "emacs": "emacs",
         "emacs-mac": "emacs-mac",
         "home-manager": "home-manager",
-        "m1-support": "m1-support",
+        "nixos-m1": "nixos-m1",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable"

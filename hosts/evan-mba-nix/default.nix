@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, m1-support, ... }:
+{ config, pkgs, nixos-m1, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # Include the necessary packages and configuration for Apple M1 support.
-      (import (m1-support + "/nix/m1-support"))
+      (nixos-m1 + "/nix/m1-support")
       ../../modules/m1-firmware
     ];
 

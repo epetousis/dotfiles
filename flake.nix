@@ -15,11 +15,11 @@
     emacs-mac.url = github:cmacrae/emacs;
     emacs-mac.inputs.nixpkgs.follows = "nixpkgs";
 
-    m1-support.url = github:tpwrules/nixos-m1/main;
-    m1-support.flake = false;
+    nixos-m1.url = github:tpwrules/nixos-m1/main;
+    nixos-m1.flake = false;
   };
 
-  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, emacs, emacs-mac, m1-support }:
+  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, emacs, emacs-mac, nixos-m1 }:
   let
     nix-defaults = {
       home-manager.useGlobalPkgs = true;
@@ -63,7 +63,7 @@
         home-manager.nixosModules.home-manager
         ./hosts/evan-mba-nix
       ];
-      specialArgs = { inherit m1-support; };
+      specialArgs = { inherit nixos-m1; };
     };
 
     nixosConfigurations."evan-pc-wsl" = nixpkgs.lib.nixosSystem {
