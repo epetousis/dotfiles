@@ -109,7 +109,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       (firefox-wayland.override { extraNativeMessagingHosts = [ gnomeExtensions.gsconnect ]; })
-      git
       spotify
       discord
       easyeffects

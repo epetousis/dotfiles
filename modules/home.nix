@@ -16,7 +16,6 @@
     ffmpeg
     fd
     fzf
-    git
     git-filter-repo
     heroku
     jq
@@ -73,6 +72,7 @@
 
   programs.git = {
     enable = true;
+    package = pkgs.gitAndTools.gitFull;
     userName = "Evan Petousis";
     userEmail = "evan@petousis.net";
     signing = {
