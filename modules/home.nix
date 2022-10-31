@@ -49,7 +49,6 @@
       epkgs.editorconfig
       epkgs.eglot
       epkgs.envrc
-      epkgs.flymake-diagnostic-at-point
       epkgs.flymake-eslint
       epkgs.magit
       epkgs.monokai-theme

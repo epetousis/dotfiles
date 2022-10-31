@@ -60,12 +60,6 @@ apps are not started from a shell."
 ;; Guess indentation automatically
 (use-package dtrt-indent :config (dtrt-indent-global-mode))
 
-;; Add ability to see errors without showing entire buffer
-(use-package flymake-diagnostic-at-point
-  :after flymake
-  :config
-  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
-
 ;; Add editorconfig support
 (use-package editorconfig
   :config
@@ -101,6 +95,11 @@ apps are not started from a shell."
 (global-set-key (kbd "<f18>") 'ignore)
 ;; Unset easily pressable suspend key
 (global-unset-key (kbd "C-z"))
+;; Fix display-local-help being bound to eldoc by eglot
+;; Taken from https://github.com/joaotavora/eglot/issues/454#issuecomment-642978840
+(define-key eglot-mode-map [remap display-local-help] nil)
+;; Define an alternative key for eldoc
+(global-set-key (kbd "C-h ,") #'eldoc-doc-buffer)
 
 ;;; Custom functions
 (defun current-project-root ()
