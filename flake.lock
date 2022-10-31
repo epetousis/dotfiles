@@ -220,22 +220,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-cross-stdenv": {
-      "locked": {
-        "lastModified": 1665259268,
-        "narHash": "sha256-ONFhHBLv5nZKhwV/F2GOH16197PbvpyWhoO0AOyktkU=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "c5924154f000e6306030300592f4282949b2db6c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "c5924154f000e6306030300592f4282949b2db6c",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1665763903,
@@ -261,7 +245,6 @@
         "m1-support": "m1-support",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-cross-stdenv": "nixpkgs-cross-stdenv",
         "nixpkgs-stable": "nixpkgs-stable"
       }
     },

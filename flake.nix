@@ -15,15 +15,11 @@
     emacs-mac.url = github:cmacrae/emacs;
     emacs-mac.inputs.nixpkgs.follows = "nixpkgs";
 
-    # This is a specific revision of nixpkgs with a cross-compiled stdenv.
-    # Without this, you'll likely see random linker errors.
-    # See https://github.com/tpwrules/nixos-m1/blob/main/nix/pins.nix
-    nixpkgs-cross-stdenv.url = "github:nixos/nixpkgs/c5924154f000e6306030300592f4282949b2db6c";
     m1-support.url = github:tpwrules/nixos-m1/main;
     m1-support.flake = false;
   };
 
-  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, emacs, emacs-mac, m1-support, nixpkgs-cross-stdenv }:
+  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, nixos-wsl, emacs, emacs-mac, m1-support }:
   let
     nix-defaults = {
       home-manager.useGlobalPkgs = true;
@@ -67,7 +63,7 @@
         home-manager.nixosModules.home-manager
         ./hosts/evan-mba-nix
       ];
-      specialArgs = { inherit m1-support nixpkgs-cross-stdenv; };
+      specialArgs = { inherit m1-support; };
     };
 
     nixosConfigurations."evan-pc-wsl" = nixpkgs.lib.nixosSystem {
