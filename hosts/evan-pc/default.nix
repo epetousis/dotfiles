@@ -119,7 +119,7 @@
       clang-tools
       signal-desktop
       gimp
-      libreoffice
+      libreoffice-fresh
       obs-studio
     ];
     shell = pkgs.zsh;
