@@ -127,7 +127,7 @@
   ];
 
   services.yabai = {
-    enable = true;
+    enable = false;
     package = pkgs.yabai;
     config = {
       layout = "bsp";
@@ -145,7 +145,7 @@
   };
 
   services.skhd = {
-    enable = true;
+    enable = false;
     package = pkgs.skhd;
     skhdConfig = ''
     # mode switching
