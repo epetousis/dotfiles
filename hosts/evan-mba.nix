@@ -39,7 +39,10 @@
 
   homebrew = {
     enable = true;
-    cleanup = "zap";
+    onActivation = {
+      cleanup = "zap";
+      upgrade = true;
+    };
     taps = [
       "homebrew/cask"
       "homebrew/cask-versions"
