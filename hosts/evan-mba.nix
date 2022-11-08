@@ -116,8 +116,8 @@
   # Speed up Dock autohide
   system.defaults.dock = {
     autohide = true;
-    autohide-delay = "0.4";
-    autohide-time-modifier = "0.15";
+    autohide-delay = 0.4;
+    autohide-time-modifier = 0.15;
     mineffect = "scale";
     show-recents = false;
     mru-spaces = false;
