@@ -23,7 +23,6 @@
     nodejs
     nodePackages.pyright
     nodePackages.typescript-language-server
-    openvscode-server
     rclone
     ripgrep
     rust-analyzer
