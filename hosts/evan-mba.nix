@@ -104,6 +104,7 @@
       "the-unarchiver"
       "touchosc-bridge"
       "transmission"
+      "unnaturalscrollwheels"
       "utm"
       "vimr"
       "visual-studio-code"
