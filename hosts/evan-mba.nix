@@ -83,7 +83,6 @@
       "mirrorop"
       "mixxx"
       "monitorcontrol"
-      "ngrok"
       "notion"
       "obs"
       "openemu"
