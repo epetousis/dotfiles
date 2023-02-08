@@ -91,6 +91,7 @@
       "plex"
       "protonvpn"
       "pycharm"
+      "rectangle"
       "rekordbox"
       "runelite"
       "sf-symbols"
