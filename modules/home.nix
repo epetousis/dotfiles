@@ -19,6 +19,7 @@
     git-filter-repo
     heroku
     jq
+    mosh
     neovim
     nodejs
     nodePackages.pyright
