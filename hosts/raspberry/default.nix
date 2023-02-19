@@ -41,6 +41,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.permitRootLogin = "no";
+  programs.mosh.enable = true;
 
   # enable NAT
   networking.nat.enable = true;
