@@ -75,6 +75,7 @@
       "iina"
       "istat-menus"
       "iterm2-beta"
+      "karabiner-elements"
       "keepingyouawake"
       "maccy"
       "macfuse"
