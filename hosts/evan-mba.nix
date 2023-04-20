@@ -97,6 +97,7 @@
       "runelite"
       "sf-symbols"
       "signal"
+      "sony-ps-remote-play"
       "soulseek"
       "soundsource"
       "spotify"
