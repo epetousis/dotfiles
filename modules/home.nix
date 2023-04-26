@@ -125,7 +125,12 @@
   programs.ssh = {
     enable = true;
     matchBlocks = {
-      "*" = {
+      "*" = if pkgs.stdenv.hostPlatform.isDarwin then {
+        extraOptions = {
+          # yes i know there is definitely a way that this could be pure but such is life
+          IdentityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
+        };
+      } else {
         identityFile = "~/.ssh/id_rsa";
         extraOptions = {
           IgnoreUnknown = "AddKeysToAgent,UseKeychain";
