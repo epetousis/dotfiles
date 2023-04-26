@@ -69,6 +69,8 @@
       "firefox"
       "font-fira-code"
       "font-fira-code-nerd-font"
+      "free-gpgmail"
+      "gpg-suite"
       "google-chrome"
       "graphiql"
       "hot"
