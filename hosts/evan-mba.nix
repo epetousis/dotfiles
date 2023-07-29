@@ -80,7 +80,6 @@
       "iterm2-beta"
       "karabiner-elements"
       "keepingyouawake"
-      "maccy"
       "macfuse"
       "mailtrackerblocker"
       "minecraft"
