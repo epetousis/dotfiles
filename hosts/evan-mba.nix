@@ -94,6 +94,7 @@
       "plex"
       "protonvpn"
       "pycharm"
+      "raycast"
       "rectangle"
       "rekordbox"
       "runelite"
