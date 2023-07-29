@@ -135,6 +135,8 @@
     (import ../overlays)
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   services.yabai = {
     enable = false;
     package = pkgs.yabai;
