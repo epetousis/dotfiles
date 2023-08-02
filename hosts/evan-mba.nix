@@ -44,7 +44,6 @@
       upgrade = true;
     };
     taps = [
-      "homebrew/cask"
       "homebrew/cask-versions"
       "homebrew/cask-fonts"
       "homebrew/cask-drivers"
