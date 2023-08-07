@@ -50,6 +50,7 @@
     allowedUDPPorts = [
       # Tailscale
       41641
+      443
     ];
     allowedTCPPorts = [ 443 ];
   };
