@@ -51,6 +51,7 @@
       # Tailscale
       41641
     ];
+    allowedTCPPorts = [ 443 ];
   };
   networking.firewall.checkReversePath = "loose";
 
