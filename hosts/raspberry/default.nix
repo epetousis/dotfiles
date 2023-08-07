@@ -46,15 +46,16 @@
   # enable NAT
   networking.nat.enable = true;
   networking.nat.externalInterface = "eth0";
-  networking.firewall = {
-    allowedUDPPorts = [
-      # Tailscale
-      41641
-      443
-    ];
-    allowedTCPPorts = [ 443 ];
-  };
-  networking.firewall.checkReversePath = "loose";
+  # networking.firewall = {
+  #   allowedUDPPorts = [
+  #     # Tailscale
+  #     41641
+  #     443
+  #   ];
+  #   allowedTCPPorts = [ 443 ];
+  # };
+  # networking.firewall.checkReversePath = "loose";
+  networking.firewall.enable = false;
 
   services.tailscale = { enable = true; };
 
