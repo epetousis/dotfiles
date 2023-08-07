@@ -36,6 +36,7 @@
     git
     wget
     wireguard-tools
+    tmux
   ];
 
   # Enable the OpenSSH daemon.
