@@ -44,8 +44,8 @@
   programs.mosh.enable = true;
 
   # enable NAT
-  networking.nat.enable = true;
-  networking.nat.externalInterface = "eth0";
+  # networking.nat.enable = true;
+  # networking.nat.externalInterface = "eth0";
   # networking.firewall = {
   #   allowedUDPPorts = [
   #     # Tailscale
