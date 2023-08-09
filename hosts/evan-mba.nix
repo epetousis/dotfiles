@@ -52,6 +52,7 @@
       "1password"
       "1password-cli"
       "altserver"
+      "alt-tab"
       "anki"
       "balenaetcher"
       "barrier"
