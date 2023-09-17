@@ -72,7 +72,7 @@
       "font-fira-code"
       "font-fira-code-nerd-font"
       "free-gpgmail"
-      "gpg-suite"
+      "gpg-suite-no-mail"
       "google-chrome"
       "graphiql"
       "hot"
