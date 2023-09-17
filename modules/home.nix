@@ -97,6 +97,18 @@
 
   programs.zsh = {
     enable = true;
+    plugins = [
+      {
+        file = "powerlevel10k.zsh-theme";
+        name = "powerlevel10k";
+        src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k";
+      }
+      {
+        file = "p10k.zsh";
+        name = "powerlevel10k-config";
+        src = ../configs/p10k;
+      }
+    ];
     sessionVariables = {
       iCloudDrive = "$HOME/Library/Mobile Documents/com~apple~CloudDocs";
       FZF_DEFAULT_COMMAND = "rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*}'";
@@ -163,11 +175,6 @@
   home.file.gnus = {
     source = ../configs/emacs/gnus.el;
     target = ".gnus.el";
-  };
-
-  home.file.p10k = {
-    source = ../configs/p10k/p10k.zsh;
-    target = ".p10k.zsh";
   };
 
   # Add direnv support - among other things, this can be used for automatically loading shell.nix files
