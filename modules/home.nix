@@ -102,8 +102,8 @@
       FZF_DEFAULT_COMMAND = "rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*}'";
     };
     localVariables = {
-      VISUAL = "emacsclient -a emacs";
-      EDITOR = "emacs";
+      VISUAL = "code --wait";
+      EDITOR = "emacs -nw";
       # Kill key timeout so escape is instant
       KEYTIMEOUT = 1;
       PROMPT = "%n@%m:%(4~|...|)%3~ %(!.#.$) ";
