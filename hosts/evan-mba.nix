@@ -58,7 +58,6 @@
       "anki"
       "balenaetcher"
       "barrier"
-      "battle-net"
       "betterdummy"
       "chatterino"
       "coconutbattery"
