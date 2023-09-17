@@ -85,7 +85,6 @@
       "mailtrackerblocker"
       "minecraft"
       "mirrorop"
-      "mixxx"
       "monitorcontrol"
       "notion"
       "obs"
