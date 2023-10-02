@@ -59,6 +59,7 @@
       "balenaetcher"
       "barrier"
       "betterdummy"
+      "bluos-controller"
       "chatterino"
       "coconutbattery"
       "cryptomator"
