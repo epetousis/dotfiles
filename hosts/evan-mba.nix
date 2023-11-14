@@ -79,7 +79,6 @@
       "istat-menus"
       "iterm2-beta"
       "karabiner-elements"
-      "keepingyouawake"
       "macfuse"
       "mailtrackerblocker"
       "microsoft-word"
