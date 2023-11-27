@@ -97,7 +97,6 @@
       "protonvpn"
       "pycharm"
       "raycast"
-      "rectangle"
       "rekordbox"
       "runelite"
       "sf-symbols"
