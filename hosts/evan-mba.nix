@@ -79,6 +79,7 @@
       "istat-menus"
       "iterm2-beta"
       "karabiner-elements"
+      "lasso"
       "macfuse"
       "mailtrackerblocker"
       "microsoft-word"
