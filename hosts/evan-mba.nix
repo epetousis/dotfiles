@@ -58,6 +58,7 @@
       "balenaetcher"
       "barrier"
       "betterdummy"
+      "bettertouchtool"
       "bluos-controller"
       "chatterino"
       "coconutbattery"
