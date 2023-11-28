@@ -109,6 +109,7 @@
       "sublime-text"
       "syncthing"
       "the-unarchiver"
+      "thingsmacsandboxhelper"
       "touchosc-bridge"
       "transmission"
       "unnaturalscrollwheels"
