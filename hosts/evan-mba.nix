@@ -57,7 +57,7 @@
       "anki"
       "balenaetcher"
       "barrier"
-      "betterdummy"
+      "betterdisplay"
       "bettertouchtool"
       "bluos-controller"
       "chatterino"
