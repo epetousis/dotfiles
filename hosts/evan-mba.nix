@@ -69,6 +69,7 @@
       "displaylink-login-extension"
       "dosbox-x"
       "element"
+      "elgato-stream-deck"
       "firefox"
       "font-fira-code"
       "font-fira-code-nerd-font"
