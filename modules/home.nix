@@ -41,7 +41,7 @@
     enable = true;
     package = if pkgs.stdenv.hostPlatform.isLinux then
         if pkgs.stdenv.hostPlatform.isx86 then pkgs.emacsPgtkNativeComp else (pkgs.emacs.override { withSQLite3 = true; withGTK3 = true; })
-    else pkgs.emacs;
+    else pkgs.emacs-macport;
     extraPackages = epkgs: [
       # emacs packages
       epkgs.company
