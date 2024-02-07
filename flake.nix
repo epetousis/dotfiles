@@ -91,5 +91,16 @@
         ./hosts/raspberry
       ];
     };
+
+    homeConfigurations."epetousis" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [
+        ./modules/home.nix
+        {
+          home.username = "epetousis";
+          home.homeDirectory = "/home/epetousis";
+        }
+      ];
+    };
   };
 }

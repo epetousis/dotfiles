@@ -19,6 +19,14 @@ Please feel free to use my overlays, modules, or any part of my dotfiles you fee
 2. Clone this repo to `~/.dotfiles`.
 3. Run `sudo nixos-rebuild switch --flake .dotfiles`.
 
+##### Standalone Host
+
+1. [Install Nix.]()
+2. Clone this repo to your location of choice.
+3. Inside the dotfiles directory, run `nix --extra-experimental-features "nix-command flakes" run home-manager/master -- switch --flake . --extra-experimental-features "nix-command flakes"`.
+
+You can now manage building and switching generations using the `home-manager` command.
+
 ## Optional Dependencies
 
 While not required to use these dotfiles, the zsh config provides support for these tools.
