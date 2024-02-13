@@ -150,6 +150,11 @@
       tput setab 3;echo "Disregard if opening Terminal was intended."
     fi
 
+    # If this distro uses GSSAPIKexAlgorithms in its config, fallback to system SSH for Git!
+    if cat /etc/crypto-policies/back-ends/openssh.config | rg -q GSSAPIKexAlgorithms ; then
+      export GIT_SSH=/usr/bin/ssh
+    fi
+
     bindkey "^H" backward-delete-char
     bindkey "^?" backward-delete-char
 
