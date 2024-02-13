@@ -151,7 +151,7 @@
     fi
 
     # If this distro uses GSSAPIKexAlgorithms in its config, fallback to system SSH for Git!
-    if cat /etc/crypto-policies/back-ends/openssh.config | rg -q GSSAPIKexAlgorithms ; then
+    if cat /etc/crypto-policies/back-ends/openssh.config 2>/dev/null | rg -q GSSAPIKexAlgorithms ; then
       export GIT_SSH=/usr/bin/ssh
     fi
 
