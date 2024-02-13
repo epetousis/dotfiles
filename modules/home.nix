@@ -11,6 +11,8 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
     axel
     ffmpeg
@@ -38,9 +40,14 @@
   ] ++ lib.optionals stdenv.isLinux [
     # Add a nicer potential system font to use (Linux distros ship some real shit fonts)
     inter
+    _1password-gui
+    _1password
   ];
 
   fonts.fontconfig.enable = pkgs.stdenv.isLinux;
+
+  # Make this config work better on non-NixOS distros
+  targets.genericLinux.enable = true;
 
   programs.emacs = {
     enable = true;
@@ -164,11 +171,8 @@
           IdentityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
         };
       } else {
-        identityFile = "~/.ssh/id_rsa";
         extraOptions = {
-          IgnoreUnknown = "AddKeysToAgent,UseKeychain";
-          UseKeychain = "yes";
-          AddKeysToAgent = "yes";
+          IdentityAgent = "\"~/.1password/agent.sock\"";
         };
       };
     };
