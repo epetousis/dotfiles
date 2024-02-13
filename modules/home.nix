@@ -42,6 +42,7 @@
     inter
     _1password-gui
     _1password
+    fira-code-nerdfont
   ];
 
   fonts.fontconfig.enable = pkgs.stdenv.isLinux;
