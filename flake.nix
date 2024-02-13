@@ -102,5 +102,16 @@
         }
       ];
     };
+
+    homeConfigurations."epetousis@aarch64" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.aarch64-linux;
+      modules = [
+        ./modules/home.nix
+        {
+          home.username = "epetousis";
+          home.homeDirectory = "/home/epetousis";
+        }
+      ];
+    };
   };
 }
