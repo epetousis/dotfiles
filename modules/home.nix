@@ -48,7 +48,7 @@
   fonts.fontconfig.enable = pkgs.stdenv.isLinux;
 
   # Make this config work better on non-NixOS distros
-  targets.genericLinux.enable = true;
+  targets.genericLinux.enable = pkgs.stdenv.isLinux;
 
   programs.emacs = {
     enable = true;
