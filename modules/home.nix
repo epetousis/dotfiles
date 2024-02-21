@@ -72,6 +72,7 @@
       epkgs.rust-mode
       epkgs.typescript-mode
       epkgs.web-mode
+      epkgs.telega
     ];
   };
 
@@ -199,7 +200,8 @@
   };
 
   home.file.emacs = {
-    source = ../configs/emacs/init.el;
+    # Keep init.el out of Nix store, as emacs has lots of (useful!) config auto-editing functionality.
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/share/dotfiles/configs/emacs/init.el";
     target = ".emacs.d/init.el";
   };
 
