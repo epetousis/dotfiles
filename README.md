@@ -9,15 +9,16 @@ Please feel free to use my overlays, modules, or any part of my dotfiles you fee
 ###### macOS Host
 
 1. [Install Nix.](https://nixos.org/download.html)
-2. [Install nix-darwin.](https://github.com/LnL7/nix-darwin#install)
-3. Clone this repo to `~/.local/share/dotfiles`.
-4. Run `darwin-rebuild switch --flake .dotfiles`.
+2. Clone this repo to `~/.local/share/dotfiles`.
+3. Run `nix run nix-darwin -- switch --flake ~/.local/share/dotfiles`.
+
+After nix-darwin has finished installing, use `darwin-rebuild switch --flake ~/.local/share/.dotfiles` to build new system generations in future.
 
 ###### NixOS Host
 
 1. [Install NixOS.](https://nixos.org/download.html)
 2. Clone this repo to `~/.local/share/dotfiles`.
-3. Run `sudo nixos-rebuild switch --flake .dotfiles`.
+3. Run `sudo nixos-rebuild switch --flake ~/.local/share/.dotfiles`.
 
 ##### Standalone Host
 
