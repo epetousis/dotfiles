@@ -209,6 +209,12 @@
     target = ".gnus.el";
   };
 
+  home.file.".npmrc".text = "prefix = ~/.local/share/npm-packages";
+
+  home.sessionPath = [
+    "$HOME/.local/share/npm-packages/bin"
+  ];
+
   # Add direnv support - among other things, this can be used for automatically loading shell.nix files
   programs.direnv = {
     enable = true;
