@@ -214,24 +214,24 @@
   # This is definitely a waste of space but until things like e.g Dock treat aliases like apps, this is the best option.
   system.activationScripts.applications.text = pkgs.lib.mkForce (
     ''
-      echo "setting up /Applications/Nix Apps..." >&2
-      rm -rf /Applications/Nix\ Apps
-      mkdir -p /Applications/Nix\ Apps
+      echo "copying system apps to /Applications..." >&2
       for app in $(find ${config.system.build.applications}/Applications -maxdepth 1 -type l); do
         src="$(/usr/bin/stat -f%Y "$app")"
-        cp -Lr "$src" /Applications/Nix\ Apps
+        appname="$(/usr/bin/basename "$app")"
+        rm -rf /Applications/"$appname"
+        cp -Lr "$src" /Applications
       done
 
-      echo "setting up /Applications/Home Manager Apps..." >&2
-      rm -rf /Applications/Home\ Manager\ Apps
-      mkdir -p /Applications/Home\ Manager\ Apps
+      echo "copying home-manager apps to /Applications..." >&2
       for app in $(find ${pkgs.buildEnv {
         name = "applications";
         paths = config.home-manager.users.epetousis.home.packages;
         pathsToLink = "/Applications";
       }}/Applications -maxdepth 1 -type l); do
         src="$(/usr/bin/stat -f%Y "$app")"
-        /bin/cp -Lr "$src" /Applications/Home\ Manager\ Apps
+        appname="$(/usr/bin/basename "$app")"
+        rm -rf /Applications/"$appname"
+        /bin/cp -Lr "$src" /Applications
       done
     ''
   );
