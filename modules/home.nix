@@ -73,6 +73,7 @@
       epkgs.typescript-mode
       epkgs.web-mode
       epkgs.telega
+      epkgs.persp-mode
     ];
   };
 

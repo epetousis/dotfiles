@@ -128,3 +128,8 @@ The argument LOCATION can be any path to a Nix flake."
 (use-package envrc
   :config
   (envrc-global-mode))
+
+(with-eval-after-load "persp-mode-autoloads"
+      (setq wg-morph-on nil) ;; switch off animation
+      (setq persp-autokill-buffer-on-remove 'kill-weak)
+      (add-hook 'window-setup-hook #'(lambda () (persp-mode 1))))
