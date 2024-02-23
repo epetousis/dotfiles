@@ -52,9 +52,7 @@
 
   programs.emacs = {
     enable = true;
-    package = if pkgs.stdenv.hostPlatform.isLinux then
-        if pkgs.stdenv.hostPlatform.isx86 then pkgs.emacs29-pgtk else (pkgs.emacs.override { withSQLite3 = true; withGTK3 = true; })
-    else pkgs.emacs-macport;
+    package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.emacs29-pgtk else pkgs.emacs-macport;
     extraPackages = epkgs: [
       # emacs packages
       epkgs.company
