@@ -208,15 +208,30 @@
     '';
   };
 
-  # Symlink macOS apps - taken from https://github.com/nix-community/home-manager/issues/1341#issuecomment-1190875080
+  # Copy macOS apps - modified from https://github.com/nix-community/home-manager/issues/1341#issuecomment-1190875080
+  # APFS does not support hard links and Finder aliases are a clunky workaround.
+  # Therefore, we do as Homebrew would usually do anyway - copy the apps out of the store on each activation!
+  # This is definitely a waste of space but until things like e.g Dock treat aliases like apps, this is the best option.
   system.activationScripts.applications.text = pkgs.lib.mkForce (
     ''
-      echo "setting up ~/Applications..." >&2
-      rm -rf ~/Applications/Nix\ Apps
-      mkdir -p ~/Applications/Nix\ Apps
+      echo "setting up /Applications/Nix Apps..." >&2
+      rm -rf /Applications/Nix\ Apps
+      mkdir -p /Applications/Nix\ Apps
       for app in $(find ${config.system.build.applications}/Applications -maxdepth 1 -type l); do
         src="$(/usr/bin/stat -f%Y "$app")"
-        cp -r "$src" ~/Applications/Nix\ Apps
+        cp -Lr "$src" /Applications/Nix\ Apps
+      done
+
+      echo "setting up /Applications/Home Manager Apps..." >&2
+      rm -rf /Applications/Home\ Manager\ Apps
+      mkdir -p /Applications/Home\ Manager\ Apps
+      for app in $(find ${pkgs.buildEnv {
+        name = "applications";
+        paths = config.home-manager.users.epetousis.home.packages;
+        pathsToLink = "/Applications";
+      }}/Applications -maxdepth 1 -type l); do
+        src="$(/usr/bin/stat -f%Y "$app")"
+        /bin/cp -Lr "$src" /Applications/Home\ Manager\ Apps
       done
     ''
   );
