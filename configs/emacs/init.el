@@ -22,9 +22,9 @@ apps are not started from a shell."
 ;; LSP
 (use-package eglot
   :config (add-to-list 'eglot-server-programs
-                       '(web-mode . (eglot-volar "vue-language-server" "--stdio"))))
+                       '(vue-mode . (eglot-volar "vue-language-server" "--stdio"))))
 ;; Using :hook causes an error - no idea why...
-(add-hook 'web-mode-hook 'eglot-ensure)
+(add-hook 'vue-mode-hook 'eglot-ensure)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 ;; Always start Company when eglot runs
 (add-hook 'eglot-managed-mode-hook 'company-mode)
@@ -47,14 +47,15 @@ apps are not started from a shell."
 (use-package flymake-eslint
   :after eglot
   :hook
-  (web-mode . flymake-eslint-enable-project)
+  (vue-mode . flymake-eslint-enable-project)
   (typescript-mode . flymake-eslint-enable-project))
 
 ;; Language specific major modes
 (use-package typescript-mode :mode "\\.ts\\'")
 (use-package nix-mode :mode "\\.nix\\'")
-(use-package web-mode
-  :config (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode)))
+;; Define a custom mode just for Vue, so that eglot sends the correct languageId.
+(define-derived-mode vue-mode web-mode "Vue")
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
 (use-package rust-mode :mode "\\.rs\\'")
 
 ;; Guess indentation automatically
