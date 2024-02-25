@@ -14,6 +14,12 @@
 
   outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, emacs-overlay }:
   let
+    nixpkgs-defaults = {
+      nixpkgs.overlays = [
+        emacs-overlay.overlays.package
+      ];
+    };
+
     nix-defaults = {
       home-manager.useGlobalPkgs = true;
 
@@ -29,11 +35,7 @@
           ];
         };
       };
-
-      nixpkgs.overlays = [
-        emacs-overlay.overlays.package
-      ];
-    };
+    } // nixpkgs-defaults;
   in {
     darwinConfigurations."evan-mba" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
@@ -54,6 +56,7 @@
     homeConfigurations."epetousis" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       modules = [
+        nixpkgs-defaults
         ./modules/home.nix
         {
           home.username = "epetousis";
@@ -65,6 +68,7 @@
     homeConfigurations."epetousis@aarch64" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.aarch64-linux;
       modules = [
+        nixpkgs-defaults
         ./modules/home.nix
         {
           home.username = "epetousis";
