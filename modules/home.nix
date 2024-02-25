@@ -70,7 +70,7 @@
       epkgs.rust-mode
       epkgs.typescript-mode
       epkgs.web-mode
-      epkgs.telega
+      epkgs.melpaPackages.telega
       epkgs.persp-mode
     ];
   };

@@ -6,6 +6,7 @@
   environment.systemPackages =
     [
       pkgs.cachix
+      pkgs.pngpaste # Required to paste images into telega.el
     ];
 
   # Use a custom configuration.nix location.
