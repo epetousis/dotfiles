@@ -8,9 +8,11 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    emacs-overlay.url = "github:nix-community/emacs-overlay/master";
+    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager }:
+  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, emacs-overlay }:
   let
     nix-defaults = {
       home-manager.useGlobalPkgs = true;
@@ -27,6 +29,10 @@
           ];
         };
       };
+
+      nixpkgs.overlays = [
+        emacs-overlay.overlays.package
+      ];
     };
   in {
     darwinConfigurations."evan-mba" = darwin.lib.darwinSystem {
