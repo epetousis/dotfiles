@@ -11,6 +11,19 @@ jobs:
       matrix:
         output: [".#nixosConfigurations.evan-pc.config.system.build.toplevel"]
     steps:
+      - name: Maximise build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          build-mount-path: /nix
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+          remove-docker-images: 'true'
+      - name: Override hackfix nix store perms
+        run: sudo chown -R 0 /nix
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: cachix/cachix-action@v14
