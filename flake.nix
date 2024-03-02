@@ -53,6 +53,7 @@
     nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        nix-defaults
         ./hosts/evan-pc
         home-manager.nixosModules.home-manager
         disko.nixosModules.disko
