@@ -9,7 +9,7 @@
   # Use Disko to partition the boot drive.
   disko.devices = {
     disk = {
-      sdb = {
+      vdb = {
         device = "/dev/disk/by-id/ata-Samsung_SSD_860_EVO_M.2_500GB_S5GCNJ0N603853K";
         type = "disk";
         content = {
