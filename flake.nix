@@ -10,9 +10,13 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     emacs-overlay.url = "github:nix-community/emacs-overlay/master";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Install Disko for disk partitioning
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, emacs-overlay }:
+  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, emacs-overlay, disko }:
   let
     nixpkgs-defaults = {
       nixpkgs.overlays = [
@@ -43,6 +47,14 @@
         nix-defaults
         home-manager.darwinModules.home-manager
         ./hosts/evan-mba.nix
+      ];
+    };
+
+    nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/evan-pc
+        disko.nixosModules.disko
       ];
     };
 

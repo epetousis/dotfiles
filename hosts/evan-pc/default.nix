@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/gnome-shell-suspend-fix.nix
     ];
 
   # Bootloader.
@@ -18,19 +17,14 @@
 
   # Add custom kernel modules
   boot.extraModulePackages = with config.boot.kernelPackages; [
-    # Add video loopback
+    # Add video loopback for software-applied webcam effects
     v4l2loopback.out
   ];
 
   networking.hostName = "evan-pc"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.hosts = {
     "127.0.0.1" = [ "localhost.local" ];
   };
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -42,7 +36,13 @@
   i18n.defaultLocale = "en_AU.utf8";
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    # Enable KDE Plasma 6.
+    desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
+  }
 
   # Enable the (unfortunately proprietary) Nvidia driver.
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -50,8 +50,7 @@
   hardware.opengl.driSupport32Bit = true;
   # Enables systemd-based suspend to avoid graphical corruption on wake
   # Temporary bug related to https://forums.developer.nvidia.com/t/corrupted-graphics-upon-resume-gnome-41-x-org-495-44-driver/194565/17
-  hardware.nvidia.powerManagement.enable = true;
-  services.gnome-shell-suspend-fix.enable = true;
+  # hardware.nvidia.powerManagement.enable = true;
 
   # Enable Wayland on Nvidia.
   hardware.nvidia.modesetting.enable = true;
@@ -61,17 +60,6 @@
 
   # Enable Xwayland for X compatibility.
   programs.xwayland.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Enable fractional scaling on Gnome Wayland.
-  services.xserver.desktopManager.gnome.extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
-  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
-     [org.gnome.mutter]
-     experimental-features=['scale-monitor-framebuffer']
-   '';
 
   # Configure keymap in X11
   services.xserver = {
@@ -91,34 +79,20 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    jack.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.epetousis = {
     isNormalUser = true;
     description = "Evangelos Petousis";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      (firefox-wayland.override { extraNativeMessagingHosts = [ gnomeExtensions.gsconnect ]; })
+      firefox
       spotify
-      discord
+      vesktop
       easyeffects
-      lutris
-      webcord
-      rtorrent
       mpv
-      clang-tools
       signal-desktop
-      gimp
       libreoffice-fresh
       obs-studio
     ];
@@ -143,7 +117,6 @@
 
   # Enable zsh
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [ zsh ];
 
   home-manager.users.epetousis = import ../../modules/home.nix;
 
@@ -161,24 +134,9 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
-    gnomeExtensions.gsconnect
-    gnomeExtensions.appindicator
-    gnomeExtensions.scaletoggle
-    gnomeExtensions.pop-shell
   ];
 
-  # Enable NTFS support
-  boot.supportedFilesystems = [ "ntfs" ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
+  # Services:
 
   # Enable the OpenSSH daemon.
   services.openssh = {
@@ -187,33 +145,11 @@
     kbdInteractiveAuthentication = false;
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # Enable Tailscale service
-  services.tailscale.enable = true;
-  networking.firewall.allowedUDPPorts = [
-    41641  # tailscale
-  ];
-  networking.firewall.allowedTCPPorts = [
-    7772  # rtorrent
-    8080  # development
-  ];
-  networking.firewall.checkReversePath = "loose";
-
-  # Allow port ranges
-  networking.firewall.allowedTCPPortRanges = [
-    { from = 1714; to = 1764; }  # KDE Connect
-  ];
-  networking.firewall.allowedUDPPortRanges = [
-    { from = 1714; to = 1764; }  # KDE Connect
-  ];
-
-  # Enable Docker
-  virtualisation.docker.enable = true;
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+  }
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -221,6 +157,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }
