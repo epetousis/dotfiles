@@ -12,9 +12,9 @@ jobs:
         output: [".#nixosConfigurations.evan-pc.config.system.build.toplevel"]
     steps:
       - name: Maximise build space
-        uses: easimon/maximize-build-space@master
+        uses: easimon/maximize-build-space@v10
         with:
-          root-reserve-mb: 512
+          root-reserve-mb: 2048
           swap-size-mb: 1024
           build-mount-path: /nix
           remove-dotnet: 'true'
