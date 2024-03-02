@@ -18,7 +18,7 @@ After nix-darwin has finished installing, use `darwin-rebuild switch --flake ~/.
 
 1. [Download and boot the NixOS installer.](https://nixos.org/download.html)
 2. Enter a root shell with `sudo -i`.
-3. If required, run `nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko --flake github:epetousis/dotfiles/main#[device-name]` to partition and automount all necessary filesystems. Otherwise, mount a root and EFI partition to `/mnt` and `/mnt/boot/efi` respectively.
+3. If required, run `nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko --flake github:epetousis/dotfiles/main#[device-name]` to partition and automount all necessary filesystems. Otherwise, mount a root and EFI partition to `/mnt` and `/mnt/boot` respectively.
 > [!TIP]
 > You'll know if you forgot this step if you run out of disk space during the install process, as nixos-install will attempt to install to the non-existent mountpoint and fill up the installer's tmpfs instead.
 4. Run `nixos-install --flake github:epetousis/dotfiles/main#[device-name]` to install to the mounted partitions.
