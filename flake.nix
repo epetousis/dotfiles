@@ -16,6 +16,19 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://cache.nixos.org/"
+      "https://cachix.org/api/v1/cache/emacs"
+      "https://epetousis.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "epetousis.cachix.org-1:c87cgNPjvPjqoZX7dbedzBo/cx2ULiGjSNN12VV5bKw="
+    ];
+  };
+
   outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, emacs-overlay, disko }:
   let
     nixpkgs-defaults = {
@@ -28,19 +41,6 @@
       home-manager.useGlobalPkgs = true;
     } // nixpkgs-defaults;
   in {
-    nixConfig = {
-      extra-substituters = [
-        "https://nix-community.cachix.org"
-        "https://cache.nixos.org/"
-        "https://cachix.org/api/v1/cache/emacs"
-        "https://epetousis.cachix.org"
-      ];
-      extra-trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "epetousis.cachix.org-1:c87cgNPjvPjqoZX7dbedzBo/cx2ULiGjSNN12VV5bKw="
-      ];
-    };
-
     darwinConfigurations."evan-mba" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
