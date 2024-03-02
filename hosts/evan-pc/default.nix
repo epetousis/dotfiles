@@ -42,7 +42,7 @@
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
     displayManager.sddm.wayland.enable = true;
-  }
+  };
 
   # Enable the (unfortunately proprietary) Nvidia driver.
   services.xserver.videoDrivers = [ "nvidia" ];
