@@ -27,9 +27,3 @@ After nix-darwin has finished installing, use `darwin-rebuild switch --flake ~/.
 3. Inside the dotfiles directory, run `nix --extra-experimental-features "nix-command flakes" run home-manager/master -- switch --flake . --extra-experimental-features "nix-command flakes"`.
 
 You can now manage building and switching generations using the `home-manager` command.
-
-## Optional Dependencies
-
-While not required to use these dotfiles, the zsh config provides support for these tools.
-
-- [Powerlevel10k](https://github.com/romkatv/powerlevel10k#installation) - the manual and Homebrew installations are supported.
