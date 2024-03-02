@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-flake:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        output: [".#nixosConfigurations.evan-pc.config.system.build.toplevel"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: cachix/cachix-action@v14
+        with:
+          name: epetousis
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - uses: DeterminateSystems/flake-checker-action@main
+      - name: Run `nix build`
+        run: nix build --accept-flake-config ${{ matrix.output }}
+
+
