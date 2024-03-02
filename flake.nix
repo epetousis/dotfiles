@@ -54,6 +54,7 @@
       system = "x86_64-linux";
       modules = [
         ./hosts/evan-pc
+        home-manager.nixosModules.home-manager
         disko.nixosModules.disko
       ];
     };
