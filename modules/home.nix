@@ -94,7 +94,6 @@
       epkgs.typescript-mode
       epkgs.web-mode
       epkgs.melpaPackages.telega
-      epkgs.persp-mode
     ];
   };
 
