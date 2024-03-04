@@ -1,0 +1,22 @@
+name: Build Flake
+description: Builds a flake with a given output and caches the result.
+inputs:
+  flake_output:
+    required: true
+  cachix_name:
+    required: true
+  cachix_token:
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: cachix/cachix-action@v14
+      with:
+        name: '${{ inputs.cachix_name }}'
+        authToken: '${{ inputs.cachix_token }}'
+    - uses: DeterminateSystems/flake-checker-action@main
+    - name: Run `nix build`
+      run: nix build --accept-flake-config ${{ inputs.flake_output }}
+

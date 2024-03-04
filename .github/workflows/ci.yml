@@ -27,29 +27,19 @@ jobs:
           remove-docker-images: 'true'
       - name: Override hackfix nix store perms
         run: sudo chown -R 0 /nix
-      - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@v14
+      - uses: ./.github/actions/build-flake
         with:
-          name: epetousis
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - uses: DeterminateSystems/flake-checker-action@main
-      - name: Run `nix build`
-        run: nix build --accept-flake-config ${{ matrix.output }}
+          flake_output: ${{ matrix.output }}
+          cachix_name: epetousis
+          cachix_token: ${{ secrets.CACHIX_AUTH_TOKEN }}
   build-flake-aarch64:
     runs-on: macos-14
     strategy:
       matrix:
         output: [".#darwinConfigurations.evan-mba.system"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@v14
+      - uses: ./.github/actions/build-flake
         with:
-          name: epetousis
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - uses: DeterminateSystems/flake-checker-action@main
-      - name: Run `nix build`
-        run: nix build --accept-flake-config ${{ matrix.output }}
-
-
+          flake_output: ${{ matrix.output }}
+          cachix_name: epetousis
+          cachix_token: ${{ secrets.CACHIX_AUTH_TOKEN }}
