@@ -18,8 +18,8 @@
 
   nixConfig = {
     extra-substituters = [
+      # If you update this, update the nix-defaults variable in the output.
       "https://nix-community.cachix.org"
-      "https://cache.nixos.org/"
       "https://cachix.org/api/v1/cache/emacs"
       "https://epetousis.cachix.org"
     ];
@@ -39,6 +39,11 @@
 
     nix-defaults = {
       home-manager.useGlobalPkgs = true;
+      nix.settings.trusted-substituters = [
+        "https://nix-community.cachix.org"
+        "https://cachix.org/api/v1/cache/emacs"
+        "https://epetousis.cachix.org"
+      ];
     } // nixpkgs-defaults;
   in {
     darwinConfigurations."evan-mba" = darwin.lib.darwinSystem {
