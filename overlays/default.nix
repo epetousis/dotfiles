@@ -25,4 +25,10 @@ final: prev: {
   emacsPackages = prev.emacsPackages // {
     nano-theme-git = final.emacsPackages.callPackage ./emacs-nano-theme {};
   };
+
+  # Fix build of openai-whisper on macOS
+  openai-triton-llvm = prev.openai-triton-llvm.override (p: {
+    # OpenAI Triton doesn't seem to need this at all, not sure why it is here?
+    libpfm = if prev.stdenv.hostPlatform.isDarwin then null else p.libpfm;
+  });
 }
