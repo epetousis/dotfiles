@@ -36,5 +36,20 @@ jobs:
       - uses: DeterminateSystems/flake-checker-action@main
       - name: Run `nix build`
         run: nix build --accept-flake-config ${{ matrix.output }}
+  build-flake-aarch64:
+    runs-on: macos-14
+    strategy:
+      matrix:
+        output: [".#darwinConfigurations.evan-mba.system"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: cachix/cachix-action@v14
+        with:
+          name: epetousis
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - uses: DeterminateSystems/flake-checker-action@main
+      - name: Run `nix build`
+        run: nix build --accept-flake-config ${{ matrix.output }}
 
 
