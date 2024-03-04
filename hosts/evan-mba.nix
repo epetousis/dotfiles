@@ -7,6 +7,7 @@
     [
       pkgs.cachix
       pkgs.pngpaste # Required to paste images into telega.el
+      pkgs.openai-whisper
     ];
 
   # Use a custom configuration.nix location.
