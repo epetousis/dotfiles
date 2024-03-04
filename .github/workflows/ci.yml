@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  build-flake:
+  build-flake-x86_64-linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -32,7 +32,7 @@ jobs:
           flake_output: ${{ matrix.output }}
           cachix_name: epetousis
           cachix_token: ${{ secrets.CACHIX_AUTH_TOKEN }}
-  build-flake-aarch64:
+  build-flake-aarch64-darwin:
     runs-on: macos-14
     strategy:
       matrix:
