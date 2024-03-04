@@ -23,6 +23,7 @@
     jq
     mosh
     neovim
+    nix-output-monitor
     nodejs
     nodePackages.pyright
     nodePackages.typescript-language-server
