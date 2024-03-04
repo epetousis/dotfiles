@@ -17,5 +17,6 @@ runs:
         authToken: '${{ inputs.cachix_token }}'
     - uses: DeterminateSystems/flake-checker-action@main
     - name: Run `nix build`
+      shell: bash
       run: nix build --accept-flake-config ${{ inputs.flake_output }}
 
