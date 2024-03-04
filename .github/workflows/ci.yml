@@ -27,6 +27,7 @@ jobs:
           remove-docker-images: 'true'
       - name: Override hackfix nix store perms
         run: sudo chown -R 0 /nix
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/build-flake
         with:
           flake_output: ${{ matrix.output }}
@@ -38,6 +39,7 @@ jobs:
       matrix:
         output: [".#darwinConfigurations.evan-mba.system"]
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/build-flake
         with:
           flake_output: ${{ matrix.output }}
