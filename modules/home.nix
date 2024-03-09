@@ -82,7 +82,7 @@
       epkgs.company
       epkgs.dtrt-indent
       epkgs.editorconfig
-      epkgs.eglot
+      epkgs.elpaDevelPackages.eglot
       epkgs.envrc
       epkgs.flymake-eslint
       epkgs.magit
