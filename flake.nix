@@ -44,6 +44,10 @@
         "https://cachix.org/api/v1/cache/emacs"
         "https://epetousis.cachix.org"
       ];
+      nix.settings.trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "epetousis.cachix.org-1:c87cgNPjvPjqoZX7dbedzBo/cx2ULiGjSNN12VV5bKw="
+      ];
     } // nixpkgs-defaults;
   in {
     darwinConfigurations."evan-mba" = darwin.lib.darwinSystem {
