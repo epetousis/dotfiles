@@ -54,30 +54,12 @@
 
   programs.emacs = {
     enable = true;
-    package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.emacs29-pgtk else pkgs.emacs-macport.overrideAttrs (old: {
-      # Stolen from https://stackoverflow.com/a/68523368/830946
-      name="emacs-macport-icon";
-      buildCommand = ''
-      set -euo pipefail
-
-      ${
-        lib.concatStringsSep "\n"
-          (map
-            (outputName:
-              ''
-                echo "Copying output ${outputName}"
-                set -x
-                cp -rs --no-preserve=mode "${pkgs.emacs-macport.${outputName}}" "''$${outputName}"
-                set +x
-              ''
-            )
-            (old.outputs or ["out"])
-          )
-      }
-
-      cp -vf ${./elrumo2.icns} $out/Applications/Emacs.app/Contents/Resources/Emacs.icns
-    '';
-    });
+    package = if pkgs.stdenv.hostPlatform.isLinux
+              then pkgs.emacs29-pgtk
+              else pkgs.callPackage ./icon-override.nix {
+                pkg = pkgs.emacs-macport;
+                iconPath = ./elrumo2.icns;
+              };
     extraPackages = epkgs: [
       # emacs packages
       epkgs.company
