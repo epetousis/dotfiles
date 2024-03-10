@@ -19,7 +19,7 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-  nix.package = pkgs.nix;
+  nix.package = pkgs.nixUnstable;
 
   nix.settings = {
     extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
