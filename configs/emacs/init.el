@@ -90,6 +90,9 @@ apps are not started from a shell."
 ;; Enable icomplete-mode everywhere
 (icomplete-mode 1)
 
+(require 'dired-sidebar)
+(dired-sidebar-toggle-sidebar)
+
 ;;; Keybinds
 ;; Ignore F18 (used for PTT)
 (global-set-key (kbd "<f18>") 'ignore)

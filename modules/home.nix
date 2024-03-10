@@ -70,6 +70,7 @@
       epkgs.flymake-eslint
       epkgs.magit
       epkgs.monokai-theme
+      epkgs.melpaPackages.dired-sidebar
 
       # Modes
       epkgs.nix-mode
