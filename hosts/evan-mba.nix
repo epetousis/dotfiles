@@ -185,16 +185,20 @@
 
   # Copy macOS apps - modified from https://github.com/nix-community/home-manager/issues/1341#issuecomment-1190875080
   # APFS does not support hard links and Finder aliases are a clunky workaround.
-  # Therefore, we do as Homebrew would usually do anyway - copy the apps out of the store on each activation!
-  # This is definitely a waste of space but until things like e.g Dock treat aliases like apps, this is the best option.
-  system.activationScripts.applications.text = pkgs.lib.mkForce (
+  # However, if you symlink the "Contents" folder inside? Zero issues. Both Finder and Dock
+  # see the app as a normal one, however all the contents live inside the Nix store.
+    system.activationScripts.applications.text = pkgs.lib.mkForce (
     ''
       echo "copying system apps to /Applications..." >&2
       for app in $(find ${config.system.build.applications}/Applications -maxdepth 1 -type l); do
         src="$(/usr/bin/stat -f%Y "$app")"
         appname="$(/usr/bin/basename "$app")"
-        rm -rf /Applications/"$appname"
-        cp -Lr "$src" /Applications
+        # "
+        if [ -n "$appname" ]; then
+          rm -rf /Applications/"$appname"
+        fi
+        mkdir /Applications/"$appname"
+        ln -s "$src"/Contents /Applications/"$appname"/Contents
       done
 
       echo "copying home-manager apps to /Applications..." >&2
@@ -205,8 +209,11 @@
       }}/Applications -maxdepth 1 -type l); do
         src="$(/usr/bin/stat -f%Y "$app")"
         appname="$(/usr/bin/basename "$app")"
-        rm -rf /Applications/"$appname"
-        /bin/cp -Lr "$src" /Applications
+        if [ -n "$appname" ]; then
+          rm -rf /Applications/"$appname"
+        fi
+        mkdir /Applications/"$appname"
+        ln -s "$src"/Contents /Applications/"$appname"/Contents
       done
     ''
   );
