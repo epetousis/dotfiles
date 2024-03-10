@@ -15,8 +15,10 @@
 
   home.packages = with pkgs; [
     axel
+    anki-bin
     emacs-lsp-booster
     ffmpeg
+    firefox-bin
     fd
     fzf
     git-filter-repo

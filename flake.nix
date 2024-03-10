@@ -18,6 +18,9 @@
     emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
     emacs-lsp-booster.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
+    nixpkgs-firefox-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -74,7 +77,8 @@
       homebrew-cask-versions,
       homebrew-cask-fonts,
       homebrew-cask-drivers,
-  }:
+      ...
+  }@inputs:
   let
     nixpkgs-defaults = {
       nixpkgs.overlays = [
@@ -113,6 +117,7 @@
             "homebrew/homebrew-cask-drivers" = homebrew-cask-drivers;
           };
           nix-homebrew.mutableTaps = false;
+          nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ];
         }
       ];
     };

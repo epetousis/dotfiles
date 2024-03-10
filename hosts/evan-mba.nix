@@ -57,7 +57,6 @@
     casks = [
       "1password"
       "1password-cli"
-      "anki"
       "bettertouchtool"
       "bluos-controller"
       "cryptomator"
@@ -65,7 +64,6 @@
       "discord"
       "displaylink"
       "elgato-stream-deck"
-      "firefox"
       "font-fira-code"
       "font-fira-code-nerd-font"
       "gpg-suite-no-mail"
