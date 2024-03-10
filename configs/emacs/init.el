@@ -1,7 +1,4 @@
-;; This is only needed once, near the top of the file
-(eval-when-compile
-  (require 'use-package))
-
+;; Set exec path for macOS's sake
 (defun set-exec-path-from-shell-PATH ()
   ;; Taken from https://www.emacswiki.org/emacs/ExecPath
   "Set up Emacs' `exec-path' and PATH environment variable to match
@@ -20,10 +17,10 @@ apps are not started from a shell."
 (set-exec-path-from-shell-PATH)
 
 ;; LSP
-(use-package eglot
-  :config (add-to-list 'eglot-server-programs
-                       '(vue-mode . (eglot-volar "vue-language-server" "--stdio"))))
-;; Using :hook causes an error - no idea why...
+(require 'eglot)
+(add-to-list 'eglot-server-programs
+             '(vue-mode . (eglot-volar "vue-language-server" "--stdio")))
+
 (add-hook 'vue-mode-hook 'eglot-ensure)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 ;; Always start Company when eglot runs
@@ -37,34 +34,35 @@ apps are not started from a shell."
   (let* ((tsdk (concat (current-project-root) "node_modules/typescript/lib")))
     (list :typescript (list :tsdk tsdk))))
 
-(use-package company)
+(require 'company)
 
 (defun flymake-eslint-enable-project ()
   "Ensure flymake-eslint uses our project-local eslint."
   (setq flymake-eslint-executable-name (concat (current-project-root) "node_modules/.bin/eslint"))
   (flymake-eslint-enable))
 
-(use-package flymake-eslint
-  :after eglot
-  :hook
-  (vue-mode . flymake-eslint-enable-project)
-  (typescript-mode . flymake-eslint-enable-project))
+(require 'flymake-eslint)
+(add-to-list 'eglot-managed-mode-hook '((vue-mode . flymake-eslint-enable-project)
+                                       (typescript-mode . flymake-eslint-enable-project)))
 
 ;; Language specific major modes
-(use-package typescript-mode :mode "\\.ts\\'")
-(use-package nix-mode :mode "\\.nix\\'")
+(require 'typescript-mode)
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(require 'nix-mode)
+(add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
 ;; Define a custom mode just for Vue, so that eglot sends the correct languageId.
 (define-derived-mode vue-mode web-mode "Vue")
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
-(use-package rust-mode :mode "\\.rs\\'")
+(require 'rust-mode)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
 ;; Guess indentation automatically
-(use-package dtrt-indent :config (dtrt-indent-global-mode))
+(require 'dtrt-indent)
+(dtrt-indent-global-mode)
 
 ;; Add editorconfig support
-(use-package editorconfig
-  :config
-  (editorconfig-mode 1))
+(require 'editorconfig)
+(editorconfig-mode 1)
 
 ;;; UI Configuration
 ;;; Theme
@@ -122,19 +120,12 @@ The argument LOCATION can be any path to a Nix flake."
     (cd "/sudo::/")
     (async-shell-command (concat "nixos-rebuild switch --flake " (expand-file-name location)))))
 
-
 ;;; Extra configuration
 ;; direnv integration - allows us to easily use Nix packages
 ;; Place this late in the startup since minor modes prepend themselves to hooks
-(use-package envrc
-  :config
-  (envrc-global-mode))
+(require 'envrc)
+(envrc-global-mode)
 
 ;; Run eglot-booster-mode on eglot start
 (require 'eglot-booster)
 (add-hook 'eglot-managed-mode-hook 'eglot-booster-mode)
-
-(with-eval-after-load "persp-mode-autoloads"
-      (setq wg-morph-on nil) ;; switch off animation
-      (setq persp-autokill-buffer-on-remove 'kill-weak)
-      (add-hook 'window-setup-hook #'(lambda () (persp-mode 1))))

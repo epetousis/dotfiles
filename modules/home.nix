@@ -88,7 +88,6 @@
       epkgs.flymake-eslint
       epkgs.magit
       epkgs.monokai-theme
-      epkgs.use-package
 
       # Modes
       epkgs.nix-mode
