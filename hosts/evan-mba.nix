@@ -51,7 +51,6 @@
   homebrew = {
     enable = true;
     onActivation = {
-      cleanup = "zap";
       upgrade = true;
     };
     taps = map (key: builtins.replaceStrings ["homebrew-"] [""] key) (builtins.attrNames config.nix-homebrew.taps);
