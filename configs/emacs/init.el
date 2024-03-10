@@ -130,6 +130,10 @@ The argument LOCATION can be any path to a Nix flake."
   :config
   (envrc-global-mode))
 
+;; Run eglot-booster-mode on eglot start
+(require 'eglot-booster)
+(add-hook 'eglot-managed-mode-hook 'eglot-booster-mode)
+
 (with-eval-after-load "persp-mode-autoloads"
       (setq wg-morph-on nil) ;; switch off animation
       (setq persp-autokill-buffer-on-remove 'kill-weak)

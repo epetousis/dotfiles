@@ -14,6 +14,9 @@
     # Install Disko for disk partitioning
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
+    emacs-lsp-booster.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   nixConfig = {
@@ -29,11 +32,12 @@
     ];
   };
 
-  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, emacs-overlay, disko }:
+  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, emacs-overlay, disko, emacs-lsp-booster }:
   let
     nixpkgs-defaults = {
       nixpkgs.overlays = [
         emacs-overlay.overlays.package
+        emacs-lsp-booster.overlays.default
       ];
     };
 

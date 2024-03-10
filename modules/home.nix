@@ -15,6 +15,7 @@
 
   home.packages = with pkgs; [
     axel
+    emacs-lsp-booster
     ffmpeg
     fd
     fzf
@@ -95,6 +96,7 @@
       epkgs.typescript-mode
       epkgs.web-mode
       epkgs.melpaPackages.telega
+      (epkgs.callPackage ../overlays/eglot-booster.nix {})
     ];
   };
 
