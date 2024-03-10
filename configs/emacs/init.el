@@ -23,7 +23,8 @@ apps are not started from a shell."
 
 (add-hook 'vue-mode-hook 'eglot-ensure)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
-;; Always start Company when eglot runs
+
+(require 'company)
 (add-hook 'eglot-managed-mode-hook 'company-mode)
 
 (defclass eglot-volar (eglot-lsp-server) ()
@@ -34,16 +35,18 @@ apps are not started from a shell."
   (let* ((tsdk (concat (current-project-root) "node_modules/typescript/lib")))
     (list :typescript (list :tsdk tsdk))))
 
-(require 'company)
-
 (defun flymake-eslint-enable-project ()
   "Ensure flymake-eslint uses our project-local eslint."
   (setq flymake-eslint-executable-name (concat (current-project-root) "node_modules/.bin/eslint"))
   (flymake-eslint-enable))
 
 (require 'flymake-eslint)
-(add-to-list 'eglot-managed-mode-hook '((vue-mode . flymake-eslint-enable-project)
-                                       (typescript-mode . flymake-eslint-enable-project)))
+(
+ add-to-list
+ 'eglot-managed-mode-hook
+ '((vue-mode . flymake-eslint-enable-project)
+   (typescript-mode . flymake-eslint-enable-project))
+ )
 
 ;; Language specific major modes
 (require 'typescript-mode)
