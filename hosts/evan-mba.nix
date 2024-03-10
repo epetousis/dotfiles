@@ -40,17 +40,21 @@
   programs.zsh.enable = true;  # default shell on catalina
   # programs.fish.enable = true;
 
+  # Ensure Homebrew is installed
+  nix-homebrew = {
+    enable = true;
+    enableRosetta = true;
+    user = "epetousis";
+    autoMigrate = true;
+  };
+
   homebrew = {
     enable = true;
     onActivation = {
       cleanup = "zap";
       upgrade = true;
     };
-    taps = [
-      "homebrew/cask-versions"
-      "homebrew/cask-fonts"
-      "homebrew/cask-drivers"
-    ];
+    taps = map (key: builtins.replaceStrings ["homebrew-"] [""] key) (builtins.attrNames config.nix-homebrew.taps);
     casks = [
       "1password"
       "1password-cli"
@@ -61,7 +65,6 @@
       "cyberduck"
       "discord"
       "displaylink"
-      "displaylink-login-extension"
       "elgato-stream-deck"
       "firefox"
       "font-fira-code"
@@ -74,7 +77,6 @@
       "karabiner-elements"
       "lasso"
       "macfuse"
-      "mailtrackerblocker"
       "microsoft-word"
       "microsoft-powerpoint"
       "microsoft-excel"

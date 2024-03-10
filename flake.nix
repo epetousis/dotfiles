@@ -17,6 +17,32 @@
 
     emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
     emacs-lsp-booster.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+    homebrew-cask-versions = {
+      url = "github:homebrew/homebrew-cask-versions";
+      flake = false;
+    };
+    homebrew-cask-fonts = {
+      url = "github:homebrew/homebrew-cask-fonts";
+      flake = false;
+    };
+    homebrew-cask-drivers = {
+      url = "github:homebrew/homebrew-cask-drivers";
+      flake = false;
+    };
   };
 
   nixConfig = {
@@ -32,7 +58,23 @@
     ];
   };
 
-  outputs = { self, darwin, nixpkgs, nixpkgs-stable, home-manager, emacs-overlay, disko, emacs-lsp-booster }:
+  outputs = {
+    self,
+      darwin,
+      nixpkgs,
+      nixpkgs-stable,
+      home-manager,
+      emacs-overlay,
+      disko,
+      emacs-lsp-booster,
+      nix-homebrew,
+      homebrew-core,
+      homebrew-cask,
+      homebrew-bundle,
+      homebrew-cask-versions,
+      homebrew-cask-fonts,
+      homebrew-cask-drivers,
+  }:
   let
     nixpkgs-defaults = {
       nixpkgs.overlays = [
@@ -60,6 +102,18 @@
         nix-defaults
         home-manager.darwinModules.home-manager
         ./hosts/evan-mba.nix
+        nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew.taps = {
+            "homebrew/homebrew-core" = homebrew-core;
+            "homebrew/homebrew-cask" = homebrew-cask;
+            "homebrew/homebrew-bundle" = homebrew-bundle;
+            "homebrew/homebrew-cask-versions" = homebrew-cask-versions;
+            "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
+            "homebrew/homebrew-cask-drivers" = homebrew-cask-drivers;
+          };
+          nix-homebrew.mutableTaps = false;
+        }
       ];
     };
 
