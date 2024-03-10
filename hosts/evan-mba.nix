@@ -1,6 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
+  imports = [
+    ../modules/symlink-mac-apps.nix
+  ];
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
@@ -55,8 +59,6 @@
     };
     taps = map (key: builtins.replaceStrings ["homebrew-"] [""] key) (builtins.attrNames config.nix-homebrew.taps);
     casks = [
-      "1password"
-      "1password-cli"
       "bettertouchtool"
       "bluos-controller"
       "cryptomator"
@@ -180,40 +182,12 @@
     '';
   };
 
-  # Copy macOS apps - modified from https://github.com/nix-community/home-manager/issues/1341#issuecomment-1190875080
-  # APFS does not support hard links and Finder aliases are a clunky workaround.
-  # However, if you symlink the "Contents" folder inside? Zero issues. Both Finder and Dock
-  # see the app as a normal one, however all the contents live inside the Nix store.
-    system.activationScripts.applications.text = pkgs.lib.mkForce (
-    ''
-      echo "copying system apps to /Applications..." >&2
-      for app in $(find ${config.system.build.applications}/Applications -maxdepth 1 -type l); do
-        src="$(/usr/bin/stat -f%Y "$app")"
-        appname="$(/usr/bin/basename "$app")"
-        # "
-        if [ -n "$appname" ]; then
-          rm -rf /Applications/"$appname"
-        fi
-        mkdir /Applications/"$appname"
-        ln -s "$src"/Contents /Applications/"$appname"/Contents
-      done
-
-      echo "copying home-manager apps to /Applications..." >&2
-      for app in $(find ${pkgs.buildEnv {
-        name = "applications";
-        paths = config.home-manager.users.epetousis.home.packages;
-        pathsToLink = "/Applications";
-      }}/Applications -maxdepth 1 -type l); do
-        src="$(/usr/bin/stat -f%Y "$app")"
-        appname="$(/usr/bin/basename "$app")"
-        if [ -n "$appname" ]; then
-          rm -rf /Applications/"$appname"
-        fi
-        mkdir /Applications/"$appname"
-        ln -s "$src"/Contents /Applications/"$appname"/Contents
-      done
-    ''
-  );
+  system.symlinkApps = {
+    enable = true;
+    copiedPackages = with pkgs; [
+      _1password-gui
+    ];
+  };
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
