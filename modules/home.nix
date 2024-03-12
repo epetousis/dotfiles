@@ -79,6 +79,7 @@
       epkgs.typescript-mode
       epkgs.web-mode
       epkgs.melpaPackages.telega
+      epkgs.melpaPackages.php-mode
       (epkgs.callPackage ../overlays/eglot-booster.nix {})
     ];
   };
