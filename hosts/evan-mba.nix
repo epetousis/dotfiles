@@ -11,6 +11,7 @@
     [
       pkgs.cachix
       pkgs.pngpaste # Required to paste images into telega.el
+      pkgs.slack
     ];
 
   # Use a custom configuration.nix location.
