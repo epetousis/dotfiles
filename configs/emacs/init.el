@@ -35,19 +35,6 @@ apps are not started from a shell."
   (let* ((tsdk (concat (current-project-root) "node_modules/typescript/lib")))
     (list :typescript (list :tsdk tsdk))))
 
-(defun flymake-eslint-enable-project ()
-  "Ensure flymake-eslint uses our project-local eslint."
-  (setq flymake-eslint-executable-name (concat (current-project-root) "node_modules/.bin/eslint"))
-  (flymake-eslint-enable))
-
-(require 'flymake-eslint)
-(
- add-to-list
- 'eglot-managed-mode-hook
- '((vue-mode . flymake-eslint-enable-project)
-   (typescript-mode . flymake-eslint-enable-project))
- )
-
 ;; Language specific major modes
 (require 'typescript-mode)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
@@ -89,6 +76,8 @@ apps are not started from a shell."
 (setq inhibit-splash-screen t)
 ;; Enable icomplete-mode everywhere
 (icomplete-mode 1)
+;; Enable native full screen
+(add-to-list 'default-frame-alist '(ns-use-native-fullscreen . t))
 
 (require 'dired-sidebar)
 

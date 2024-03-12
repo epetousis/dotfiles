@@ -69,7 +69,6 @@
       epkgs.editorconfig
       epkgs.elpaDevelPackages.eglot
       epkgs.envrc
-      epkgs.flymake-eslint
       epkgs.magit
       epkgs.monokai-theme
       epkgs.melpaPackages.dired-sidebar
