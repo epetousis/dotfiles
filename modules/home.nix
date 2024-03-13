@@ -14,7 +14,6 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    _1password
     axel
     anki-bin
     emacs-lsp-booster
@@ -45,7 +44,6 @@
   ] ++ lib.optionals stdenv.isLinux [
     # Add a nicer potential system font to use (Linux distros ship some real shit fonts)
     inter
-    _1password-gui
     fira-code-nerdfont
   ];
 

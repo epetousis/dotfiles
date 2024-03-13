@@ -61,6 +61,7 @@
     taps = map (key: builtins.replaceStrings ["homebrew-"] [""] key) (builtins.attrNames config.nix-homebrew.taps);
     casks = [
       "bettertouchtool"
+      "bitwarden"
       "bluos-controller"
       "cryptomator"
       "cyberduck"
@@ -181,13 +182,6 @@
     # full screen
     ctrl + alt - f : yabai -m window --toggle zoom-fullscreen
     '';
-  };
-
-  system.symlinkApps = {
-    enable = true;
-    copiedPackages = with pkgs; [
-      _1password-gui
-    ];
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
