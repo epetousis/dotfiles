@@ -1,8 +1,6 @@
 final: prev: {
   discord = if prev.stdenv.hostPlatform.isLinux then final.callPackage ./discord { discord = prev.discord; } else prev.discord;
 
-  yabai = final.callPackage ./yabai { yabai = prev.yabai; };
-
   spotify = if prev.stdenv.hostPlatform.isLinux then final.callPackage ./spotify { spotify = prev.spotify; } else prev.spotify;
 
   discord-screenaudio = final.libsForQt5.callPackage ./discord-screenaudio {};
