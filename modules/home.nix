@@ -16,6 +16,7 @@
   home.packages = with pkgs; [
     axel
     anki-bin
+    bitwarden-cli
     emacs-lsp-booster
     ffmpeg
     firefox-bin
