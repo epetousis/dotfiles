@@ -119,7 +119,7 @@
   nixpkgs.config.allowUnfree = true;
 
   services.yabai = {
-    enable = false;
+    enable = true;
     package = pkgs.yabai;
     config = {
       layout = "bsp";
@@ -137,36 +137,40 @@
   };
 
   services.skhd = {
-    enable = false;
+    enable = true;
     package = pkgs.skhd;
     skhdConfig = ''
     # mode switching
     ctrl + alt - e : yabai -m space --layout bsp
     ctrl + alt - s : yabai -m space --layout stack
 
+    :: passthrough
+    ctrl + alt - t ; passthrough
+    passthrough < ctrl + alt - t ; default
+
     # move focus
-    ctrl + alt - j : yabai -m window --focus stack.next || yabai -m window --focus south
-    ctrl + alt - k : yabai -m window --focus stack.prev || yabai -m window --focus north
-    ctrl + alt - h : yabai -m window --focus west
-    ctrl + alt - l : yabai -m window --focus east
+    alt - j : yabai -m window --focus stack.next || yabai -m window --focus south
+    alt - k : yabai -m window --focus stack.prev || yabai -m window --focus north
+    alt - h : yabai -m window --focus west
+    alt - l : yabai -m window --focus east
 
     # move focus to display
     ctrl + alt - i : yabai -m display --focus prev
     ctrl + alt - o : yabai -m display --focus next
 
     # move focused window
-    ctrl + alt + cmd - j : yabai -m window --warp stack.next || yabai -m window --warp south
-    ctrl + alt + cmd - k : yabai -m window --warp stack.prev || yabai -m window --warp north
-    ctrl + alt + cmd - h : yabai -m window --warp west
-    ctrl + alt + cmd - l : yabai -m window --warp east
+    ctrl + alt - j : yabai -m window --warp stack.next || yabai -m window --warp south
+    ctrl + alt - k : yabai -m window --warp stack.prev || yabai -m window --warp north
+    ctrl + alt - h : yabai -m window --warp west
+    ctrl + alt - l : yabai -m window --warp east
 
     # move focused window to monitor
-    ctrl + alt + cmd - i : yabai -m window --display prev
-    ctrl + alt + cmd - o : yabai -m window --display next
+    ctrl + alt - i : yabai -m window --display prev
+    ctrl + alt - o : yabai -m window --display next
 
     # move focused window to space
-    ctrl + alt + shift - i : yabai -m window --space prev
-    ctrl + alt + shift - o : yabai -m window --space next
+    ctrl + alt - p : yabai -m window --space prev
+    ctrl + alt - 0x21 : yabai -m window --space next  # 0x21 is [
 
     # resize active window outwards
     shift + alt - h : yabai -m window --resize left:-20:0
@@ -175,13 +179,23 @@
     shift + alt - l : yabai -m window --resize right:20:0
 
     # resize active window inwards
-    shift + alt + ctrl - h : yabai -m window --resize left:20:0
-    shift + alt + ctrl - j : yabai -m window --resize bottom:0:-20
-    shift + alt + ctrl - k : yabai -m window --resize top:0:20
-    shift + alt + ctrl - l : yabai -m window --resize right:-20:0
+    ctrl + shift + alt - h : yabai -m window --resize left:20:0
+    ctrl + shift + alt - j : yabai -m window --resize bottom:0:-20
+    ctrl + shift + alt - k : yabai -m window --resize top:0:20
+    ctrl + shift + alt - l : yabai -m window --resize right:-20:0
 
     # full screen
-    ctrl + alt - f : yabai -m window --toggle zoom-fullscreen
+    shift + alt - x : yabai -m window --toggle zoom-parent
+    shift + alt - c : yabai -m window --toggle zoom-fullscreen
+
+    # Balance out all windows both horizontally and vertically to occupy the same space
+    alt - 0 : yabai -m space --balance
+
+    # Flip the tree horizontally
+    alt - n : yabai -m space --mirror x-axis
+
+    # Flip the tree vertically
+    alt - m : yabai -m space --mirror y-axis
     '';
   };
 
