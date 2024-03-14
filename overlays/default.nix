@@ -56,4 +56,11 @@ final: prev: {
       };
     });
   });
+
+  bitlbee = prev.bitlbee.overrideAttrs(p: {
+    # The bitlbee derivation seems to work just fine on macOS lmao
+    meta = p.meta // {
+      platforms = p.meta.platforms ++ prev.lib.platforms.darwin;
+    };
+  });
 }

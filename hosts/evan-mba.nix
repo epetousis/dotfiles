@@ -3,6 +3,7 @@
 {
   imports = [
     ../modules/symlink-mac-apps.nix
+    ../modules/bitlbee.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
@@ -182,6 +183,13 @@
     # full screen
     ctrl + alt - f : yabai -m window --toggle zoom-fullscreen
     '';
+  };
+
+  services.bitlbee = {
+    enable = true;
+    libpurple_plugins = [
+      pkgs.pidginPackages.purple-discord
+    ];
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
