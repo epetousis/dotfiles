@@ -148,11 +148,24 @@
     ctrl + alt - t ; passthrough
     passthrough < ctrl + alt - t ; default
 
-    # move focus
-    alt - j : yabai -m window --focus stack.next || yabai -m window --focus south
-    alt - k : yabai -m window --focus stack.prev || yabai -m window --focus north
-    alt - h : yabai -m window --focus west
-    alt - l : yabai -m window --focus east
+    # Based off of https://gist.github.com/ethan-leba/760054f36a2f7c144c6b06ab6458fae6
+    # move focus when not in emacs (emacs has its own controls)
+    alt - h [
+      *      : yabai -m window --focus west
+      "Emacs" ~
+    ]
+    alt - j  [
+      *      : yabai -m window --focus stack.next || yabai -m window --focus south
+      "Emacs" ~
+    ]
+    alt - k  [
+      *      : yabai -m window --focus stack.prev || yabai -m window --focus north
+      "Emacs" ~
+    ]
+    alt - l  [
+      *      : yabai -m window --focus east
+      "Emacs" ~
+    ]
 
     # move focus to display
     ctrl + alt - i : yabai -m display --focus prev

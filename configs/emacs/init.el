@@ -92,6 +92,38 @@ apps are not started from a shell."
 ;; Define an alternative key for eldoc
 (global-set-key (kbd "C-h ,") #'eldoc-doc-buffer)
 
+;; Taken from https://gist.github.com/ethan-leba/760054f36a2f7c144c6b06ab6458fae6
+(defun wm-move-on-error (direction move-fn)
+  (interactive)
+  (condition-case nil
+      (funcall move-fn)
+    (user-error (condition-case nil
+                    (start-process "yabai" nil "yabai" "-m" "window" "--focus" direction)
+                  (error nil)))))
+
+(defun wm-window-left ()
+  (interactive)
+  (wm-move-on-error "west" #'windmove-left))
+
+(defun wm-window-right ()
+  (interactive)
+  (wm-move-on-error "east" #'windmove-right))
+
+(defun wm-window-up ()
+  (interactive)
+  (wm-move-on-error "north" #'windmove-up))
+
+(defun wm-window-down ()
+  (interactive)
+  (wm-move-on-error "south" #'windmove-down))
+
+;; Duplicate window move binds from tiling window manager
+(setq mac-option-modifier 'alt)
+(global-set-key (kbd "A-h") #'wm-window-left)
+(global-set-key (kbd "A-j") #'wm-window-down)
+(global-set-key (kbd "A-k") #'wm-window-up)
+(global-set-key (kbd "A-l") #'wm-window-right)
+
 ;;; Custom functions
 (defun current-project-root ()
   "Gets the root of the current project."
