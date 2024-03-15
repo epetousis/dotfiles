@@ -44,6 +44,7 @@ final: prev: {
         rev = "b9253821e106f070def20e5cf9b4ad6aa4a812ac";
         sha256 = "sha256-f9nDrK/5Pd+4to/VjpS6zKzKk1bp4g9QmnFHJTzNgSE";
       };
+      env.USE_QRCODE_AUTH = "1";
       nativeBuildInputs = p.nativeBuildInputs ++ [ prev.gcc prev.pkg-config ];
       buildInputs = p.buildInputs ++ [ prev.qrencode prev.nss ];
       buildPhase = ''
