@@ -210,13 +210,7 @@
     # Flip the tree vertically
     alt - m : yabai -m space --mirror y-axis
     '';
-  };
 
-  services.bitlbee = {
-    enable = true;
-    libpurple_plugins = [
-      pkgs.pidginPackages.purple-discord
-    ];
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
