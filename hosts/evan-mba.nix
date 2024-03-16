@@ -120,6 +120,7 @@
 
   services.yabai = {
     enable = true;
+    enableScriptingAddition = true;
     package = pkgs.yabai;
     config = {
       layout = "bsp";
@@ -145,8 +146,8 @@
     ctrl + alt - s : yabai -m space --layout stack
 
     :: passthrough
-    ctrl + alt - t ; passthrough
-    passthrough < ctrl + alt - t ; default
+    shift + alt - d ; passthrough
+    passthrough < shift + alt - d ; default
 
     # Based off of https://gist.github.com/ethan-leba/760054f36a2f7c144c6b06ab6458fae6
     # move focus when not in emacs (emacs has its own controls)
@@ -178,39 +179,48 @@
     ctrl + alt - l : yabai -m window --warp east
 
     # move focused window to monitor
-    ctrl + alt - i : yabai -m window --display prev
-    ctrl + alt - o : yabai -m window --display next
+    alt - q : yabai -m window --display prev
+    alt - w : yabai -m window --display next
 
     # move focused window to space
-    ctrl + alt - p : yabai -m window --space prev
-    ctrl + alt - 0x21 : yabai -m window --space next  # 0x21 is [
+    alt - e : yabai -m window --space prev
+    alt - r : yabai -m window --space next
+
+    # switch spaces
+    alt - n : yabai -m space --focus prev
+    alt - m : yabai -m space --focus next
 
     # resize active window outwards
-    shift + alt - h : yabai -m window --resize left:-20:0
-    shift + alt - j : yabai -m window --resize bottom:0:20
-    shift + alt - k : yabai -m window --resize top:0:-20
-    shift + alt - l : yabai -m window --resize right:20:0
+    alt - u : yabai -m window --resize left:-20:0
+    alt - i : yabai -m window --resize bottom:0:20
+    alt - o : yabai -m window --resize top:0:-20
+    alt - p : yabai -m window --resize right:20:0
 
     # resize active window inwards
-    ctrl + shift + alt - h : yabai -m window --resize left:20:0
-    ctrl + shift + alt - j : yabai -m window --resize bottom:0:-20
-    ctrl + shift + alt - k : yabai -m window --resize top:0:20
-    ctrl + shift + alt - l : yabai -m window --resize right:-20:0
+    shift + alt - u : yabai -m window --resize left:20:0
+    shift + alt - i : yabai -m window --resize bottom:0:-20
+    shift + alt - o : yabai -m window --resize top:0:20
+    shift + alt - p : yabai -m window --resize right:-20:0
 
     # full screen
     shift + alt - x : yabai -m window --toggle zoom-parent
     shift + alt - c : yabai -m window --toggle zoom-fullscreen
 
     # Balance out all windows both horizontally and vertically to occupy the same space
-    alt - 0 : yabai -m space --balance
+    alt - b : yabai -m space --balance
 
     # Flip the tree horizontally
-    alt - n : yabai -m space --mirror x-axis
+    alt - c : yabai -m space --mirror x-axis
 
     # Flip the tree vertically
-    alt - m : yabai -m space --mirror y-axis
-    '';
+    alt - v : yabai -m space --mirror y-axis
 
+    # Rotate tree 90 degrees
+    alt - g : yabai -m space --rotate 90
+
+    # Toggle window split between vertical and horizontal
+    alt - s : yabai -m window --toggle split
+    '';
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
