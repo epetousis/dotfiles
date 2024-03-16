@@ -124,6 +124,26 @@ apps are not started from a shell."
 (global-set-key (kbd "A-k") #'wm-window-up)
 (global-set-key (kbd "A-l") #'wm-window-right)
 
+;; Add a project command for terminal
+;; Modified from https://github.com/emacs-mirror/emacs/blob/c77e35efd36f2c43e87066faa4257606d5c6f849/lisp/progmodes/project.el#L1279
+(defun project-vterm ()
+  "Start an inferior vterm in the current project's root directory.
+If a buffer already exists for running a vterm in the project's root,
+switch to it.  Otherwise, create a new vterm buffer.
+With \\[universal-argument] prefix arg, create a new inferior vterm buffer even
+if one already exists."
+  (interactive)
+  (require 'comint)
+  (let* ((default-directory (project-root (project-current t)))
+         (default-project-vterm-name (project-prefixed-buffer-name "vterm"))
+         (vterm-buffer (get-buffer default-project-vterm-name)))
+    (if (and vterm-buffer (not current-prefix-arg))
+        (if (comint-check-proc vterm-buffer)
+            (pop-to-buffer vterm-buffer (bound-and-true-p display-comint-buffer-action))
+          (vterm vterm-buffer))
+      (vterm (generate-new-buffer-name default-project-vterm-name)))))
+(define-key project-prefix-map "t" 'project-vterm)
+
 ;;; Custom functions
 (defun current-project-root ()
   "Gets the root of the current project."
