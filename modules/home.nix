@@ -17,6 +17,7 @@
     axel
     anki-bin
     bitwarden-cli
+    discordo
     emacs-lsp-booster
     ffmpeg
     firefox-bin
