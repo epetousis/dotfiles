@@ -72,6 +72,7 @@
       epkgs.magit
       epkgs.monokai-theme
       epkgs.melpaPackages.dired-sidebar
+      epkgs.avy
 
       # Modes
       epkgs.nix-mode

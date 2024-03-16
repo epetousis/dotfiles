@@ -144,6 +144,10 @@ if one already exists."
       (vterm (generate-new-buffer-name default-project-vterm-name)))))
 (define-key project-prefix-map "t" 'project-vterm)
 
+;; Add a bind for avy
+(define-key key-translation-map (kbd "A-x") nil) ;; Remove this macOS-duplicating key translation bind
+(global-set-key (kbd "A-x") 'avy-goto-char)
+
 ;;; Custom functions
 (defun current-project-root ()
   "Gets the root of the current project."
