@@ -8,8 +8,6 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = github:nix-community/home-manager;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    emacs-overlay.url = "github:nix-community/emacs-overlay/master";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
     # Install Disko for disk partitioning
     disko.url = "github:nix-community/disko";
@@ -67,7 +65,6 @@
       nixpkgs,
       nixpkgs-stable,
       home-manager,
-      emacs-overlay,
       disko,
       emacs-lsp-booster,
       nix-homebrew,
@@ -82,7 +79,6 @@
   let
     nixpkgs-defaults = {
       nixpkgs.overlays = [
-        emacs-overlay.overlays.package
         emacs-lsp-booster.overlays.default
       ];
     };

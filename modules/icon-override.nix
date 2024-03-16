@@ -1,10 +1,10 @@
-{ pkgs, pkg, iconPath, lib }:
+{ pkgs, pkg, iconPath, lib, stdenv }:
 /*
 Often, one will come across a macOS app where a developer either has forgotten to update their
 icon styling to match Apple's redesigns, or worse: [a developer has refused outright to implement it.](https://github.com/alacritty/alacritty/pull/7110#pullrequestreview-1542387778).
 Maybe one just wants their icons to match a certain style. This derivation helps with this.
 */
-pkg.overrideAttrs (old: {
+if stdenv.isDarwin then pkg.overrideAttrs (old: {
   name="${old.pname}-macport-icon";
 
   # Stolen from https://stackoverflow.com/a/68523368/830946
@@ -35,4 +35,4 @@ pkg.overrideAttrs (old: {
       # TODO: find .app smarter
       cp -vf ${iconPath} $APP_PATH/Contents/Resources/$ICON
     '';
-})
+}) else pkg
