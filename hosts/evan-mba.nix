@@ -227,13 +227,13 @@
     ctrl + alt - c : yabai -m space --layout stack
 
     # Balance out all windows both horizontally and vertically to occupy the same space
-    alt - b : yabai -m space --balance
-
-    # Flip the tree horizontally
-    alt - c : yabai -m space --mirror x-axis
+    shift + alt - b : yabai -m space --balance
 
     # Flip the tree vertically
     alt - v : yabai -m space --mirror y-axis
+
+    # Flip the tree horizontally
+    shift + alt - v : yabai -m space --mirror x-axis
 
     # Rotate tree 90 degrees
     alt - g : yabai -m space --rotate 90
