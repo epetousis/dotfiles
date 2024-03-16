@@ -170,10 +170,22 @@
     ]
 
     # move focused window
-    ctrl + alt - j : yabai -m window --warp stack.next || yabai -m window --warp south
-    ctrl + alt - k : yabai -m window --warp stack.prev || yabai -m window --warp north
-    ctrl + alt - h : yabai -m window --warp west
-    ctrl + alt - l : yabai -m window --warp east
+    shift + alt - j : yabai -m window --warp stack.next || yabai -m window --warp south
+    shift + alt - k : yabai -m window --warp stack.prev || yabai -m window --warp north
+    shift + alt - h : yabai -m window --warp west
+    shift + alt - l : yabai -m window --warp east
+
+    # insert focused window
+    ctrl + alt - j : yabai -m window --insert south
+    ctrl + alt - k : yabai -m window --insert north
+    ctrl + alt - h : yabai -m window --insert west
+    ctrl + alt - l : yabai -m window --insert east
+
+    # swap focused window
+    shift + ctrl + alt - j : yabai -m window --swap south
+    shift + ctrl + alt - k : yabai -m window --swap north
+    shift + ctrl + alt - h : yabai -m window --swap west
+    shift + ctrl + alt - l : yabai -m window --swap east
 
     # move focused window to monitor
     alt - q : yabai -m window --display prev
