@@ -142,16 +142,14 @@
     enable = true;
     package = pkgs.skhd;
     skhdConfig = ''
-    # mode switching
-    shift + alt - e : yabai -m space --layout bsp
-    shift + alt - s : yabai -m space --layout stack
-
+    # Define a passthrough mode to temp disable shortcuts in
     :: passthrough
     shift + alt - d ; passthrough
     passthrough < shift + alt - d ; default
 
+    ## Focus switching
     # Based off of https://gist.github.com/ethan-leba/760054f36a2f7c144c6b06ab6458fae6
-    # move focus when not in emacs (emacs has its own controls)
+    # Switch focus to window (except in emacs - it has its own controls)
     alt - h [
       *      : yabai -m window --focus west
       "Emacs" ~
@@ -169,55 +167,64 @@
       "Emacs" ~
     ]
 
+    # Switch focus to monitor
+    alt - q : yabai -m display --focus prev
+    alt - w : yabai -m display --focus next
+
+    # Switch focus to space
+    alt - e : yabai -m space --focus prev
+    alt - r : yabai -m space --focus next
+
+    ## Window movement
     # move focused window
     shift + alt - j : yabai -m window --warp stack.next || yabai -m window --warp south
     shift + alt - k : yabai -m window --warp stack.prev || yabai -m window --warp north
     shift + alt - h : yabai -m window --warp west
     shift + alt - l : yabai -m window --warp east
 
-    # insert focused window
+    # Move focused window to monitor
+    shift + alt - q : yabai -m window --display prev
+    shift + alt - w : yabai -m window --display next
+
+    # Move focused window to space
+    shift + alt - e : yabai -m window --space prev
+    shift + alt - r : yabai -m window --space next
+
+    ## Extra window movement commands
+    # Queue insert on focused window
+    # (an overlay will display indicating the insert position of the next moved/opened window)
     ctrl + alt - j : yabai -m window --insert south
     ctrl + alt - k : yabai -m window --insert north
     ctrl + alt - h : yabai -m window --insert west
     ctrl + alt - l : yabai -m window --insert east
 
-    # swap focused window
+    # Swap focused window
     shift + ctrl + alt - j : yabai -m window --swap south
     shift + ctrl + alt - k : yabai -m window --swap north
     shift + ctrl + alt - h : yabai -m window --swap west
     shift + ctrl + alt - l : yabai -m window --swap east
 
-    # move focused window to monitor
-    alt - q : yabai -m window --display prev
-    alt - w : yabai -m window --display next
-
-    # move focus to monitor
-    shift + alt - q : yabai -m display --focus prev
-    shift + alt - w : yabai -m display --focus next
-
-    # move focused window to space
-    alt - e : yabai -m window --space prev
-    alt - r : yabai -m window --space next
-
-    # switch spaces
-    alt - n : yabai -m space --focus prev
-    alt - m : yabai -m space --focus next
-
-    # resize active window outwards
+    ## Resizing
+    # Resize active window edges outwards
     alt - u : yabai -m window --resize left:-20:0
     alt - i : yabai -m window --resize bottom:0:20
     alt - o : yabai -m window --resize top:0:-20
     alt - p : yabai -m window --resize right:20:0
 
-    # resize active window inwards
+    # Resize active window edges inwards
     shift + alt - u : yabai -m window --resize left:20:0
     shift + alt - i : yabai -m window --resize bottom:0:-20
     shift + alt - o : yabai -m window --resize top:0:20
     shift + alt - p : yabai -m window --resize right:-20:0
 
-    # full screen
+    # Full screen
     shift + alt - x : yabai -m window --toggle zoom-parent
     shift + alt - c : yabai -m window --toggle zoom-fullscreen
+
+    ## Layout
+    # Mode switching
+    ctrl + alt - x : yabai -m space --layout bsp
+    ctrl + alt - c : yabai -m space --layout stack
 
     # Balance out all windows both horizontally and vertically to occupy the same space
     alt - b : yabai -m space --balance
@@ -233,6 +240,10 @@
 
     # Toggle window split between vertical and horizontal
     alt - s : yabai -m window --toggle split
+
+    # Create space
+    alt - n : yabai -m space --create
+    ctrl + alt - 0x2F : yabai -m space --destroy # 0x2F = .
     '';
   };
 
