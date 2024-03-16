@@ -25,6 +25,7 @@
     git-filter-repo
     heroku
     jq
+    kitty
     mosh
     neovim
     nix-output-monitor

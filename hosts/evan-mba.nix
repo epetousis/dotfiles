@@ -77,7 +77,6 @@
       "google-chrome"
       "iina"
       "istat-menus"
-      "iterm2-beta"
       "karabiner-elements"
       "keka"
       "lasso"
