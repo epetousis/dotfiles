@@ -169,10 +169,6 @@
       "Emacs" ~
     ]
 
-    # move focus to display
-    ctrl + alt - i : yabai -m display --focus prev
-    ctrl + alt - o : yabai -m display --focus next
-
     # move focused window
     ctrl + alt - j : yabai -m window --warp stack.next || yabai -m window --warp south
     ctrl + alt - k : yabai -m window --warp stack.prev || yabai -m window --warp north
@@ -182,6 +178,10 @@
     # move focused window to monitor
     alt - q : yabai -m window --display prev
     alt - w : yabai -m window --display next
+
+    # move focus to monitor
+    shift + alt - q : yabai -m display --focus prev
+    shift + alt - w : yabai -m display --focus next
 
     # move focused window to space
     alt - e : yabai -m window --space prev
