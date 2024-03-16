@@ -143,8 +143,8 @@
     package = pkgs.skhd;
     skhdConfig = ''
     # mode switching
-    ctrl + alt - e : yabai -m space --layout bsp
-    ctrl + alt - s : yabai -m space --layout stack
+    shift + alt - e : yabai -m space --layout bsp
+    shift + alt - s : yabai -m space --layout stack
 
     :: passthrough
     shift + alt - d ; passthrough
