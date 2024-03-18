@@ -90,7 +90,7 @@ in
 
       ##### Bar Appearance #####
 
-      sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
+      sketchybar --bar position=top height=30 blur_radius=30 color=0x40000000 corner_radius=9 margin=10 y_offset=10
 
       ##### Changing Defaults #####
 
@@ -105,7 +105,7 @@ in
         icon.padding_right=4
         label.padding_left=4
         label.padding_right=4
-                                                                   )
+      )
       sketchybar --default "''${default[@]}"
 
       ##### Mission Control Space Indicators #####
