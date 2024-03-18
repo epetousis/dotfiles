@@ -14,6 +14,7 @@
       pkgs.cachix
       pkgs.pngpaste # Required to paste images into telega.el
       pkgs.slack
+      pkgs.weechat
     ];
 
   system.symlinkApps.enable = true;
