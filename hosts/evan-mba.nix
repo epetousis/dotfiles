@@ -4,6 +4,7 @@
   imports = [
     ../modules/symlink-mac-apps.nix
     ../modules/bitlbee.nix
+    ../modules/sketchybar.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
@@ -132,6 +133,7 @@
       left_padding        = 10;
       right_padding       = 10;
       window_gap          = 10;
+      external_bar = lib.optionals config.services.sketchybar.enable "all:40:0";
     };
     extraConfig = ''
       yabai -m rule --add label="Firefox PIP" app="^Firefox$" title="^(Picture-in-Picture)$" manage=off
@@ -246,6 +248,8 @@
     ctrl + alt - 0x2F : yabai -m space --destroy # 0x2F = .
     '';
   };
+
+  services.evanSketchybar.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
