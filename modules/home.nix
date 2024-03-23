@@ -44,10 +44,12 @@
   ] ++ lib.optionals stdenv.isDarwin [
     # macOS dependencies
     pinentry_mac
+    libreoffice-bin
   ] ++ lib.optionals stdenv.isLinux [
     # Add a nicer potential system font to use (Linux distros ship some real shit fonts)
     inter
     fira-code-nerdfont
+    libreoffice
   ];
 
   fonts.fontconfig.enable = pkgs.stdenv.isLinux;
