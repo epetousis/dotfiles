@@ -37,7 +37,6 @@
     ripgrep
     rust-analyzer
     streamlink
-    thefuck
     tmux
     wget
     yt-dlp
