@@ -100,7 +100,7 @@
       epkgs.company
       epkgs.dtrt-indent
       epkgs.editorconfig
-      epkgs.elpaDevelPackages.eglot
+      epkgs.eglot
       epkgs.envrc
       epkgs.magit
       epkgs.monokai-theme
