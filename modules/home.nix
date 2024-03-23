@@ -125,7 +125,6 @@
 
   services.gpg-agent = {
     enable = pkgs.stdenv.hostPlatform.isLinux;
-    pinentryFlavor = "qt";
   };
 
   programs.git = {
