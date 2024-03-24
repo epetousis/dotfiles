@@ -17,17 +17,23 @@
     axel
     anki-bin
     bitwarden-cli
+    cyberduck
+    deluge
+    discord
     discordo
     emacs-lsp-booster
     ffmpeg
     firefox-bin
     fd
+    fira-code
+    fira-code-nerdfont
     fzf
     git-filter-repo
     heroku
     jq
     kitty
     mosh
+    mpv
     neovim
     nix-output-monitor
     nodejs
@@ -37,14 +43,22 @@
     rclone
     ripgrep
     rust-analyzer
+    spotify-player
     streamlink
+    syncthing
     tmux
     wget
     yt-dlp
   ] ++ lib.optionals stdenv.isDarwin [
-    # macOS dependencies
+    # macOS dependencies, stuff that should be everywhere instead of one system
+    karabiner-elements
+    keka
+    monitorcontrol
     pinentry_mac
     libreoffice-bin
+    soundsource
+    stats
+    unnaturalscrollwheels
   ] ++ lib.optionals stdenv.isLinux [
     # Add a nicer potential system font to use (Linux distros ship some real shit fonts)
     inter

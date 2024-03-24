@@ -13,8 +13,8 @@
     [
       pkgs.cachix
       pkgs.pngpaste # Required to paste images into telega.el
-      pkgs.slack
       pkgs.weechat
+      pkgs.bluos-controller
     ];
 
   system.symlinkApps.enable = true;
@@ -66,40 +66,17 @@
     };
     taps = map (key: builtins.replaceStrings ["homebrew-"] [""] key) (builtins.attrNames config.nix-homebrew.taps);
     casks = [
-      "bettertouchtool"
       "bitwarden"
-      "bluos-controller"
       "cryptomator"
-      "cyberduck"
-      "discord"
       "displaylink"
       "elgato-stream-deck"
-      "font-fira-code"
-      "font-fira-code-nerd-font"
-      "gpg-suite-no-mail"
       "google-chrome"
-      "iina"
-      "istat-menus"
-      "karabiner-elements"
-      "keka"
-      "lasso"
       "macfuse"
-      "monitorcontrol"
       "obs"
-      "parsec"
       "raycast"
       "rekordbox"
-      "sf-symbols"
       "signal"
-      "soundsource"
-      "spotify"
-      "syncthing"
       "thingsmacsandboxhelper"
-      "transmission"
-      "unnaturalscrollwheels"
-      "utm"
-      "visual-studio-code"
-      "yubico-yubikey-manager"
       "zoom"
     ];
   };
