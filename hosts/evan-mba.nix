@@ -245,7 +245,7 @@
     alt - s : yabai -m window --toggle split
 
     # Create space
-    alt - n : yabai -m space --create
+    ctrl + alt - n : yabai -m space --create
     ctrl + alt - 0x2F : yabai -m space --destroy # 0x2F = .
     '';
   };
