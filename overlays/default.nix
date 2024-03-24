@@ -32,4 +32,6 @@ final: prev: {
       plugins = builtins.attrValues (builtins.removeAttrs availablePlugins [ "php" ]);
     };
   };
+
+  bluos-controller = final.callPackage ./bluos-controller {};
 }
