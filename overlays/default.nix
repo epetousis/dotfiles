@@ -24,15 +24,6 @@ final: prev: {
     nano-theme-git = final.emacsPackages.callPackage ./emacs-nano-theme {};
   };
 
-  # Fix build of openai-whisper on macOS
-  openai-triton-llvm = (prev.openai-triton-llvm.overrideAttrs (p: {
-    doCheck = false;
-    doInstallCheck = false;
-  })).override (p: {
-    # OpenAI Triton doesn't seem to need this at all, not sure why it is here?
-    libpfm = if prev.stdenv.hostPlatform.isDarwin then null else p.libpfm;
-  });
-
   weechat = prev.weechat.override {
     configure = { availablePlugins, ... }: {
       scripts = with prev.weechatScripts; [

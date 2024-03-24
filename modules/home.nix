@@ -33,7 +33,7 @@
     nodejs
     nodePackages.pyright
     nodePackages.typescript-language-server
-    openai-whisper
+    openai-whisper-cpp
     rclone
     ripgrep
     rust-analyzer
