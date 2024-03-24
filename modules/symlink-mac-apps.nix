@@ -27,6 +27,9 @@ in {
     # However, `codesign --verify` has issues with this. It is a tradeoff.
     system.activationScripts.applications.text = pkgs.lib.mkForce (
       ''
+      # Make sure the shell doesn't split by spaces in the path name
+      IFS=$'\n'
+
       echo "symlinking system apps to /Applications..." >&2
       for app in $(find ${config.system.build.applications}/Applications -maxdepth 1 -type l); do
         src="$(/usr/bin/stat -f%Y "$app")"
@@ -67,6 +70,8 @@ in {
         fi
         cp -Lr "$src" /Applications
       done
+
+      unset IFS
     ''
     );
   };
