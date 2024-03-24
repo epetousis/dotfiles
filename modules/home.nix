@@ -116,6 +116,7 @@
       epkgs.melpaPackages.php-mode
       (epkgs.callPackage ../overlays/eglot-booster.nix {})
       epkgs.vterm
+      epkgs.ement
     ];
   };
 
