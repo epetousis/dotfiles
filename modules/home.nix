@@ -17,7 +17,6 @@
     axel
     anki-bin
     bitwarden-cli
-    cyberduck
     deluge
     discord
     discordo
@@ -54,6 +53,7 @@
     yt-dlp
   ] ++ lib.optionals stdenv.isDarwin [
     # macOS dependencies, stuff that should be everywhere instead of one system
+    cyberduck
     karabiner-elements
     keka
     monitorcontrol
