@@ -16,6 +16,7 @@
       pkgs.weechat
       pkgs.bluos-controller
       pkgs.slack
+      pkgs.emacsPackages.evansEmacs
     ];
 
   system.symlinkApps.enable = true;
@@ -226,12 +227,23 @@
     # Create space
     ctrl + alt - n : yabai -m space --create
     ctrl + alt - 0x2F : yabai -m space --destroy # 0x2F = .
+
+    # Open an emacs window
+    ctrl + alt - e : emacsclient -cn
     '';
   };
 
   services.evanSketchybar.enable = true;
 
   system.defaults.finder.CreateDesktop = false;
+
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacsPackages.evansEmacs;
+    # HACK: traverse out of bin/ to open the Emacs app binary instead.
+    # This means that the Emacs daemon will use the correct name and icon.
+    exec = "../Applications/Emacs.app/Contents/MacOS/Emacs";
+  };
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
