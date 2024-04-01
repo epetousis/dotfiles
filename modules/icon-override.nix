@@ -5,7 +5,7 @@ icon styling to match Apple's redesigns, or worse: [a developer has refused outr
 Maybe one just wants their icons to match a certain style. This derivation helps with this.
 */
 if stdenv.isDarwin then pkg.overrideAttrs (old: {
-  name="${old.pname}-macport-icon";
+  name="${if builtins.hasAttr "pname" old then old.pname else old.name}-macport-icon";
 
   # Stolen from https://stackoverflow.com/a/68523368/830946
   buildCommand = ''
