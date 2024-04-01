@@ -43,7 +43,10 @@
     rclone
     ripgrep
     rust-analyzer
-    spotify-player
+    (pkgs.callPackage ./icon-override.nix {
+      pkg = pkgs.spotify;
+      iconPath = ./spotify.icns;
+    })
     streamlink
     syncthing
     tmux
