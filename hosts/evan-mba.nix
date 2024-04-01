@@ -15,6 +15,7 @@
       pkgs.pngpaste # Required to paste images into telega.el
       pkgs.weechat
       pkgs.bluos-controller
+      pkgs.slack
     ];
 
   system.symlinkApps.enable = true;
