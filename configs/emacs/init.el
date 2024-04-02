@@ -146,6 +146,7 @@ if one already exists."
           (vterm vterm-buffer))
       (vterm (generate-new-buffer-name default-project-vterm-name)))))
 (define-key project-prefix-map "t" 'project-vterm)
+(add-to-list 'project-switch-commands '(project-vterm "Vterm") t)
 
 ;; Add a bind for avy
 (define-key key-translation-map (kbd "A-x") nil) ;; Remove this macOS-duplicating key translation bind
