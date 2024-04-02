@@ -100,8 +100,14 @@ apps are not started from a shell."
   (condition-case nil
       (funcall move-fn)
     (user-error (condition-case nil
-                    (start-process "yabai" nil "yabai" "-m" "window" "--focus" direction)
-                  (error nil)))))
+                    ;; Try shifting focus in a stack context first - if it fails, use normal directions
+                    (start-process "yabai" nil "yabai" "-m" "window" "--focus" (pcase direction
+                                                                                     ("south" "stack.next")
+                                                                                     ("north" "stack.prev")
+                                                                                     (_ 'direction)))
+                  (error (condition-case nil
+                             (start-process "yabai" nil "yabai" "-m" "window" "--focus" direction)
+                           (error nil)))))))
 
 (defun wm-window-left ()
   (interactive)
