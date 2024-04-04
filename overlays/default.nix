@@ -35,4 +35,6 @@ final: prev: {
   };
 
   bluos-controller = final.callPackage ./bluos-controller {};
+
+  asahi-btsync = final.callPackage ./asahi-btsync.nix {};
 }

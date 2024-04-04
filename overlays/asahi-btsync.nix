@@ -1,0 +1,14 @@
+{ fetchCrate, rustPlatform }:
+
+rustPlatform.buildRustPackage rec {
+  pname = "asahi-btsync";
+  version = "0.2.0";
+
+  src = fetchCrate {
+    inherit pname version;
+    hash = "sha256-jp05WcwY1cWh4mBQj+3jRCZoG32OhDvTB84hOAGemX8=";
+  };
+
+  cargoHash = "sha256-XsgWqdwb0DDsK6HkaoVGQB/mm1U1TVzJM5q/gt9GryA=";
+  cargoDepsName = pname;
+}

@@ -74,12 +74,10 @@
     ../../modules/home.nix
   ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
+  # System-wide packages
+  environment.systemPackages = with pkgs; [
+    asahi-btsync
+  ];
 
   # List services that you want to enable:
 
