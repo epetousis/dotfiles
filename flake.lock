@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "asahi-firmware": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1712151939,
+        "narHash": "sha256-7LmtWuV0rC0Tj8KEghTqF1U/ledLhfOrbaXf6ZBJJfc=",
+        "ref": "refs/heads/master",
+        "rev": "dbbde40b27995f4626aac237c27582da93c5e2ce",
+        "revCount": 1,
+        "type": "git",
+        "url": "file:///etc/nixos/firmware"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///etc/nixos/firmware"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -76,6 +92,21 @@
       "original": {
         "owner": "slotThe",
         "repo": "emacs-lsp-booster-flake",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "locked": {
+        "lastModified": 1688025799,
+        "narHash": "sha256-ktpB4dRtnksm9F5WawoIkEneh1nrEvuxb5lJFt1iOyw=",
+        "owner": "nix-community",
+        "repo": "flake-compat",
+        "rev": "8bf105319d44f6b9f0d764efa4fdef9f1cc9ba1c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "flake-compat",
         "type": "github"
       }
     },
@@ -270,6 +301,26 @@
         "type": "github"
       }
     },
+    "nixos-apple-silicon": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": "nixpkgs_3",
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1711325419,
+        "narHash": "sha256-dKZUWMB4py9rhefu1lsrCrwksK4WX/dtW8Ma807KyPA=",
+        "owner": "tpwrules",
+        "repo": "nixos-apple-silicon",
+        "rev": "93e85575f63b32b9996676513d95288fc1c87ca9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tpwrules",
+        "repo": "nixos-apple-silicon",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1687274257,
@@ -337,6 +388,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1711163522,
+        "narHash": "sha256-YN/Ciidm+A0fmJPWlHBGvVkcarYWSC+s3NTPk/P+q3c=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "44d0940ea560dee511026a53f0e2e2cde489b4d4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "44d0940ea560dee511026a53f0e2e2cde489b4d4",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1711001935,
         "narHash": "sha256-URtGpHue7HHZK0mrHnSf8wJ6OmMKYSsoLmJybrOLFSQ=",
         "owner": "nixos",
@@ -353,6 +420,7 @@
     },
     "root": {
       "inputs": {
+        "asahi-firmware": "asahi-firmware",
         "darwin": "darwin",
         "disko": "disko",
         "emacs-lsp-booster": "emacs-lsp-booster",
@@ -364,9 +432,26 @@
         "homebrew-cask-versions": "homebrew-cask-versions",
         "homebrew-core": "homebrew-core",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_3",
+        "nixos-apple-silicon": "nixos-apple-silicon",
+        "nixpkgs": "nixpkgs_4",
         "nixpkgs-firefox-darwin": "nixpkgs-firefox-darwin",
         "nixpkgs-stable": "nixpkgs-stable"
+      }
+    },
+    "rust-overlay": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686795910,
+        "narHash": "sha256-jDa40qRZ0GRQtP9EMZdf+uCbvzuLnJglTUI2JoHfWDc=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "5c2b97c0a9bc5217fc3dfb1555aae0fb756d99f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "systems": {

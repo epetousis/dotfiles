@@ -19,6 +19,12 @@
     nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
     nixpkgs-firefox-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+    asahi-firmware = {
+      url = "git+file:///etc/nixos/firmware";
+      flake = false;
+    };
+
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -68,6 +74,7 @@
       disko,
       emacs-lsp-booster,
       nix-homebrew,
+      nixos-apple-silicon,
       homebrew-core,
       homebrew-cask,
       homebrew-bundle,
@@ -80,7 +87,9 @@
     nixpkgs-defaults = {
       nixpkgs.overlays = [
         emacs-lsp-booster.overlays.default
+        (import ./overlays)
       ];
+      nixpkgs.config.allowUnfree = true;
     };
 
     nix-defaults = {
@@ -94,6 +103,7 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "epetousis.cachix.org-1:c87cgNPjvPjqoZX7dbedzBo/cx2ULiGjSNN12VV5bKw="
       ];
+      nix.settings.experimental-features = [ "nix-command" "flakes" ];
     } // nixpkgs-defaults;
   in {
     darwinConfigurations."evan-mba" = darwin.lib.darwinSystem {
@@ -114,6 +124,19 @@
           };
           nix-homebrew.mutableTaps = false;
           nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ];
+        }
+      ];
+    };
+
+    nixosConfigurations."evan-mba" = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [
+        nix-defaults
+        ./hosts/evan-mba-nix
+        home-manager.nixosModules.home-manager
+        nixos-apple-silicon.nixosModules.default
+        {
+          hardware.asahi.peripheralFirmwareDirectory = inputs.asahi-firmware;
         }
       ];
     };

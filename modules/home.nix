@@ -15,14 +15,11 @@
 
   home.packages = with pkgs; [
     axel
-    anki-bin
     bitwarden-cli
     deluge
-    discord
     discordo
     emacs-lsp-booster
     ffmpeg
-    firefox-bin
     fd
     fira-code
     fira-code-nerdfont
@@ -42,18 +39,17 @@
     rclone
     ripgrep
     rust-analyzer
-    (pkgs.callPackage ./icon-override.nix {
-      pkg = pkgs.spotify;
-      iconPath = ./spotify.icns;
-    })
     streamlink
     syncthing
     tmux
+    vesktop
     wget
     yt-dlp
   ] ++ lib.optionals stdenv.isDarwin [
     # macOS dependencies, stuff that should be everywhere instead of one system
+    anki-bin
     cyberduck
+    firefox-bin
     karabiner-elements
     keka
     monitorcontrol
@@ -63,10 +59,16 @@
     stats
     unnaturalscrollwheels
   ] ++ lib.optionals stdenv.isLinux [
+    anki
     # Add a nicer potential system font to use (Linux distros ship some real shit fonts)
     inter
     fira-code-nerdfont
     libreoffice
+  ] ++ lib.optionals stdenv.isx86_64 [
+    (pkgs.callPackage ./icon-override.nix {
+      pkg = pkgs.spotify;
+      iconPath = ./spotify.icns;
+    })
   ];
 
   fonts.fontconfig.enable = pkgs.stdenv.isLinux;
@@ -77,6 +79,17 @@
   services.emacs = lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
     package = pkgs.emacsPackages.evansEmacs;
+    client.enable = true;
+    defaultEditor = true;
+    # Start with the graphical session to make sure GUI works
+    startWithUserSession = "graphical";
+  };
+
+  programs.firefox = with pkgs; {
+    enable = stdenv.hostPlatform.isLinux;
+    package = if stdenv.hostPlatform.isDarwin
+              then firefox-bin
+              else firefox;
   };
 
   programs.gpg = {
@@ -85,6 +98,7 @@
 
   services.gpg-agent = {
     enable = pkgs.stdenv.hostPlatform.isLinux;
+    pinentryPackage = pkgs.pinentry-qt;
   };
 
   programs.git = {
@@ -177,13 +191,10 @@
 
   programs.ssh = {
     enable = true;
+    addKeysToAgent = "confirm";
     matchBlocks = {
-      "*" = if pkgs.stdenv.hostPlatform.isDarwin then {
+      "*" = {
         identityFile = "~/.ssh/id_rsa";
-      } else {
-        extraOptions = {
-          IdentityAgent = "\"~/.1password/agent.sock\"";
-        };
       };
     };
   };
