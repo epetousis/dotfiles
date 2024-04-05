@@ -25,6 +25,8 @@
       flake = false;
     };
 
+    nixos-aarch64-widevine.url = "github:epetousis/nixos-aarch64-widevine";
+
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -137,6 +139,7 @@
         nixos-apple-silicon.nixosModules.default
         {
           hardware.asahi.peripheralFirmwareDirectory = inputs.asahi-firmware;
+          nixpkgs.overlays = [ inputs.nixos-aarch64-widevine.overlays.default ];
         }
       ];
     };

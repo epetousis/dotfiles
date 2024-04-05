@@ -301,10 +301,28 @@
         "type": "github"
       }
     },
+    "nixos-aarch64-widevine": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1712238860,
+        "narHash": "sha256-TbRlZPiCKcuZgrElc5NPKWx1DgmdiQiUaIt7eNSGoMc=",
+        "owner": "epetousis",
+        "repo": "nixos-aarch64-widevine",
+        "rev": "f0a8df49191d23568e7b5f50b2f8a358e616e3e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "epetousis",
+        "repo": "nixos-aarch64-widevine",
+        "type": "github"
+      }
+    },
     "nixos-apple-silicon": {
       "inputs": {
         "flake-compat": "flake-compat",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "rust-overlay": "rust-overlay"
       },
       "locked": {
@@ -388,6 +406,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1712122226,
+        "narHash": "sha256-pmgwKs8Thu1WETMqCrWUm0CkN1nmCKX3b51+EXsAZyY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "08b9151ed40350725eb40b1fe96b0b86304a654b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1711163522,
         "narHash": "sha256-YN/Ciidm+A0fmJPWlHBGvVkcarYWSC+s3NTPk/P+q3c=",
         "owner": "nixos",
@@ -402,7 +436,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1712122226,
         "narHash": "sha256-pmgwKs8Thu1WETMqCrWUm0CkN1nmCKX3b51+EXsAZyY=",
@@ -432,8 +466,9 @@
         "homebrew-cask-versions": "homebrew-cask-versions",
         "homebrew-core": "homebrew-core",
         "nix-homebrew": "nix-homebrew",
+        "nixos-aarch64-widevine": "nixos-aarch64-widevine",
         "nixos-apple-silicon": "nixos-apple-silicon",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "nixpkgs-firefox-darwin": "nixpkgs-firefox-darwin",
         "nixpkgs-stable": "nixpkgs-stable"
       }
