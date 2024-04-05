@@ -42,13 +42,13 @@
     streamlink
     syncthing
     tmux
-    vesktop
     wget
     yt-dlp
   ] ++ lib.optionals stdenv.isDarwin [
     # macOS dependencies, stuff that should be everywhere instead of one system
     anki-bin
     cyberduck
+    discord
     firefox-bin
     karabiner-elements
     keka
@@ -64,6 +64,7 @@
     inter
     fira-code-nerdfont
     libreoffice
+    vesktop
   ] ++ lib.optionals stdenv.isx86_64 [
     (pkgs.callPackage ./icon-override.nix {
       pkg = pkgs.spotify;
