@@ -129,6 +129,8 @@ apps are not started from a shell."
 ;; Duplicate window move binds from tiling window manager
 (setq mac-option-modifier 'alt)
 (setq mac-command-modifier 'meta)
+(setq x-super-keysym 'meta)
+(setq x-meta-keysym 'alt)
 (global-set-key (kbd "A-h") #'wm-window-left)
 (global-set-key (kbd "A-j") #'wm-window-down)
 (global-set-key (kbd "A-k") #'wm-window-up)
