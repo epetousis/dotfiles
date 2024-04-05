@@ -84,6 +84,12 @@
   # Unlock GPG keys on login
   security.pam.services.login.gnupg.enable = true;
 
+  # Enable Podman with `docker` alias
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
