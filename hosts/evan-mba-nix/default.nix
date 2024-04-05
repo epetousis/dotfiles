@@ -78,6 +78,7 @@
   # System-wide packages
   environment.systemPackages = with pkgs; [
     asahi-btsync
+    libsForQt5.polonium
   ];
 
   # Unlock GPG keys on login
