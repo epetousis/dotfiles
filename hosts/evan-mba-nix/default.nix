@@ -80,6 +80,9 @@
     asahi-btsync
   ];
 
+  # Unlock GPG keys on login
+  security.pam.services.login.gnupg.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
