@@ -33,7 +33,8 @@ apps are not started from a shell."
 (cl-defmethod eglot-initialization-options ((server eglot-volar))
   "Passes through required Volar initialization options"
   (let* ((tsdk (concat (current-project-root) "node_modules/typescript/lib")))
-    (list :typescript (list :tsdk tsdk))))
+    (list :typescript (list :tsdk tsdk)
+          :vue (list :hybridMode :json-false))))
 
 ;; Language specific major modes
 (require 'typescript-mode)
