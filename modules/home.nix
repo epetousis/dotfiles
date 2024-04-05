@@ -199,6 +199,8 @@
     };
   };
 
+  services.ssh-agent.enable = pkgs.stdenv.hostPlatform.isLinux;
+
   programs.tmux = {
     enable = true;
     terminal = "screen-256color";
