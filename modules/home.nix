@@ -100,6 +100,9 @@
   services.gpg-agent = {
     enable = pkgs.stdenv.hostPlatform.isLinux;
     pinentryPackage = pkgs.pinentry-qt;
+    # Set 9 hour expiry (32400 seconds)
+    defaultCacheTtl = 32400;
+    maxCacheTtl = 32400;
   };
 
   programs.git = {
