@@ -35,7 +35,6 @@
     nodejs
     nodePackages.pyright
     nodePackages.typescript-language-server
-    openai-whisper-cpp
     rclone
     ripgrep
     rust-analyzer
@@ -53,6 +52,7 @@
     karabiner-elements
     keka
     monitorcontrol
+    openai-whisper-cpp
     pinentry_mac
     libreoffice-bin
     soundsource
