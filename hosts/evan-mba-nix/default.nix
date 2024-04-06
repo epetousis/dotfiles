@@ -97,6 +97,10 @@
 
   # List services that you want to enable:
 
+  # Tailscale
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "client";
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
