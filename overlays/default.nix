@@ -37,4 +37,6 @@ final: prev: {
   bluos-controller = final.callPackage ./bluos-controller {};
 
   asahi-btsync = final.callPackage ./asahi-btsync.nix {};
+
+  openai-whisper-cpp = import ./openai-whisper-cpp { inherit prev final; };
 }
