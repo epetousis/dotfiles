@@ -33,9 +33,14 @@
   hardware.bluetooth.powerOnBoot = true;
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  services.xserver = {
+    enable = true;
+    # Enable Wayland sddm.
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
+  };
 
+  # Enable KDE Plasma 6.
   services.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
 
