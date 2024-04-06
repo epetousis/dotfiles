@@ -8,6 +8,7 @@
 
   # Asahi-specific settings
   hardware.asahi.useExperimentalGPUDriver = true;
+  hardware.asahi.experimentalGPUInstallMode = "overlay";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
