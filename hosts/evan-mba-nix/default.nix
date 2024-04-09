@@ -67,7 +67,11 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       # Chromium needed for work, don't give this to everyone
-      chromium
+      (chromium.override {
+        commandLineArgs = [
+          "--enable-features=TouchpadOverscrollHistoryNavigation"
+        ];
+      })
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
@@ -84,7 +88,12 @@
   environment.systemPackages = with pkgs; [
     asahi-btsync
     libsForQt5.polonium
+    tailscale-systray
+    mixxx
   ];
+
+  # Make sure Mixxx has permission to access USB devices
+  services.udev.packages = [ pkgs.mixxx ];
 
   # Unlock GPG keys on login
   security.pam.services.login.gnupg.enable = true;
