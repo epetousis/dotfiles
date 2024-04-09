@@ -21,7 +21,9 @@ apps are not started from a shell."
 (add-to-list 'eglot-server-programs
              '(vue-mode . (eglot-volar "vue-language-server" "--stdio")))
 
-(add-hook 'vue-mode-hook 'eglot-ensure)
+(add-hook 'vue-mode-hook (lambda ()
+                           (eglot-ensure)
+                           (web-mode-set-universal-padding 0)))
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 
 (require 'company)
