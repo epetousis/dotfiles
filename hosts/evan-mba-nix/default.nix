@@ -35,14 +35,17 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    # Enable Wayland sddm.
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
+    # Enable Gnome.
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
   };
 
-  # Enable KDE Plasma 6.
-  services.desktopManager.plasma6.enable = true;
-  programs.kdeconnect.enable = true;
+  # Enable fractional scaling so we can scale to 150%.
+  services.xserver.desktopManager.gnome.extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
+  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+     [org.gnome.mutter]
+     experimental-features=['scale-monitor-framebuffer']
+   '';
 
   # Enable Wayland by default in Chromium apps
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -87,9 +90,12 @@
   # System-wide packages
   environment.systemPackages = with pkgs; [
     asahi-btsync
-    libsForQt5.polonium
     tailscale-systray
     mixxx
+    gnome.gnome-tweaks
+    gnomeExtensions.gsconnect
+    gnomeExtensions.appindicator
+    gnomeExtensions.pop-shell
   ];
 
   # Make sure Mixxx has permission to access USB devices
