@@ -93,7 +93,6 @@
     tailscale-systray
     mixxx
     gnome.gnome-tweaks
-    gnomeExtensions.gsconnect
     gnomeExtensions.appindicator
     gnomeExtensions.pop-shell
   ];
@@ -115,6 +114,12 @@
   # Tailscale
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "client";
+
+  # KDE Connect
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
