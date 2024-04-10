@@ -17,7 +17,15 @@ final: prev: {
 
   gnomeExtensions = prev.gnomeExtensions // {
     scaletoggle = final.callPackage ./scaletoggle {};
-    pop-shell = final.callPackage ./pop-shell {};
+    pop-shell = prev.gnomeExtensions.pop-shell.overrideAttrs {
+      version = "unstable-2024-04-04";
+      src = final.fetchFromGitHub {
+        owner = "pop-os";
+        repo = "shell";
+        rev = "cfa0c55e84b7ce339e5ce83832f76fee17e99d51";
+        sha256 = "sha256-IQJtTMYCkKyjqDKoR35qsgQkvXIrGLq+qtMDOTkvy08=";
+      };
+    };
   };
 
   emacsPackages = prev.emacsPackages // {
