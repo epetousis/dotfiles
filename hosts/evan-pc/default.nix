@@ -113,6 +113,9 @@
   # Enable zsh
   programs.zsh.enable = true;
 
+  # Enable KDE Connect
+  programs.kdeconnect.enable = true;
+
   home-manager.users.epetousis = import ../../modules/home.nix;
 
   # Allow unfree packages
