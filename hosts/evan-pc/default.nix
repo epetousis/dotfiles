@@ -37,11 +37,12 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    # Enable KDE Plasma 6.
-    desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
     displayManager.sddm.wayland.enable = true;
   };
+
+  # Enable KDE Plasma 6.
+  services.desktopManager.plasma6.enable = true;
 
   # Enable the (unfortunately proprietary) Nvidia driver.
   services.xserver.videoDrivers = [ "nvidia" ];
