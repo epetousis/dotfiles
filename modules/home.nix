@@ -42,6 +42,7 @@
     syncthing
     tmux
     wget
+    youtube-music
     yt-dlp
   ] ++ lib.optionals stdenv.isDarwin [
     # macOS dependencies, stuff that should be everywhere instead of one system
@@ -66,10 +67,7 @@
     libreoffice
     vesktop
   ] ++ lib.optionals stdenv.isx86_64 [
-    (pkgs.callPackage ./icon-override.nix {
-      pkg = pkgs.spotify;
-      iconPath = ./spotify.icns;
-    })
+    # No x86 only apps at the moment.
   ];
 
   fonts.fontconfig.enable = pkgs.stdenv.isLinux;

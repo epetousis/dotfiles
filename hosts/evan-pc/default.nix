@@ -86,11 +86,7 @@
     description = "Evangelos Petousis";
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      firefox
-      spotify
-      vesktop
       easyeffects
-      mpv
       signal-desktop
       libreoffice-fresh
       obs-studio
