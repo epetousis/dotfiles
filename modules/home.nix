@@ -164,7 +164,6 @@
       # Kill key timeout so escape is instant
       KEYTIMEOUT = 1;
       PROMPT = "%n@%m:%(4~|...|)%3~ %(!.#.$) ";
-      REBUILD_COMMAND = if pkgs.stdenv.hostPlatform.isDarwin then "darwin-rebuild" else "sudo nixos-rebuild";
     };
     initExtra = ''
     # Discourage instinctively opening default macOS Terminal
@@ -187,7 +186,7 @@
     bindkey '^xe' edit-command-line
     bindkey '^x^e' edit-command-line
 
-    alias nxrb='$REBUILD_COMMAND switch --flake ~/.local/share/dotfiles'
+    alias nxrb='${if pkgs.stdenv.hostPlatform.isDarwin then "darwin-rebuild" else "sudo nixos-rebuild"} switch --flake ~/.local/share/dotfiles'
 
     eval "$(direnv hook zsh)"
     '';
