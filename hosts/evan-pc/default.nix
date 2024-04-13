@@ -48,9 +48,8 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;
-  # Enables systemd-based suspend to avoid graphical corruption on wake
-  # Temporary bug related to https://forums.developer.nvidia.com/t/corrupted-graphics-upon-resume-gnome-41-x-org-495-44-driver/194565/17
-  # hardware.nvidia.powerManagement.enable = true;
+  # Enable systemd-based power management (should be enabled by default)
+  hardware.nvidia.powerManagement.enable = true;
 
   # Enable Wayland on Nvidia.
   hardware.nvidia.modesetting.enable = true;
