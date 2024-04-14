@@ -95,6 +95,18 @@
     enable = true;
   };
 
+  services.pantalaimon = {
+    enable = true;
+    settings = {
+      local-beeper = {
+        Homeserver = "https://matrix.beeper.com";
+        ListenAddress = "127.0.0.1";
+        ListenPort = 58249;
+        UseKeyring = true;
+      };
+    };
+  };
+
   services.gpg-agent = {
     enable = pkgs.stdenv.hostPlatform.isLinux;
     pinentryPackage = pkgs.pinentry-qt;
