@@ -199,3 +199,7 @@ The argument LOCATION can be any path to a Nix flake."
 ;; Run eglot-booster-mode on eglot start
 (require 'eglot-booster)
 (add-hook 'eglot-managed-mode-hook 'eglot-booster-mode)
+
+;; Set a custom-file so emacs doesn't freak out over this immutable init.el
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file t)
