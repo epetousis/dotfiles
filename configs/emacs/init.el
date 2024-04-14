@@ -138,6 +138,11 @@ apps are not started from a shell."
 (global-set-key (kbd "A-k") #'wm-window-up)
 (global-set-key (kbd "A-l") #'wm-window-right)
 
+;; org-mode bindings
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+
 ;; Add a project command for terminal
 ;; Modified from https://github.com/emacs-mirror/emacs/blob/c77e35efd36f2c43e87066faa4257606d5c6f849/lisp/progmodes/project.el#L1279
 (defun project-vterm ()
