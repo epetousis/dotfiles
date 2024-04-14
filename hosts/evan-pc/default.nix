@@ -90,6 +90,7 @@
       signal-desktop
       libreoffice-fresh
       obs-studio
+      beeper
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
