@@ -47,4 +47,18 @@ final: prev: {
   asahi-btsync = final.callPackage ./asahi-btsync.nix {};
 
   openai-whisper-cpp = import ./openai-whisper-cpp { inherit prev final; };
+
+  rclone = prev.callPackage "${prev.path}/pkgs/applications/networking/sync/rclone" {
+    buildGoModule = args: prev.buildGoModule (args // {
+      version = "unstable-2024-04-11";
+      # Add rclone fork with iCloud Drive support (I am very impatient)
+      src = final.fetchFromGitHub {
+        owner = "lostb1t";
+        repo = "rclone";
+        rev = "8dc8147f8ad6eddf416a61475957a2f7f7528846";
+        sha256 = "sha256-kM3YZBPgg2IdSd8vIP6uXzI/6039l3UhIAgOhegIUZU=";
+      };
+      vendorHash = "sha256-5h47Kh7DKX41mAGdMN9kH88ekjLy2POHzMK+0XcUpz8=";
+    });
+  };
 }
