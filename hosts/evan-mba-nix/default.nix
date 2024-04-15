@@ -95,6 +95,7 @@
     gnome.gnome-tweaks
     gnomeExtensions.appindicator
     gnomeExtensions.pop-shell
+    podman-compose
   ];
 
   # Make sure Mixxx has permission to access USB devices
