@@ -95,6 +95,7 @@
     gnome.gnome-tweaks
     gnomeExtensions.appindicator
     gnomeExtensions.pop-shell
+    gnomeExtensions.night-theme-switcher
     podman-compose
   ];
 
