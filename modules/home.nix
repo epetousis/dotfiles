@@ -137,6 +137,8 @@
       merge = {
         ff = "only";
       };
+    } // lib.optionals pkgs.stdenv.hostPlatform.isLinux {
+      credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
     };
   };
 
