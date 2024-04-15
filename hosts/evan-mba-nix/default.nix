@@ -67,7 +67,7 @@
   programs.zsh.enable = true;
   users.users.epetousis = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       # Chromium needed for work, don't give this to everyone
       (chromium.override {
