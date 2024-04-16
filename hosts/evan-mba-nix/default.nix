@@ -123,6 +123,12 @@
     package = pkgs.gnomeExtensions.gsconnect;
   };
 
+  fonts.packages = with pkgs; [
+    apple-color-emoji
+  ];
+
+  fonts.fontconfig.defaultFonts.emoji = [ "Apple Color Emoji" ];
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
