@@ -237,11 +237,6 @@
     target = ".emacs.d/init.el";
   };
 
-  home.file.gnus = {
-    source = ../configs/emacs/gnus.el;
-    target = ".gnus.el";
-  };
-
   home.file.".npmrc".text = "prefix = ~/.local/share/npm-packages";
 
   home.sessionPath = [
