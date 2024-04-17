@@ -63,8 +63,9 @@ apps are not started from a shell."
 ;;; Theme
 ;; Add frame padding
 (add-to-list 'default-frame-alist '(internal-border-width . 24))
-;; Load monokai theme
-(load-theme 'monokai t)
+;; Add Tokyonight theme
+(load-theme 'doom-tokyo-night t)
+(doom-themes-org-config)
 ;; Hide scroll bars
 (set-scroll-bar-mode nil)
 ;; Hide menubar

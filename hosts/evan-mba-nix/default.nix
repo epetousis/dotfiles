@@ -92,11 +92,15 @@
     asahi-btsync
     tailscale-systray
     mixxx
+    gnome.gnome-themes-extra
     gnome.gnome-tweaks
     gnomeExtensions.appindicator
     gnomeExtensions.pop-shell
     gnomeExtensions.night-theme-switcher
+    gnomeExtensions.user-themes
+    gnomeExtensions.vitals
     podman-compose
+    gtk-engine-murrine
   ];
 
   # Make sure Mixxx has permission to access USB devices

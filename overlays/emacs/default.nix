@@ -51,7 +51,7 @@ let
     epkgs.eglot
     epkgs.envrc
     epkgs.magit
-    epkgs.monokai-theme
+    epkgs.doom-themes
     epkgs.melpaPackages.dired-sidebar
     epkgs.avy
 

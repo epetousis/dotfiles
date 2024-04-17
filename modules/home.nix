@@ -268,5 +268,20 @@
     '';
   };
 
+  # Theme (currently Tokyonight)
+  gtk = {
+    enable = pkgs.stdenv.hostPlatform.isLinux;
+    theme = {
+      package = pkgs.tokyo-night-gtk;
+      name = "Tokyonight-Dark-BL";
+    };
+  };
+
+  dconf.settings = lib.optionals pkgs.stdenv.hostPlatform.isLinux {
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "Tokyonight-Dark-BL";
+    };
+  };
+
   programs.home-manager.enable = true;
 }
