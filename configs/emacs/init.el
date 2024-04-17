@@ -97,6 +97,7 @@ apps are not started from a shell."
 ;; Fix display-local-help being bound to eldoc by eglot
 ;; Taken from https://github.com/joaotavora/eglot/issues/454#issuecomment-642978840
 (define-key eglot-mode-map [remap display-local-help] nil)
+(define-key eglot-mode-map (kbd "C-c /") #'eglot-code-actions)
 ;; Define an alternative key for eldoc
 (global-set-key (kbd "C-h ,") #'eldoc-doc-buffer)
 
