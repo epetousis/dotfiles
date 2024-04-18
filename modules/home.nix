@@ -1,5 +1,10 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, specialArgs, ... }:
 
+let
+  applyTheme = if builtins.hasAttr "applyTheme" specialArgs
+               then specialArgs.applyTheme
+               else true;
+in
 {
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -270,14 +275,14 @@
 
   # Theme (currently Tokyonight)
   gtk = {
-    enable = pkgs.stdenv.hostPlatform.isLinux;
+    enable = pkgs.stdenv.hostPlatform.isLinux && applyTheme;
     theme = {
       package = pkgs.tokyo-night-gtk;
       name = "Tokyonight-Dark-BL";
     };
   };
 
-  dconf.settings = lib.optionals pkgs.stdenv.hostPlatform.isLinux {
+  dconf.settings = lib.mkIf (pkgs.stdenv.hostPlatform.isLinux && applyTheme) {
     "org/gnome/shell/extensions/user-theme" = {
       name = "Tokyonight-Dark-BL";
     };
