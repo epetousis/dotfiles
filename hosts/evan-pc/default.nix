@@ -118,6 +118,7 @@
   programs.kdeconnect.enable = true;
 
   home-manager.users.epetousis = import ../../modules/home.nix;
+  home-manager.extraSpecialArgs = { applyTheme = false; };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
