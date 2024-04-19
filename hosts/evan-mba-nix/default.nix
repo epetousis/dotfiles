@@ -61,6 +61,15 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+
+    # Enable AirPlay
+    extraConfig.pipewire."91-airplay" = {
+      "context.modules" = [
+        {
+          name = "libpipewire-module-raop-discover";
+        }
+      ];
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
