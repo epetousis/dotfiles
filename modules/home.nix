@@ -206,6 +206,9 @@ in
     alias nxrb='${if pkgs.stdenv.hostPlatform.isDarwin then "darwin-rebuild" else "sudo nixos-rebuild"} switch --flake ~/.local/share/dotfiles'
 
     eval "$(direnv hook zsh)"
+
+    # Set path in zsh init to work around `home.sessionPath` being broken
+    export PATH="$HOME/.local/share/npm-packages/bin":$PATH
     '';
   };
 
@@ -243,10 +246,6 @@ in
   };
 
   home.file.".npmrc".text = "prefix = ~/.local/share/npm-packages";
-
-  home.sessionPath = [
-    "$HOME/.local/share/npm-packages/bin"
-  ];
 
   # Add direnv support - among other things, this can be used for automatically loading shell.nix files
   programs.direnv = {
