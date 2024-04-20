@@ -19,9 +19,11 @@ apps are not started from a shell."
 ;; LSP
 (require 'eglot)
 (add-to-list 'eglot-server-programs
-             '(vue-mode . (eglot-volar "vue-language-server" "--stdio")))
+             '(vue-mode . (eglot-volar "vue-language-server" "--stdio"))
+             '(nix-mode . ("nil")))
 
 (add-hook 'vue-mode-hook 'eglot-ensure)
+(add-hook 'nix-mode-hook 'eglot-ensure)
 ;; Override editorconfig when in vue-mode - seems to be wrong about padding settings
 (add-hook 'editorconfig-after-apply-functions (lambda (props)
                                                 (when (derived-mode-p 'vue-mode)

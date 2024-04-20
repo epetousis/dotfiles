@@ -36,6 +36,7 @@ in
     mosh
     mpv
     neovim
+    nil
     nix-output-monitor
     nodejs
     nodePackages.pyright

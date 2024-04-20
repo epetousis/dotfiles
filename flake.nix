@@ -19,6 +19,8 @@
     nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
     nixpkgs-firefox-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    nil.url = "github:oxalica/nil";
+
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
     asahi-firmware = {
       url = "git+file:///etc/nixos/firmware";
@@ -89,6 +91,7 @@
     nixpkgs-defaults = {
       nixpkgs.overlays = [
         emacs-lsp-booster.overlays.default
+        inputs.nil.overlays.nil
         (import ./overlays)
       ];
       nixpkgs.config.allowUnfree = true;
