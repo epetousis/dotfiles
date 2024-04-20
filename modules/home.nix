@@ -215,7 +215,7 @@ in
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "confirm";
+    addKeysToAgent = "yes";
     matchBlocks = {
       "*" = {
         identityFile = "~/.ssh/id_rsa";
