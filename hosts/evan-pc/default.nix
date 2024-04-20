@@ -25,6 +25,9 @@
     "127.0.0.1" = [ "localhost.local" ];
   };
 
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
+
   # Enable networking
   networking.networkmanager.enable = true;
 
