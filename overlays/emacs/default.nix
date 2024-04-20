@@ -60,6 +60,7 @@ let
     epkgs.rust-mode
     epkgs.typescript-mode
     epkgs.web-mode
+    epkgs.markdown-mode
     epkgs.melpaPackages.telega
     epkgs.melpaPackages.php-mode
     (epkgs.callPackage ../eglot-booster.nix {})
