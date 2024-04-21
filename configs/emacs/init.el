@@ -52,6 +52,9 @@ apps are not started from a shell."
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
 (require 'rust-mode)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+;; Replace php-mode with web-mode
+(define-derived-mode php-mode web-mode "PHP")
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
 ;; Guess indentation automatically
 (require 'dtrt-indent)
