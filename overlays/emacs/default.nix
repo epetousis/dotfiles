@@ -66,7 +66,7 @@ let
     (epkgs.callPackage ../eglot-booster.nix {})
     epkgs.vterm
     epkgs.ement
-    epkgs.mu4e
+    epkgs.notmuch
     epkgs.elfeed
   ]);
 in
