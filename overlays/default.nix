@@ -55,8 +55,8 @@ final: prev: {
       src = final.fetchFromGitHub {
         owner = "lostb1t";
         repo = "rclone";
-        rev = "4bd257cf08384db3b511f2059f5fb1909aac4701";
-        sha256 = "sha256-ndfMPswJN7nI9pOzvNCM+Pmp4tpzLo/lQzV3rAhFkAo=";
+        rev = "791bc98f440788ba18fe32cde7cbc417874f7330";
+        sha256 = "sha256-Nb/gd64MSnMvEA25JRftjwmSlNevhgrHBqUHdRE3Pyk=";
       };
       vendorHash = "sha256-5h47Kh7DKX41mAGdMN9kH88ekjLy2POHzMK+0XcUpz8=";
     });
