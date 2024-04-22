@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../modules/rclone-mount.nix
     ];
 
   # Bootloader.
@@ -162,6 +163,11 @@
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
+  };
+
+  services.rcloneMount = {
+    enable = true;
+    username = "epetousis";
   };
 
   # This value determines the NixOS release from which the default
