@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../modules/rclone-mount.nix
     ];
 
   # Asahi-specific settings
@@ -141,6 +142,11 @@
   ];
 
   fonts.fontconfig.defaultFonts.emoji = [ "Apple Color Emoji" ];
+
+  services.rcloneMount = {
+    enable = true;
+    username = "epetousis";
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
