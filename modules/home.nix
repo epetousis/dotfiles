@@ -71,6 +71,7 @@ in
     inter
     fira-code-nerdfont
     libreoffice
+    thunderbird
     vesktop
   ] ++ lib.optionals stdenv.isx86_64 [
     # No x86 only apps at the moment.
