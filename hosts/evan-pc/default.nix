@@ -140,6 +140,7 @@
     git
     openai-whisper-cpp
     podman-compose
+    chromium
   ];
 
   # Services:
