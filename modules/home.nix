@@ -67,10 +67,10 @@ in
     unnaturalscrollwheels
   ] ++ lib.optionals stdenv.isLinux [
     anki
-    # Add a nicer potential system font to use (Linux distros ship some real shit fonts)
-    inter
     fira-code-nerdfont
     libreoffice
+    source-sans-pro
+    source-han-sans
     thunderbird
     vesktop
   ] ++ lib.optionals stdenv.isx86_64 [
