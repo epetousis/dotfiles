@@ -95,6 +95,8 @@
       libreoffice-fresh
       obs-studio
       beeper
+      drawio
+      jetbrains.idea-ultimate
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
@@ -169,6 +171,11 @@
   services.rcloneMount = {
     enable = true;
     username = "epetousis";
+  };
+
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk22;
   };
 
   # This value determines the NixOS release from which the default
