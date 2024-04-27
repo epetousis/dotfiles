@@ -45,29 +45,26 @@ let
   # (This should come as late as possible in the process.)
   evansEmacs = (pkgs.emacsPackagesFor appropriateEmacs).emacsWithPackages (epkgs: [
     # emacs packages
+    epkgs.avy
     epkgs.company
     epkgs.dtrt-indent
+    epkgs.doom-themes
     epkgs.editorconfig
     epkgs.eglot
+    epkgs.elfeed
+    epkgs.ement
     epkgs.envrc
     epkgs.magit
-    epkgs.doom-themes
-    epkgs.melpaPackages.dired-sidebar
-    epkgs.avy
-
-    # Modes
-    epkgs.nix-mode
-    epkgs.rust-mode
-    epkgs.typescript-mode
-    epkgs.web-mode
     epkgs.markdown-mode
+    epkgs.melpaPackages.dired-sidebar
     epkgs.melpaPackages.telega
     epkgs.melpaPackages.php-mode
-    (epkgs.callPackage ../eglot-booster.nix {})
-    epkgs.vterm
-    epkgs.ement
+    epkgs.nix-mode
     epkgs.notmuch
-    epkgs.elfeed
+    epkgs.rust-mode
+    epkgs.typescript-mode
+    epkgs.vterm
+    epkgs.web-mode
   ]);
 in
 
