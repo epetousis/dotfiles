@@ -90,14 +90,14 @@
     description = "Evangelos Petousis";
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      easyeffects
-      signal-desktop
-      libreoffice-fresh
-      obs-studio
       beeper
       bottles
       drawio
+      easyeffects
       jetbrains.idea-ultimate
+      libreoffice-fresh
+      obs-studio
+      signal-desktop
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
