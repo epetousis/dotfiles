@@ -95,6 +95,7 @@
       libreoffice-fresh
       obs-studio
       beeper
+      bottles
       drawio
       jetbrains.idea-ultimate
     ];
