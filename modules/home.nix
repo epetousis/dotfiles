@@ -48,6 +48,7 @@ in
     syncthing
     tmux
     wget
+    wl-clipboard
     youtube-music
     yt-dlp
   ] ++ lib.optionals stdenv.isDarwin [
