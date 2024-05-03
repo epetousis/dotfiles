@@ -39,10 +39,12 @@
   i18n.defaultLocale = "en_AU.utf8";
 
   # Enable the X11 windowing system.
-  services.xserver = {
+  services.xserver.enable = true;
+
+  # Enable sddm.
+  services.displayManager.sddm = {
     enable = true;
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
+    wayland.enable = true;
   };
 
   # Enable KDE Plasma 6.
