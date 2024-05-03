@@ -23,7 +23,7 @@
 
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
     asahi-firmware = {
-      url = "git+file:///etc/nixos/firmware";
+      url = "git+ssh://git@github.com/epetousis/asahi-firmware";
       flake = false;
     };
 

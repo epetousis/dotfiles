@@ -9,11 +9,11 @@
         "rev": "dbbde40b27995f4626aac237c27582da93c5e2ce",
         "revCount": 1,
         "type": "git",
-        "url": "file:///etc/nixos/firmware"
+        "url": "ssh://git@github.com/epetousis/asahi-firmware"
       },
       "original": {
         "type": "git",
-        "url": "file:///etc/nixos/firmware"
+        "url": "ssh://git@github.com/epetousis/asahi-firmware"
       }
     },
     "brew-src": {
