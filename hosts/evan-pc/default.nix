@@ -91,7 +91,7 @@
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
       beeper
-      bottles
+      (bottles.override (p: { extraPkgs = bPackages: [ bPackages.wineasio ]; }))
       drawio
       easyeffects
       jetbrains.idea-ultimate
