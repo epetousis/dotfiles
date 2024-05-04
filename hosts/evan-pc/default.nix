@@ -146,6 +146,9 @@
     openai-whisper-cpp
     podman-compose
     chromium
+    gamescope
+    gamemode
+    mangohud
   ];
 
   # Services:
