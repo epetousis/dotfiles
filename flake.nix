@@ -4,6 +4,17 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+
+    lix = {
+      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
+      flake = false;
+    };
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      inputs.lix.follows = "lix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
@@ -62,15 +73,18 @@
       "https://nix-community.cachix.org"
       "https://cachix.org/api/v1/cache/emacs"
       "https://epetousis.cachix.org"
+      "https://cache.lix.systems"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "epetousis.cachix.org-1:c87cgNPjvPjqoZX7dbedzBo/cx2ULiGjSNN12VV5bKw="
+      "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
     ];
   };
 
   outputs = {
     self,
+      lix-module,
       darwin,
       nixpkgs,
       nixpkgs-stable,
@@ -103,10 +117,12 @@
         "https://nix-community.cachix.org"
         "https://cachix.org/api/v1/cache/emacs"
         "https://epetousis.cachix.org"
+        "https://cache.lix.systems"
       ];
       nix.settings.trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "epetousis.cachix.org-1:c87cgNPjvPjqoZX7dbedzBo/cx2ULiGjSNN12VV5bKw="
+        "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
       ];
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
     } // nixpkgs-defaults;
@@ -136,6 +152,7 @@
     nixosConfigurations."evan-mba" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
+        lix-module.nixosModules.default
         nix-defaults
         ./hosts/evan-mba-nix
         home-manager.nixosModules.home-manager
@@ -150,6 +167,7 @@
     nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        lix-module.nixosModules.default
         nix-defaults
         ./hosts/evan-pc
         home-manager.nixosModules.home-manager
