@@ -132,7 +132,7 @@ in {
     systemd.oomd = {
       # See https://www.freedesktop.org/software/systemd/man/latest/systemd-oomd.service.html#Usage%20Recommendations for why these are enabled
       enableSystemSlice = true;
-      enableUserServices = true;
+      enableUserSlices = true;
     };
   };
 }
