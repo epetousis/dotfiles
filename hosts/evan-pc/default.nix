@@ -41,14 +41,21 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable sddm.
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
+  # Enable Gnome.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
-  # Enable KDE Plasma 6.
-  services.desktopManager.plasma6.enable = true;
+  # Enable fractional scaling on Gnome Wayland and disable switch monitor keybind.
+  services.xserver.desktopManager.gnome.extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
+  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+     [org.gnome.mutter]
+     experimental-features=['scale-monitor-framebuffer']
+     [org.gnome.mutter.keybindings]
+     switch-monitor=[]
+   '';
+
+  # Enable Gnome RDP server
+  services.gnome.gnome-remote-desktop.enable = true;
 
   # Enable the (unfortunately proprietary) Nvidia driver.
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -149,7 +156,10 @@
   programs.zsh.enable = true;
 
   # Enable KDE Connect
-  programs.kdeconnect.enable = true;
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
 
   home-manager.users.epetousis = import ../../modules/home.nix;
   home-manager.extraSpecialArgs = { applyTheme = false; };
@@ -174,6 +184,19 @@
     gamescope
     gamemode
     mangohud
+    gnome.gnome-themes-extra
+    gnome.gnome-tweaks
+    gnomeExtensions.appindicator
+    gnomeExtensions.pop-shell
+    gnomeExtensions.night-theme-switcher
+    gnomeExtensions.user-themes
+    gnomeExtensions.vitals
+    gnomeExtensions.display-scale-switcher
+  ];
+
+  # Link our monitor config to gdm's config directory, so we can have a high refresh rate login screen!
+  systemd.tmpfiles.rules = [
+    ''L+ /run/gdm/.config/monitors.xml - gdm gdm - ${./monitors.xml}''
   ];
 
   # Services:
