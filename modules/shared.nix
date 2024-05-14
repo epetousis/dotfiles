@@ -55,6 +55,7 @@ in {
     # Define a user account. Don't forget to set a password with ‘passwd’.
     programs.zsh.enable = true;
     users.users.epetousis = {
+      description = "Evangelos Petousis";
       isNormalUser = true;
       extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
       packages = with pkgs; [
