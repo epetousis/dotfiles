@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../modules/gnome.nix
       ../../modules/rclone-mount.nix
     ];
 
@@ -33,23 +34,10 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  # Enable the X11 windowing system.
-  services.xserver = {
+  # Enable my Gnome config.
+  services.desktopManager.gnomeEvan = {
     enable = true;
-    # Enable Gnome.
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
   };
-
-  # Enable fractional scaling so we can scale to 150%.
-  services.xserver.desktopManager.gnome.extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
-  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
-     [org.gnome.mutter]
-     experimental-features=['scale-monitor-framebuffer']
-   '';
-
-  # Enable Wayland by default in Chromium apps
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -130,12 +118,6 @@
   # Tailscale
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "client";
-
-  # KDE Connect
-  programs.kdeconnect = {
-    enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
-  };
 
   fonts.packages = with pkgs; [
     apple-color-emoji
