@@ -127,5 +127,12 @@ in {
       enabled = "ibus";
       ibus.engines = with pkgs.ibus-engines; [ mozc ];
     };
+
+    # Enable systemd-oomd extra services
+    systemd.oomd = {
+      # See https://www.freedesktop.org/software/systemd/man/latest/systemd-oomd.service.html#Usage%20Recommendations for why these are enabled
+      enableSystemSlice = true;
+      enableUserServices = true;
+    };
   };
 }
