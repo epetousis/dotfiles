@@ -120,5 +120,11 @@ in {
 
     # Enable flatpak support
     services.flatpak.enable = true;
+
+    # Enable Japanese keyboard support
+    i18n.inputMethod = {
+      enabled = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [ mozc ];
+    };
   };
 }
