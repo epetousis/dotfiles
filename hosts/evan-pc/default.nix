@@ -82,9 +82,6 @@
   # Enable Game Mode.
   programs.gamemode.enable = true;
 
-  # Disable Home Manager theme.
-  home-manager.extraSpecialArgs = { applyTheme = false; };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
