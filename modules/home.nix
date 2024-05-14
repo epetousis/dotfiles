@@ -117,10 +117,7 @@ in
 
   services.gpg-agent = {
     enable = pkgs.stdenv.hostPlatform.isLinux;
-    pinentryPackage = pkgs.pinentry-qt;
-    # Set 9 hour expiry (32400 seconds)
-    defaultCacheTtl = 32400;
-    maxCacheTtl = 32400;
+    pinentryPackage = pkgs.pinentry-gnome3;
   };
 
   programs.git = {
@@ -220,12 +217,11 @@ in
     addKeysToAgent = "yes";
     matchBlocks = {
       "*" = {
+        # Potentially unnecessary, as Gnome Keyring should see id_rsa automatically.
         identityFile = "~/.ssh/id_rsa";
       };
     };
   };
-
-  services.ssh-agent.enable = pkgs.stdenv.hostPlatform.isLinux;
 
   programs.tmux = {
     enable = true;
