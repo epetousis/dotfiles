@@ -78,15 +78,6 @@
   # Make this config work better on non-NixOS distros
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
 
-  services.emacs = lib.mkIf pkgs.stdenv.isLinux {
-    enable = true;
-    package = pkgs.emacsPackages.evansEmacs;
-    client.enable = true;
-    defaultEditor = true;
-    # Start with the graphical session to make sure GUI works
-    startWithUserSession = "graphical";
-  };
-
   programs.firefox = with pkgs; {
     enable = stdenv.hostPlatform.isLinux;
     package = if stdenv.hostPlatform.isDarwin
@@ -171,8 +162,6 @@
       FZF_DEFAULT_COMMAND = "rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*}'";
     };
     localVariables = {
-      VISUAL = "${pkgs.emacsPackages.evansEmacs}/bin/emacsclient -c";
-      EDITOR = "${pkgs.emacsPackages.evansEmacs}/bin/emacsclient -nw";
       # Kill key timeout so escape is instant
       KEYTIMEOUT = 1;
       PROMPT = "%n@%m:%(4~|...|)%3~ %(!.#.$) ";

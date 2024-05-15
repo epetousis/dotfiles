@@ -135,5 +135,12 @@ in {
       enableSystemSlice = true;
       enableUserSlices = true;
     };
+
+    services.emacs = {
+      enable = true;
+      package = pkgs.emacsPackages.evansEmacs;
+      defaultEditor = true;
+    };
+
   };
 }
