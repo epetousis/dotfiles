@@ -31,6 +31,8 @@ in {
 
     # Enable sound, computers that I use frequently need sound enabled.
     sound.enable = true;
+    # Make sure that we use Pipewire NOT Pulseaudio
+    hardware.pulseaudio.enable = false;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
