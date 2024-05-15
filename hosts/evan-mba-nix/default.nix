@@ -49,6 +49,9 @@
     gtk-engine-murrine
   ];
 
+  # Make sure Firefox can see a custom Widevine
+  environment.sessionVariables.MOZ_GMP_PATH = [ "${pkgs.widevine-cdm-lacros}/gmp-widevinecdm/system-installed" ];
+
   # Make sure Mixxx has permission to access USB devices
   services.udev.packages = [ pkgs.mixxx ];
 
