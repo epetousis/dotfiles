@@ -72,6 +72,7 @@ in {
         libreoffice-fresh
         obs-studio
         signal-desktop
+        jetbrains.idea-ultimate
       ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
@@ -140,6 +141,11 @@ in {
       enable = true;
       package = pkgs.emacsPackages.evansEmacs;
       defaultEditor = true;
+    };
+
+    programs.java = {
+      enable = true;
+      package = pkgs.jdk22;
     };
 
   };

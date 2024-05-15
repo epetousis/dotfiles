@@ -95,15 +95,7 @@
   users.users.epetousis.packages = with pkgs; [
     beeper
     (bottles.override (p: { extraPkgs = bPackages: [ bPackages.wineasio ]; }))
-    jetbrains.idea-ultimate
   ];
-
-  # Services:
-
-  programs.java = {
-    enable = true;
-    package = pkgs.jdk22;
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
