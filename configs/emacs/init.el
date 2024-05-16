@@ -66,8 +66,6 @@ apps are not started from a shell."
 
 ;;; UI Configuration
 ;;; Theme
-;; Add frame padding
-(add-to-list 'default-frame-alist '(internal-border-width . 24))
 ;; Add Tokyonight theme
 (load-theme 'doom-tokyo-night t)
 (doom-themes-org-config)
