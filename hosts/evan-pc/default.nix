@@ -54,6 +54,7 @@
   # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.
   programs.steam = {
     enable = true;
+    remotePlay.openFirewall = true;
     package = pkgs.steam.override {
       extraEnv = {};
       extraLibraries = pkgs: with pkgs; [
