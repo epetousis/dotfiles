@@ -15,8 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -27,9 +25,6 @@
     emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
     emacs-lsp-booster.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
-    nixpkgs-firefox-darwin.inputs.nixpkgs.follows = "nixpkgs";
-
     nil.url = "github:oxalica/nil";
 
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
@@ -39,32 +34,6 @@
     };
 
     nixos-aarch64-widevine.url = "github:epetousis/nixos-aarch64-widevine";
-
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
-    homebrew-cask-versions = {
-      url = "github:homebrew/homebrew-cask-versions";
-      flake = false;
-    };
-    homebrew-cask-fonts = {
-      url = "github:homebrew/homebrew-cask-fonts";
-      flake = false;
-    };
-    homebrew-cask-drivers = {
-      url = "github:homebrew/homebrew-cask-drivers";
-      flake = false;
-    };
   };
 
   nixConfig = {
@@ -85,20 +54,12 @@
   outputs = {
     self,
       lix-module,
-      darwin,
       nixpkgs,
       nixpkgs-stable,
       home-manager,
       disko,
       emacs-lsp-booster,
-      nix-homebrew,
       nixos-apple-silicon,
-      homebrew-core,
-      homebrew-cask,
-      homebrew-bundle,
-      homebrew-cask-versions,
-      homebrew-cask-fonts,
-      homebrew-cask-drivers,
       ...
   }@inputs:
   let
@@ -127,28 +88,6 @@
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
     } // nixpkgs-defaults;
   in {
-    darwinConfigurations."evan-mba" = darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        nix-defaults
-        home-manager.darwinModules.home-manager
-        ./hosts/evan-mba.nix
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew.taps = {
-            "homebrew/homebrew-core" = homebrew-core;
-            "homebrew/homebrew-cask" = homebrew-cask;
-            "homebrew/homebrew-bundle" = homebrew-bundle;
-            "homebrew/homebrew-cask-versions" = homebrew-cask-versions;
-            "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
-            "homebrew/homebrew-cask-drivers" = homebrew-cask-drivers;
-          };
-          nix-homebrew.mutableTaps = false;
-          nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ];
-        }
-      ];
-    };
-
     nixosConfigurations."evan-mba" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
