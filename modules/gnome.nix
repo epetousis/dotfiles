@@ -58,5 +58,8 @@ in {
       enable = true;
       package = pkgs.gnomeExtensions.gsconnect;
     };
+
+    # Enable Gnome remote desktop
+    services.gnome.gnome-remote-desktop.enable = true;
   };
 }
