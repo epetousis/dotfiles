@@ -42,7 +42,7 @@ in {
       gnomeExtensions.night-theme-switcher
       gnomeExtensions.user-themes
       gnomeExtensions.vitals
-      gnomeExtensions.display-scale-switcher
+      gnomeExtensions.scaletoggle
     ];
 
     # Link our monitor config to gdm's config directory, so we can do things like have a high refresh rate login screen!

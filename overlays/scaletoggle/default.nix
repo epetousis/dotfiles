@@ -5,13 +5,13 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "gnome-shell-extension-scaletoggle";
-  version = "unstable-2022-10-17";
+  version = "unstable-2024-05-21";
 
   src = fetchFromGitHub {
     owner = "epetousis";
     repo = "ScaleToggle";
-    rev = "47f429137cc4d0e7892f85d9e9fe2457def9fa02";
-    sha256 = "sha256-Y2MfuVwjb3YGLWbn7JdwNt5ivmebamqN3vFqKxrYeHI=";
+    rev = "bed1683b82616eeb4a8f83ab0355e8f1f504bdc0";
+    sha256 = "sha256-Qp04Xya2x89GAM/NXAAz90S9BVU5f2YELG6jUDRsNj4=";
   };
 
   nativeBuildInputs = [ python ];
@@ -38,7 +38,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Adds a toggle to change the display scaling of the primary monitor between 100% and 200%";
     homepage = "https://github.com/epetousis/ScaleToggle";
-    license = null;
+    license = licenses.free;
     # maintainers = with maintainers; [ ];
     platforms = platforms.linux;
   };
