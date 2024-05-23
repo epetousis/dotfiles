@@ -54,6 +54,9 @@ in {
     # Enable Xwayland for X compatibility.
     programs.xwayland.enable = true;
 
+    # Enable Wayland by default in Chromium apps
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
     # Define a user account. Don't forget to set a password with ‘passwd’.
     programs.zsh.enable = true;
     users.users.epetousis = {

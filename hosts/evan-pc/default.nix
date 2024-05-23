@@ -31,11 +31,14 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Enable my Gnome config.
-  services.desktopManager.gnomeEvan = {
+  # Enable my Plasma config.
+  services.displayManager.sddm = {
     enable = true;
-    monitorConfig = ./monitors.xml;
+    wayland.enable = true;
   };
+
+  services.desktopManager.plasma6.enable = true;
+  programs.kdeconnect.enable = true;
 
   # Enable my general NixOS settings.
   system.epetousis.enable = true;

@@ -30,9 +30,6 @@ in {
       switch-monitor=[]
     '';
 
-    # Enable Wayland by default in Chromium apps
-    environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
     # Install some essential extensions
     environment.systemPackages = with pkgs; [
       gnome.gnome-themes-extra
