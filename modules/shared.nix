@@ -140,6 +140,10 @@ in {
       enableUserSlices = true;
     };
 
+    # Ensure Gnome Keyring is present.
+    services.gnome.gnome-keyring.enable = true;
+    programs.seahorse.enable = true;
+
     services.emacs = {
       enable = true;
       package = pkgs.emacsPackages.evansEmacs;
