@@ -85,6 +85,9 @@
     };
   };
 
+  # Make Steam match my monitor scaling on Plasma.
+  environment.sessionVariables.STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
+
   # Enable Game Mode.
   programs.gamemode.enable = true;
 
