@@ -88,6 +88,9 @@
   # Make Steam match my monitor scaling on Plasma.
   environment.sessionVariables.STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
 
+  # Apply 1.5x scaling on Xwayland cursor to match primary display
+  environment.sessionVariables.XCURSOR_SIZE = "32";
+
   # Enable Game Mode.
   programs.gamemode.enable = true;
 
