@@ -202,6 +202,8 @@
 
     alias nxrb='${if pkgs.stdenv.hostPlatform.isDarwin then "darwin-rebuild" else "sudo nixos-rebuild"} switch --flake ~/.local/share/dotfiles'
 
+    alias e='emacsclient -r --no-wait'
+
     eval "$(direnv hook zsh)"
 
     # Set path in zsh init to work around `home.sessionPath` being broken
