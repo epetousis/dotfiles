@@ -106,6 +106,19 @@
     pinentryPackage = pkgs.pinentry-gnome3;
   };
 
+  # Run the Gnome Keyring daemon
+  services.gnome-keyring = {
+    enable = true;
+    components = [
+      "pkcs11"
+      "secrets"
+      "ssh"
+    ];
+  };
+
+  # Set path to gnome-keyring's SSH agent
+  home.sessionVariables.SSH_AUTH_SOCK="/run/user/1000/keyring/ssh";
+
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
