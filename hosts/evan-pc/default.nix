@@ -63,6 +63,9 @@
     persistencedSha256 = "sha256-3ae31/egyMKpqtGEqgtikWcwMwfcqMv2K4MVFa70Bqs=";
   };
 
+  # FIXME: remove when Firefox Wayland doesn't crash on explicit sync
+  environment.sessionVariables.MOZ_ENABLE_WAYLAND = "0";
+
   # Enable Steam
   # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.
   programs.steam = {
