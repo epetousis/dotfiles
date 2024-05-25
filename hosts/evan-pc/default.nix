@@ -47,6 +47,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages = with pkgs; [ nvidia-vaapi-driver ];
   # Enable systemd-based power management (should be enabled by default)
   hardware.nvidia.powerManagement.enable = true;
 
