@@ -106,6 +106,7 @@
     gamescope
     gamemode
     mangohud
+    zoom-us
   ];
 
   users.users.epetousis.packages = with pkgs; [
