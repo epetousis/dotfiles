@@ -23,6 +23,9 @@
     v4l2loopback.out
   ];
 
+  # Use Zen Linux kernel.
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   networking.hostName = "evan-pc"; # Define your hostname.
 
   # Enable Bluetooth
