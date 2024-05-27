@@ -58,14 +58,7 @@
   hardware.nvidia.modesetting.enable = true;
 
   # Enable Nvidia driver 555 to fix Xwayland flickering.
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    version = "555.42.02";
-    sha256_64bit = "sha256-k7cI3ZDlKp4mT46jMkLaIrc2YUx1lh1wj/J4SVSHWyk=";
-    sha256_aarch64 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
-    openSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
-    settingsSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA="; 
-    persistencedSha256 = "sha256-3ae31/egyMKpqtGEqgtikWcwMwfcqMv2K4MVFa70Bqs=";
-  };
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
   # FIXME: remove when Firefox Wayland doesn't crash on explicit sync
   environment.sessionVariables.MOZ_ENABLE_WAYLAND = "0";
