@@ -60,8 +60,8 @@
   # Enable Nvidia driver 555 to fix Xwayland flickering.
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
-  # FIXME: remove when Firefox Wayland doesn't crash on explicit sync
-  environment.sessionVariables.MOZ_ENABLE_WAYLAND = "0";
+  # FIXME: remove when GSP firmware doesn't cause Firefox Wayland to crash on explicit sync
+  boot.kernelParams = [ "nvidia.NVreg_EnableGpuFirmware=0" ];
 
   # Enable Steam
   # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.
