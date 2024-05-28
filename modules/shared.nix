@@ -18,6 +18,15 @@ in {
       (import ../overlays)
     ];
 
+    # Add kernel flags
+    boot.kernelParams = [
+      # Silent boot
+      "quiet"
+      # Disable systemd logs
+      "udev.log_level=3"
+    ];
+    boot.initrd.verbose = false;
+
     # Allow Nix command
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -144,6 +153,9 @@ in {
     # Ensure Gnome Keyring is present.
     services.gnome.gnome-keyring.enable = true;
     programs.seahorse.enable = true;
+
+    # Enable Plymouth to replace boot text.
+    boot.plymouth.enable = true;
 
     services.emacs = {
       enable = true;
