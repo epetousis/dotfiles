@@ -34,6 +34,9 @@
     };
 
     nixos-aarch64-widevine.url = "github:epetousis/nixos-aarch64-widevine";
+
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   nixConfig = {
@@ -66,6 +69,7 @@
     nixpkgs-defaults = {
       nixpkgs.overlays = [
         emacs-lsp-booster.overlays.default
+        inputs.emacs-overlay.overlays.package
         inputs.nil.overlays.nil
         (import ./overlays)
       ];
