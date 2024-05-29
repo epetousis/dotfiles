@@ -20,7 +20,9 @@
   # Add custom kernel modules
   boot.extraModulePackages = with config.boot.kernelPackages; [
     # Add video loopback for software-applied webcam effects
-    v4l2loopback.out
+    v4l2loopback
+    # Add Logitech G923 (PS) drivers
+    new-lg4ff
   ];
 
   # Use Zen Linux kernel.
