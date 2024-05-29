@@ -93,17 +93,4 @@ final: prev: {
       outputHash = "sha256-6ezEBeYmK5va3gCh00YnJzZ77V/Ql7A3l/+csohkz68=";
     };
   });
-
-  kdePackages = prev.kdePackages.overrideScope (f: p: {
-    kwin = p.kwin.overrideAttrs (kprev: rec {
-      version = "463ae633e878004b1799f618641a0c44573c10f4";
-      src = prev.fetchFromGitLab {
-        owner = "plasma";
-        repo = "kwin";
-        rev = version;
-        sha256 = "sha256-IMwhAaeakM8hMiS5K1ZijaqV9Y4DXbq5Gfnutv4JwBg=";
-        domain = "invent.kde.org";
-      };
-    });
-  });
 }
