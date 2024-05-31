@@ -91,6 +91,9 @@
     };
   };
 
+  # Enable Waydroid.
+  virtualisation.waydroid.enable = true;
+
   # Make Steam match my monitor scaling on Plasma.
   environment.sessionVariables.STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
 
