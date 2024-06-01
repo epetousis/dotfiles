@@ -85,6 +85,7 @@ in {
         obs-studio
         signal-desktop
         jetbrains.idea-ultimate
+        mixxx
       ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
@@ -98,6 +99,11 @@ in {
     environment.systemPackages = with pkgs; [
       tailscale-systray
       podman-compose
+    ];
+
+    # Apply udev rules from packages.
+    services.udev.packages = [
+      pkgs.mixxx # Needed to be able to detect USB DJ controllers
     ];
 
     # Enable Podman with `docker` alias

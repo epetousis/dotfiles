@@ -115,7 +115,7 @@
     rpcs3
   ];
 
-  # Make sure certain packages have necessary udev access.
+  # Apply udev rules from packages.
   services.udev.packages = with pkgs; [
     rpcs3 # Needed so that USB gamepads can be detected
   ];
