@@ -163,6 +163,9 @@ in {
     # Enable Plymouth to replace boot text.
     boot.plymouth.enable = true;
 
+    # Enable Syncthing for syncing my home storage.
+    services.syncthing.enable = true;
+
     services.emacs = {
       enable = true;
       package = pkgs.emacsPackages.evansEmacs;
