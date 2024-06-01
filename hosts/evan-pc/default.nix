@@ -112,6 +112,7 @@
     gamemode
     mangohud
     zoom-us
+    rpcs3
   ];
 
   users.users.epetousis.packages = with pkgs; [
