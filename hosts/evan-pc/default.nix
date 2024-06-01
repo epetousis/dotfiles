@@ -115,6 +115,11 @@
     rpcs3
   ];
 
+  # Make sure certain packages have necessary udev access.
+  services.udev.packages = with pkgs; [
+    rpcs3 # Needed so that USB gamepads can be detected
+  ];
+
   users.users.epetousis.packages = with pkgs; [
     beeper
     (bottles.override (p: { extraPkgs = bPackages: [ bPackages.wineasio ]; }))
