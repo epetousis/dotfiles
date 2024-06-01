@@ -164,7 +164,10 @@ in {
     boot.plymouth.enable = true;
 
     # Enable Syncthing for syncing my home storage.
-    services.syncthing.enable = true;
+    services.syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+    };
 
     services.emacs = {
       enable = true;
