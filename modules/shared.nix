@@ -71,7 +71,11 @@ in {
     users.users.epetousis = {
       description = "Evangelos Petousis";
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [
+        "wheel" # Enable ‘sudo’ for the user.
+        "networkmanager" # Allow editing network configurations without requiring sudo.
+        "syncthing" # Allow access to files created and updated by the Syncthing daemon.
+      ];
       packages = with pkgs; [
         # Chromium needed for work, don't give this to everyone
         (chromium.override {
