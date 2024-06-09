@@ -113,11 +113,15 @@
     mangohud
     zoom-us
     rpcs3
+    solaar
+    streamdeck-ui
   ];
 
   # Apply udev rules from packages.
   services.udev.packages = with pkgs; [
     rpcs3 # Needed so that USB gamepads can be detected
+    solaar # Needed to detect connected mice
+    streamdeck-ui # Needed to connect to Stream Decks
   ];
 
   users.users.epetousis.packages = with pkgs; [
