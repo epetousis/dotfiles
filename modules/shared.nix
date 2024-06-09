@@ -66,6 +66,10 @@ in {
     # Enable Wayland by default in Chromium apps
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+    # Auto scale Qt apps
+    environment.sessionVariables.QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    environment.sessionVariables.QT_ENABLE_HIGHDPI_SCALING = "1";
+
     # Define a user account. Don't forget to set a password with ‘passwd’.
     programs.fish.enable = true;
     users.users.epetousis = {
