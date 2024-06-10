@@ -103,6 +103,12 @@
   # Enable Game Mode.
   programs.gamemode.enable = true;
 
+  # Enable ALVR.
+  programs.alvr = {
+    enable = true;
+    openFirewall = true;
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
