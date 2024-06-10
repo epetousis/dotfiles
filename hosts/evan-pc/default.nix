@@ -112,6 +112,9 @@
   # Enable adb.
   programs.adb.enable = true;
 
+  # On this machine only, add my user to adbusers.
+  users.users.epetousis.extraGroups = ["adbusers"];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
