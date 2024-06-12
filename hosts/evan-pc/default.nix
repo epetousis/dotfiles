@@ -103,6 +103,21 @@
   # Enable Game Mode.
   programs.gamemode.enable = true;
 
+  # Virtual machine support.
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      ovmf = {
+        enable = true;
+        packages = [ pkgs.OVMFFull.fd ];
+      };
+      swtpm = {
+        enable = true;
+      };
+    };
+  };
+
   # Enable ALVR.
   programs.alvr = {
     enable = true;
@@ -112,8 +127,10 @@
   # Enable adb.
   programs.adb.enable = true;
 
-  # On this machine only, add my user to adbusers.
-  users.users.epetousis.extraGroups = ["adbusers"];
+  users.users.epetousis.extraGroups = [
+    "adbusers" # On this machine only, add my user to adbusers.
+    "libvirt" # Add my user to libvirt's group.
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
