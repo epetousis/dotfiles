@@ -74,8 +74,9 @@
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
     package = pkgs.steam.override {
-      extraEnv = {};
+      extraArgs = "-pipewire -pipewire-dmabuf";
       extraLibraries = pkgs: with pkgs; [
         xorg.libXcursor
         xorg.libXi
