@@ -46,7 +46,7 @@ final: prev: {
 
   asahi-btsync = final.callPackage ./asahi-btsync.nix {};
 
-  openai-whisper-cpp = import ./openai-whisper-cpp { inherit prev final; };
+  openai-whisper-cpp = prev.openai-whisper-cpp.override { cudaSupport = true; };
 
   rclone = prev.callPackage "${prev.path}/pkgs/applications/networking/sync/rclone" {
     buildGoModule = args: prev.buildGoModule (args // {
