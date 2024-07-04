@@ -79,18 +79,4 @@ final: prev: {
       runHook postInstall
     '';
   };
-
-  vesktop = prev.vesktop.overrideAttrs (p: {
-    version = "unstable-2024-04-21";
-    src = final.fetchFromGitHub {
-      owner = "Vencord";
-      repo = "Vesktop";
-      rev = "2733727a40a4cf542277dedcf89e87e7740f962d";
-      hash = "sha256-EF36HbbhTuAdwBEKqYgBBu7JoP1LJneU78bROHoKqDw=";
-    };
-
-    pnpmDeps = p.pnpmDeps.overrideAttrs {
-      outputHash = "sha256-6ezEBeYmK5va3gCh00YnJzZ77V/Ql7A3l/+csohkz68=";
-    };
-  });
 }
