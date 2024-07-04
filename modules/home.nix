@@ -34,7 +34,7 @@
     nil
     nix-output-monitor
     nodejs
-    nodePackages.pyright
+    pyright
     nodePackages.typescript-language-server
     rclone
     ripgrep
