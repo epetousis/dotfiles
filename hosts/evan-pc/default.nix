@@ -59,9 +59,6 @@
   # Enable Wayland on Nvidia.
   hardware.nvidia.modesetting.enable = true;
 
-  # Enable Nvidia driver 555 to fix Xwayland flickering.
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-
   boot.kernelParams = [
     # FIXME: remove when GSP firmware doesn't cause Firefox Wayland to crash on explicit sync
     "nvidia.NVreg_EnableGpuFirmware=0"
