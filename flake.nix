@@ -102,7 +102,7 @@
       ];
     };
 
-    nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       modules = [
         lix-module.nixosModules.default
@@ -110,6 +110,17 @@
         ./hosts/evan-pc
         home-manager.nixosModules.home-manager
         disko.nixosModules.disko
+        {
+          nixpkgs.overlays = [
+            (f: p: {
+              kdePackages = p.kdePackages // {
+                kwin = (import nixpkgs-stable {
+                  inherit system;
+                }).kdePackages.kwin;
+              };
+            })
+          ];
+        }
       ];
     };
 
