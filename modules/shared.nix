@@ -136,6 +136,7 @@ in {
     fonts.packages = with pkgs; [
       apple-color-emoji
       cantarell-fonts
+      inter
     ];
 
     fonts.fontconfig.defaultFonts.emoji = [ "Apple Color Emoji" ];
