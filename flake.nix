@@ -5,6 +5,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +54,7 @@
 
   outputs = {
     self,
+      darwin,
       lix-module,
       nixpkgs,
       nixpkgs-stable,
@@ -99,6 +103,16 @@
           hardware.asahi.peripheralFirmwareDirectory = inputs.asahi-firmware;
           nixpkgs.overlays = [ inputs.nixos-aarch64-widevine.overlays.default ];
         }
+      ];
+    };
+
+    darwinConfigurations."evan-mba-macos" = darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        lix-module.nixosModules.default
+        nix-defaults
+        home-manager.darwinModules.home-manager
+        ./hosts/evan-mba.nix
       ];
     };
 

@@ -15,9 +15,7 @@
 
   home.packages = with pkgs; [
     axel
-    bitwarden-cli
     deluge
-    discordo
     emacs-lsp-booster
     ffmpeg
     fd
@@ -46,12 +44,11 @@
     wl-clipboard
     youtube-music
     yt-dlp
-  ] ++ lib.optionals stdenv.isDarwin [
+  ] ++ lib.optionals (stdenv.isDarwin && false) [
     # macOS dependencies, stuff that should be everywhere instead of one system
     anki-bin
     cyberduck
     discord
-    firefox-bin
     karabiner-elements
     keka
     monitorcontrol
@@ -90,7 +87,7 @@
   };
 
   services.pantalaimon = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     settings = {
       local-beeper = {
         Homeserver = "https://matrix.beeper.com";
@@ -108,7 +105,7 @@
 
   # Run the Gnome Keyring daemon
   services.gnome-keyring = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     components = [
       "pkcs11"
       "secrets"
@@ -141,9 +138,10 @@
       merge = {
         ff = "only";
       };
-    } // lib.optionals pkgs.stdenv.hostPlatform.isLinux {
-      credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
-    };
+    } // (if pkgs.stdenv.hostPlatform.isLinux
+        then {
+          credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
+        } else {});
   };
 
   programs.zsh = {
