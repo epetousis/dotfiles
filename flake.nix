@@ -2,7 +2,7 @@
   description = "Evan's system";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/5ad6a14c6bf098e98800b091668718c336effc95";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     darwin.url = "github:lnl7/nix-darwin/master";
@@ -26,10 +26,10 @@
     nil.url = "github:oxalica/nil";
 
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
-    asahi-firmware = {
+    /* asahi-firmware = {
       url = "git+ssh://git@github.com/epetousis/asahi-firmware";
       flake = false;
-    };
+    }; */
 
     nixos-aarch64-widevine.url = "github:epetousis/nixos-aarch64-widevine";
 
@@ -100,7 +100,7 @@
         home-manager.nixosModules.home-manager
         nixos-apple-silicon.nixosModules.default
         {
-          hardware.asahi.peripheralFirmwareDirectory = inputs.asahi-firmware;
+          /* hardware.asahi.peripheralFirmwareDirectory = inputs.asahi-firmware; */
           nixpkgs.overlays = [ inputs.nixos-aarch64-widevine.overlays.default ];
         }
       ];
