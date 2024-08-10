@@ -10,7 +10,7 @@
   disko.devices = {
     disk = {
       vdb = {
-        device = "/dev/disk/by-id/ata-Samsung_SSD_860_EVO_M.2_500GB_S5GCNJ0N603853K";
+        device = "/dev/disk/by-id/nvme-CT1000P5SSD8_20282B783631";
         type = "disk";
         content = {
           type = "gpt";
