@@ -44,10 +44,7 @@ in {
     # Enable CUPS to print documents.
     services.printing.enable = true;
 
-    # Enable sound, computers that I use frequently need sound enabled.
-    sound.enable = true;
-    # Make sure that we use Pipewire NOT Pulseaudio
-    hardware.pulseaudio.enable = false;
+    # Enable Pipewire
     services.pipewire = {
       enable = true;
       alsa.enable = true;
