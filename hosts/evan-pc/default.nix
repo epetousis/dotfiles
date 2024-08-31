@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ../../modules/gnome.nix
       ../../modules/shared.nix
+      ../../modules/shared-home.nix
       ../../modules/rclone-mount.nix
     ];
 
@@ -47,6 +48,7 @@
 
   # Enable my general NixOS settings.
   system.epetousis.enable = true;
+  system.epetousis.enableExtras = true;
 
   # Enable the (unfortunately proprietary) Nvidia driver.
   services.xserver.videoDrivers = [ "nvidia" ];

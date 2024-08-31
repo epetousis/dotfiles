@@ -91,6 +91,10 @@
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
     } // nixpkgs-defaults;
   in {
+    nixosModules = {
+      sharedSettings = import ./modules/shared.nix;
+    };
+
     nixosConfigurations."evan-mba" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
