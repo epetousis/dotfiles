@@ -114,7 +114,7 @@
   };
 
   # Set path to gnome-keyring's SSH agent
-  home.sessionVariables.SSH_AUTH_SOCK="/run/user/1000/keyring/ssh";
+  home.sessionVariables = lib.mkIf (pkgs.stdenv.hostPlatform.isLinux) { SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh"; };
 
   programs.git = {
     enable = true;
