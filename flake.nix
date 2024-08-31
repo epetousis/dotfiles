@@ -25,14 +25,6 @@
 
     nil.url = "github:oxalica/nil";
 
-    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
-    /* asahi-firmware = {
-      url = "git+ssh://git@github.com/epetousis/asahi-firmware";
-      flake = false;
-    }; */
-
-    nixos-aarch64-widevine.url = "github:epetousis/nixos-aarch64-widevine";
-
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -93,21 +85,6 @@
   in {
     nixosModules = {
       sharedSettings = import ./modules/shared.nix;
-    };
-
-    nixosConfigurations."evan-mba" = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      modules = [
-        lix-module.nixosModules.default
-        nix-defaults
-        ./hosts/evan-mba-nix
-        home-manager.nixosModules.home-manager
-        nixos-apple-silicon.nixosModules.default
-        {
-          /* hardware.asahi.peripheralFirmwareDirectory = inputs.asahi-firmware; */
-          nixpkgs.overlays = [ inputs.nixos-aarch64-widevine.overlays.default ];
-        }
-      ];
     };
 
     darwinConfigurations."evan-mba-macos" = darwin.lib.darwinSystem {

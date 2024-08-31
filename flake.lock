@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "asahi-firmware": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1712151939,
-        "narHash": "sha256-7LmtWuV0rC0Tj8KEghTqF1U/ledLhfOrbaXf6ZBJJfc=",
-        "ref": "refs/heads/master",
-        "rev": "dbbde40b27995f4626aac237c27582da93c5e2ce",
-        "revCount": 1,
-        "type": "git",
-        "url": "ssh://git@github.com/epetousis/asahi-firmware"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/epetousis/asahi-firmware"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -396,7 +380,6 @@
     },
     "root": {
       "inputs": {
-        "asahi-firmware": "asahi-firmware",
         "darwin": "darwin",
         "disko": "disko",
         "emacs-lsp-booster": "emacs-lsp-booster",
