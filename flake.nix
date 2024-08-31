@@ -35,7 +35,6 @@
     extra-substituters = [
       # If you update this, update the nix-defaults variable in the output.
       "https://nix-community.cachix.org"
-      "https://cachix.org/api/v1/cache/emacs"
       "https://epetousis.cachix.org"
       "https://cache.lix.systems"
     ];
@@ -72,7 +71,6 @@
       home-manager.useGlobalPkgs = true;
       nix.settings.trusted-substituters = [
         "https://nix-community.cachix.org"
-        "https://cachix.org/api/v1/cache/emacs"
         "https://epetousis.cachix.org"
         "https://cache.lix.systems"
       ];
