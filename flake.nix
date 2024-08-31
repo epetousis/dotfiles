@@ -2,11 +2,13 @@
   description = "Evan's system";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/5ad6a14c6bf098e98800b091668718c336effc95";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+    # Temporary, see https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
+    darwin-nixpkgs.url = "github:nixos/nixpkgs?rev=2e92235aa591abc613504fde2546d6f78b18c0cd";
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
@@ -93,6 +95,17 @@
         nix-defaults
         home-manager.darwinModules.home-manager
         ./hosts/evan-mba.nix
+        {
+          nixpkgs.overlays = [
+            # Temporary, see https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
+            (final: prev: let
+              pkgsDarwin = import inputs.darwin-nixpkgs {inherit (prev) system;};
+            in {
+                inherit (pkgsDarwin) swift;
+              }
+            )
+          ];
+        }
       ];
     };
 
