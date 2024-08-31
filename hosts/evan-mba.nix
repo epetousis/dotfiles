@@ -30,6 +30,9 @@
     extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
     experimental-features = [ "nix-command" "flakes" ];
     sandbox = true;
+    trusted-users = [
+      "epetousis"
+    ];
   };
 
   users.users.epetousis = {
