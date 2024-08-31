@@ -127,6 +127,13 @@
   # Enable adb.
   programs.adb.enable = true;
 
+  # Add Sunshine.
+  services.sunshine = {
+    enable = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
   users.users.epetousis.extraGroups = [
     "adbusers" # On this machine only, add my user to adbusers.
     "libvirt" # Add my user to libvirt's group.
