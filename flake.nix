@@ -53,7 +53,6 @@
       home-manager,
       disko,
       emacs-lsp-booster,
-      nixos-apple-silicon,
       ...
   }@inputs:
   let
