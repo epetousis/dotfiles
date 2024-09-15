@@ -71,7 +71,6 @@
     };
 
     nix-defaults = {
-      home-manager.useGlobalPkgs = true;
       nix.settings.trusted-substituters = [
         "https://nix-community.cachix.org"
         "https://epetousis.cachix.org"
@@ -90,6 +89,10 @@
         "@wheel"
       ];
     } // nixpkgs-defaults;
+
+    home-manager-defaults = {
+      home-manager.useGlobalPkgs = true;
+    };
   in {
     nixosModules = {
       sharedSettings = import ./modules/shared.nix;
@@ -101,6 +104,7 @@
         lix-module.nixosModules.default
         nix-defaults
         home-manager.darwinModules.home-manager
+        home-manager-defaults
         ./hosts/evan-mba.nix
         {
           nixpkgs.overlays = [
@@ -125,6 +129,7 @@
         nix-defaults
         ./hosts/evan-pc
         home-manager.nixosModules.home-manager
+        home-manager-defaults
         disko.nixosModules.disko
         {
           nixpkgs.overlays = [
@@ -153,6 +158,7 @@
       modules = [
         nixpkgs-defaults
         ./modules/home.nix
+        home-manager-defaults
         {
           home.username = "epetousis";
           home.homeDirectory = "/home/epetousis";
@@ -165,6 +171,7 @@
       modules = [
         nixpkgs-defaults
         ./modules/home.nix
+        home-manager-defaults
         {
           home.username = "epetousis";
           home.homeDirectory = "/home/epetousis";
