@@ -210,6 +210,12 @@ The argument LOCATION can be any path to a Nix flake."
 (require 'eglot-booster)
 (add-hook 'eglot-managed-mode-hook 'eglot-booster-mode)
 
+;; Configure hunspell for markdown mode
+(setq ispell-program-name "hunspell")
+(setq ispell-local-dictionary "en_AU")
+(add-hook 'markdown-mode-hook 'flyspell-mode)
+(add-hook 'markdown-mode-hook 'flyspell-buffer)
+
 ;; Org configuration
 (setq org-directory "~/Documents/iCloudOrg")
 (setq org-default-notes-file (concat org-directory "/daily.org"))

@@ -24,6 +24,8 @@
     fzf
     git-filter-repo
     heroku
+    hunspell
+    hunspellDicts.en_AU
     jq
     kitty
     mosh
