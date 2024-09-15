@@ -16,6 +16,9 @@ apps are not started from a shell."
 
 (set-exec-path-from-shell-PATH)
 
+;; Make sure that emacs runs as a server.
+(server-start)
+
 ;; LSP
 (require 'eglot)
 (add-to-list 'eglot-server-programs
