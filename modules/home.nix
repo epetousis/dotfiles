@@ -14,6 +14,8 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    _1password
+    _1password-gui-beta
     axel
     deluge
     emacs-lsp-booster
