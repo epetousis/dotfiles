@@ -103,9 +103,6 @@
     ];
   };
 
-  # Set path to gnome-keyring's SSH agent
-  home.sessionVariables = lib.mkIf (pkgs.stdenv.hostPlatform.isLinux) { SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh"; };
-
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
@@ -202,12 +199,7 @@
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
-    matchBlocks = {
-      "*" = {
-        # Potentially unnecessary, as Gnome Keyring should see id_rsa automatically.
-        identityFile = "~/.ssh/id_rsa";
-      };
-    };
+    matchBlocks."*".extraOptions.IdentityAgent = "/run/user/1000/keyring/ssh";
   };
 
   programs.tmux = {

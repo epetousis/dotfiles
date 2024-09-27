@@ -143,6 +143,7 @@
     enable = true;
     package = pkgs._1password-gui-beta;
   };
+  home-manager.users.epetousis.programs.ssh.matchBlocks."*".extraOptions.IdentityAgent = pkgs.lib.mkForce "~/.1password/agent.sock";
 
   users.users.epetousis.extraGroups = [
     "adbusers" # On this machine only, add my user to adbusers.
