@@ -55,6 +55,7 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = with pkgs; [ nvidia-vaapi-driver ];
+  hardware.nvidia.open = true;
   # Enable systemd-based power management (should be enabled by default)
   hardware.nvidia.powerManagement.enable = true;
 
