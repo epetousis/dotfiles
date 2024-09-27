@@ -138,6 +138,12 @@
     openFirewall = true;
   };
 
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    package = pkgs._1password-gui-beta;
+  };
+
   users.users.epetousis.extraGroups = [
     "adbusers" # On this machine only, add my user to adbusers.
     "libvirt" # Add my user to libvirt's group.
