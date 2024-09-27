@@ -131,17 +131,6 @@
         home-manager.nixosModules.home-manager
         home-manager-defaults
         disko.nixosModules.disko
-        {
-          nixpkgs.overlays = [
-            (f: p: {
-              kdePackages = p.kdePackages // {
-                kwin = (import nixpkgs-stable {
-                  inherit system;
-                }).kdePackages.kwin;
-              };
-            })
-          ];
-        }
       ];
     };
 
