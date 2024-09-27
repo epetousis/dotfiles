@@ -34,6 +34,9 @@
   # Enable Bluetooth
   hardware.bluetooth.enable = true;
 
+  # Enable firmware with contentious licensing
+  hardware.enableAllFirmware = true;
+
   # Enable networking
   networking.networkmanager.enable = true;
 
