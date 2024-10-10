@@ -61,6 +61,7 @@ let
     epkgs.melpaPackages.php-mode
     epkgs.nix-mode
     epkgs.notmuch
+    epkgs.ox-slack
     epkgs.rust-mode
     epkgs.typescript-mode
     epkgs.vterm
