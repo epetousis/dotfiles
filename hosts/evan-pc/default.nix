@@ -131,6 +131,9 @@
   # Enable adb.
   programs.adb.enable = true;
 
+  # Enable arrpc for Discord RPC via Home Manager, since there is no nixpkgs service.
+  home-manager.users.epetousis.services.arrpc.enable = true;
+
   # Add Sunshine.
   services.sunshine = {
     enable = true;
