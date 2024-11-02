@@ -22,29 +22,21 @@
     fira-code
     fira-code-nerdfont
     fzf
-    git-filter-repo
-    heroku
     hunspell
     hunspellDicts.en_AU
     jq
     kitty
     mosh
     mpv
-    neovim
     nil
     nix-output-monitor
-    nodejs
-    pyright
-    nodePackages.typescript-language-server
     rclone
     ripgrep
-    rust-analyzer
+    source-sans-pro
+    source-han-sans
     streamlink
-    syncthing
     tmux
-    wget
     wl-clipboard
-    youtube-music
     yt-dlp
   ] ++ lib.optionals (stdenv.isDarwin && false) [
     # macOS dependencies, stuff that should be everywhere instead of one system
@@ -61,11 +53,7 @@
     stats
     unnaturalscrollwheels
   ] ++ lib.optionals stdenv.isLinux [
-    anki
-    fira-code-nerdfont
     libreoffice
-    source-sans-pro
-    source-han-sans
     thunderbird
     vesktop
   ] ++ lib.optionals stdenv.isx86_64 [
