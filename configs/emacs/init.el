@@ -153,6 +153,9 @@ apps are not started from a shell."
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
+;; Add a keybind to quickly show a dired sidebar
+(keymap-global-set "C-c ;" #'dired-sidebar-toggle-sidebar)
+
 ;; Add a project command for terminal
 ;; Modified from https://github.com/emacs-mirror/emacs/blob/c77e35efd36f2c43e87066faa4257606d5c6f849/lisp/progmodes/project.el#L1279
 (defun project-vterm ()
