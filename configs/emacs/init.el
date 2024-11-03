@@ -174,6 +174,9 @@ if one already exists."
 (define-key project-prefix-map "t" 'project-vterm)
 (add-to-list 'project-switch-commands '(project-vterm "Vterm") t)
 
+;; Add a bind for creating non-project vterm buffer
+(keymap-global-set "C-c v" (lambda () (interactive) (vterm t)))
+
 ;; Add a bind for avy
 (define-key key-translation-map (kbd "A-x") nil) ;; Remove this macOS-duplicating key translation bind
 (global-set-key (kbd "A-x") 'avy-goto-char)
