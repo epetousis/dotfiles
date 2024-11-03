@@ -261,22 +261,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-pr338033": {
-      "locked": {
-        "lastModified": 1724879822,
-        "narHash": "sha256-AM7206bRn3a9IUMas5QUkIASs06YeoOTXs70p0YFn30=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "0c3d12a3e5d4077cf7fee84fcb177237ee8daddf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "0c3d12a3e5d4077cf7fee84fcb177237ee8daddf",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1727264057,
@@ -336,7 +320,6 @@
         "lix-module": "lix-module",
         "nil": "nil",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-pr338033": "nixpkgs-pr338033",
         "nixpkgs-stable": "nixpkgs-stable_2"
       }
     },

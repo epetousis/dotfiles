@@ -10,9 +10,6 @@
     # Temporary, see https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
     darwin-nixpkgs.url = "github:nixos/nixpkgs?rev=2e92235aa591abc613504fde2546d6f78b18c0cd";
 
-    # Temporary, see https://github.com/NixOS/nixpkgs/pull/338033
-    nixpkgs-pr338033.url = "github:nixos/nixpkgs?rev=0c3d12a3e5d4077cf7fee84fcb177237ee8daddf";
-
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -111,10 +108,8 @@
             # Temporary, see https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
             (final: prev: let
               pkgsDarwin = import inputs.darwin-nixpkgs {inherit (prev) system;};
-              pkgsKittyFix = import inputs.nixpkgs-pr338033 { inherit (prev) system; };
             in {
               inherit (pkgsDarwin) swift;
-              inherit (pkgsKittyFix) kitty;
               }
             )
           ];
