@@ -25,21 +25,18 @@ in {
     services.xserver.desktopManager.gnome.extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
     services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
       [org.gnome.mutter]
-      experimental-features=['scale-monitor-framebuffer']
+      experimental-features=['scale-monitor-framebuffer', 'xwayland-native-scaling']
       [org.gnome.mutter.keybindings]
       switch-monitor=[]
     '';
 
     # Install some essential extensions
     environment.systemPackages = with pkgs; [
-      gnome.gnome-themes-extra
-      gnome.gnome-tweaks
+      gnome-themes-extra
+      gnome-tweaks
       gnomeExtensions.appindicator
-      gnomeExtensions.pop-shell
       gnomeExtensions.night-theme-switcher
-      gnomeExtensions.user-themes
-      gnomeExtensions.vitals
-      gnomeExtensions.scaletoggle
+      gnomeExtensions.dash-to-dock
     ];
 
     # Link our monitor config to gdm's config directory, so we can do things like have a high refresh rate login screen!
