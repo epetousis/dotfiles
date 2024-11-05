@@ -38,26 +38,6 @@
     tmux
     wl-clipboard
     yt-dlp
-  ] ++ lib.optionals (stdenv.isDarwin && false) [
-    # macOS dependencies, stuff that should be everywhere instead of one system
-    anki-bin
-    cyberduck
-    discord
-    karabiner-elements
-    keka
-    monitorcontrol
-    openai-whisper-cpp
-    pinentry_mac
-    libreoffice-bin
-    soundsource
-    stats
-    unnaturalscrollwheels
-  ] ++ lib.optionals stdenv.isLinux [
-    libreoffice
-    thunderbird
-    vesktop
-  ] ++ lib.optionals stdenv.isx86_64 [
-    # No x86 only apps at the moment.
   ];
 
   fonts.fontconfig.enable = pkgs.stdenv.isLinux;

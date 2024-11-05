@@ -156,22 +156,20 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    openai-whisper-cpp
     gamescope
     gamemode
     mangohud
-    zoom-us
     rpcs3
     solaar
-    streamdeck-ui
+    libreoffice
+    thunderbird
+    vesktop
   ];
 
   # Apply udev rules from packages.
   services.udev.packages = with pkgs; [
     rpcs3 # Needed so that USB gamepads can be detected
     solaar # Needed to detect connected mice
-    streamdeck-ui # Needed to connect to Stream Decks
   ];
 
   users.users.epetousis.packages = with pkgs; [
