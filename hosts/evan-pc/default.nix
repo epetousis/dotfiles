@@ -73,6 +73,9 @@
   security.sudo.enable = false;
   environment.shellAliases.sudo = "run0";
 
+  # Get rid of root.
+  users.users.root.hashedPassword = "!";
+
   # Enable Steam
   # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.
   programs.steam = {
