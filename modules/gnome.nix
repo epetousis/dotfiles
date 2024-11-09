@@ -22,7 +22,7 @@ in {
     };
 
     # Enable fractional scaling on Gnome Wayland and disable switch monitor keybind.
-    services.xserver.desktopManager.gnome.extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
+    services.xserver.desktopManager.gnome.extraGSettingsOverridePackages = [ pkgs.mutter ];
     services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
       [org.gnome.mutter]
       experimental-features=['scale-monitor-framebuffer', 'xwayland-native-scaling']
