@@ -69,6 +69,10 @@
     "nvidia_drm.fbdev=1"
   ];
 
+  # Replace sudo with run0
+  security.sudo.enable = false;
+  environment.shellAliases.sudo = "run0";
+
   # Enable Steam
   # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.
   programs.steam = {
