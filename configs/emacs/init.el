@@ -213,8 +213,8 @@ The argument LOCATION can be any path to a Nix flake."
 (envrc-global-mode)
 
 ;; Run eglot-booster-mode on eglot start
-(require 'eglot-booster)
-(add-hook 'eglot-managed-mode-hook 'eglot-booster-mode)
+;; (require 'eglot-booster)
+;; (add-hook 'eglot-managed-mode-hook 'eglot-booster-mode)
 
 ;; Configure hunspell for markdown mode
 (setq ispell-program-name "hunspell")
