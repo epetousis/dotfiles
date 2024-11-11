@@ -156,6 +156,13 @@ apps are not started from a shell."
 ;; Add a keybind to quickly show a dired sidebar
 (keymap-global-set "C-c ;" #'dired-sidebar-toggle-sidebar)
 
+;; Shortcuts to make markdown-mode more like org-mode
+(keymap-set markdown-mode-map "M-<right>" 'markdown-demote)
+(keymap-set markdown-mode-map "M-<left>" 'markdown-promote)
+(keymap-set markdown-mode-map "M-<up>" 'markdown-move-up)
+(keymap-set markdown-mode-map "M-<down>" 'markdown-move-down)
+(keymap-set markdown-mode-map "C-<return>" 'markdown-insert-header-dwim)
+
 ;; Add a project command for terminal
 ;; Modified from https://github.com/emacs-mirror/emacs/blob/c77e35efd36f2c43e87066faa4257606d5c6f849/lisp/progmodes/project.el#L1279
 (defun project-vterm ()
