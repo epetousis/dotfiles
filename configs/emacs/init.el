@@ -157,6 +157,7 @@ apps are not started from a shell."
 (keymap-global-set "C-c ;" #'dired-sidebar-toggle-sidebar)
 
 ;; Shortcuts to make markdown-mode more like org-mode
+(require 'markdown-mode)
 (keymap-set markdown-mode-map "M-<right>" 'markdown-demote)
 (keymap-set markdown-mode-map "M-<left>" 'markdown-promote)
 (keymap-set markdown-mode-map "M-<up>" 'markdown-move-up)
