@@ -81,7 +81,6 @@ in {
         "networkmanager" # Allow editing network configurations without requiring sudo.
       ];
       packages = with pkgs; [
-        # Chromium needed for work, don't give this to everyone
         (chromium.override {
           commandLineArgs = [
             "--enable-features=TouchpadOverscrollHistoryNavigation"
@@ -92,6 +91,28 @@ in {
     };
 
     home-manager.users.epetousis = import ./home.nix;
+
+    environment.systemPackages = with pkgs; [
+      emacs-lsp-booster
+      ffmpeg
+      fd
+      fira-code
+      fira-code-nerdfont
+      fzf
+      hunspell
+      hunspellDicts.en_AU
+      jq
+      mosh
+      mpv
+      nil
+      nix-output-monitor
+      rclone
+      ripgrep
+      source-sans-pro
+      source-han-sans
+      tmux
+      wl-clipboard
+    ];
 
     # Enable systemd-oomd extra services
     systemd.oomd = {
