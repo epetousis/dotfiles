@@ -11,35 +11,6 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
-  nixpkgs.config.allowUnfree = true;
-
-  home.packages = with pkgs; [
-    axel
-    deluge
-    emacs-lsp-booster
-    ffmpeg
-    fd
-    fira-code
-    fira-code-nerdfont
-    fzf
-    hunspell
-    hunspellDicts.en_AU
-    jq
-    kitty
-    mosh
-    mpv
-    nil
-    nix-output-monitor
-    rclone
-    ripgrep
-    source-sans-pro
-    source-han-sans
-    streamlink
-    tmux
-    wl-clipboard
-    yt-dlp
-  ];
-
   fonts.fontconfig.enable = pkgs.stdenv.isLinux;
 
   # Make this config work better on non-NixOS distros
