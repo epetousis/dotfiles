@@ -158,7 +158,9 @@
     bindkey '^xe' edit-command-line
     bindkey '^x^e' edit-command-line
 
-    alias nxrb='${if pkgs.stdenv.hostPlatform.isDarwin then "darwin-rebuild" else "sudo nixos-rebuild"} switch --flake ~/.local/share/dotfiles'
+    alias nxrb='${if pkgs.stdenv.hostPlatform.isDarwin
+                  then "darwin-rebuild"
+                  else "${pkgs.systemd}/bin/run0 --setenv=PATH=${pkgs.git}/bin:${pkgs.systemd}/bin/ nixos-rebuild"} switch --flake ~/.local/share/dotfiles'
 
     alias e='emacsclient -r --no-wait'
 
