@@ -10,9 +10,19 @@ in {
       description = "A path to a gdm XML monitor config.";
       default = null;
     };
+    user = mkOption {
+      type = types.str;
+      description = "The user account on which to apply GTK settings to.";
+    };
+    macStyleFonts = mkOption {
+      type = types.bool;
+      description = "Whether to enable macOS style font rendering.";
+      default = true;
+    };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkMerge [
+  (mkIf cfg.enable {
     # Enable the X11 windowing system.
     services.xserver = {
       enable = true;
@@ -28,6 +38,10 @@ in {
       experimental-features=['scale-monitor-framebuffer', 'xwayland-native-scaling']
       [org.gnome.mutter.keybindings]
       switch-monitor=[]
+      [org.gnome.desktop.interface]
+      font-rendering='manual'
+      font-hinting='none'
+      font-antialiasing='grayscale'
     '';
 
     # Install some essential extensions
@@ -55,5 +69,27 @@ in {
 
     # Enable Gnome remote desktop
     services.gnome.gnome-remote-desktop.enable = true;
-  };
+  })
+  (lib.mkIf cfg.macStyleFonts {
+    # Disable hinting
+    fonts.fontconfig.hinting.enable = false;
+
+    # Disable subpixel rendering
+    fonts.fontconfig.subpixel.rgba = "none";
+    fonts.fontconfig.subpixel.lcdfilter = "none";
+
+    # Enable stem darkening
+    environment.variables.FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+  })
+  # Disable hinting
+  (lib.mkIf (cfg.macStyleFonts && config.home-manager != null && cfg.user != null) {
+    home-manager.users.${cfg.user} = {
+      gtk = {
+        gtk4.extraConfig = {
+          gtk-hint-font-metrics = false;
+        };
+      };
+    };
+  })
+  ];
 }
