@@ -103,6 +103,9 @@ in {
     # Enable Plymouth to replace boot text.
     boot.plymouth.enable = true;
 
+    # Disable nano (which is normally included by default).
+    programs.nano.enable = false;
+
     services.emacs = {
       enable = true;
       package = pkgs.emacsPackages.evansEmacs;
