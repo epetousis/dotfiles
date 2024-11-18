@@ -131,7 +131,7 @@
 
     alias nxrb='${if pkgs.stdenv.hostPlatform.isDarwin
                   then "darwin-rebuild"
-                  else "${pkgs.systemd}/bin/run0 --setenv=PATH=${pkgs.git}/bin:${pkgs.systemd}/bin/ nixos-rebuild"} --flake ~/.local/share/dotfiles'
+                  else "${pkgs.systemd}/bin/run0 --setenv=PATH=${pkgs.git}/bin:${pkgs.systemd}/bin/ nixos-rebuild"} --flake ~/.local/share/dotfiles --log-format multiline-with-logs'
 
     alias e='emacsclient -r --no-wait'
 
