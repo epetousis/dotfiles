@@ -11,7 +11,7 @@
     darwin-nixpkgs.url = "github:nixos/nixpkgs?rev=2e92235aa591abc613504fde2546d6f78b18c0cd";
 
     lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
