@@ -7,8 +7,6 @@
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    # Temporary, see https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
-    darwin-nixpkgs.url = "github:nixos/nixpkgs?rev=2e92235aa591abc613504fde2546d6f78b18c0cd";
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
@@ -103,21 +101,10 @@
         home-manager.darwinModules.home-manager
         home-manager-defaults
         ./hosts/evan-mba.nix
-        {
-          nixpkgs.overlays = [
-            # Temporary, see https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
-            (final: prev: let
-              pkgsDarwin = import inputs.darwin-nixpkgs {inherit (prev) system;};
-            in {
-              inherit (pkgsDarwin) swift;
-              }
-            )
-          ];
-        }
       ];
     };
 
-    nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem rec {
+    nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         lix-module.nixosModules.default

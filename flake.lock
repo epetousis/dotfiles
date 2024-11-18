@@ -21,22 +21,6 @@
         "type": "github"
       }
     },
-    "darwin-nixpkgs": {
-      "locked": {
-        "lastModified": 1718182942,
-        "narHash": "sha256-7IAIo8dA+XxC9ARKl/xTXUWy5Y0p+JTRxJG6S11sKZg=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "2e92235aa591abc613504fde2546d6f78b18c0cd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "2e92235aa591abc613504fde2546d6f78b18c0cd",
-        "type": "github"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -291,7 +275,6 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
-        "darwin-nixpkgs": "darwin-nixpkgs",
         "disko": "disko",
         "emacs-lsp-booster": "emacs-lsp-booster",
         "emacs-overlay": "emacs-overlay",
