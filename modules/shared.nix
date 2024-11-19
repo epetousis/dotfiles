@@ -114,13 +114,6 @@ in {
       wl-clipboard
     ];
 
-    # Enable systemd-oomd extra services
-    systemd.oomd = {
-      # See https://www.freedesktop.org/software/systemd/man/latest/systemd-oomd.service.html#Usage%20Recommendations for why these are enabled
-      enableSystemSlice = true;
-      enableUserSlices = true;
-    };
-
     # Enable Plymouth to replace boot text.
     boot.plymouth.enable = true;
 
