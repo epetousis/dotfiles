@@ -17,15 +17,18 @@ final: prev: {
 
   gnomeExtensions = prev.gnomeExtensions // {
     scaletoggle = final.callPackage ./scaletoggle {};
-    pop-shell = prev.gnomeExtensions.pop-shell.overrideAttrs {
-      version = "unstable-2024-04-04";
-      src = final.fetchFromGitHub {
-        owner = "pop-os";
-        repo = "shell";
-        rev = "cfa0c55e84b7ce339e5ce83832f76fee17e99d51";
-        sha256 = "sha256-IQJtTMYCkKyjqDKoR35qsgQkvXIrGLq+qtMDOTkvy08=";
-      };
-    };
+    pop-shell = prev.gnomeExtensions.pop-shell.overrideAttrs (p: {
+      # https://github.com/NixOS/nixpkgs/issues/314969#issuecomment-2136412109
+      postInstall = p.postInstall or "" + ''
+        # Workaround for NixOS/nixpkgs#92265
+        mkdir --parents "$out/share/gsettings-schemas/$name/glib-2.0"
+        ln --symbolic "$out/share/gnome-shell/extensions/pop-shell@system76.com/schemas" "$out/share/gsettings-schemas/$name/glib-2.0/schemas"
+
+        # Workaround for NixOS/nixpkgs#314969
+        mkdir --parents "$out/share/gnome-control-center"
+        ln --symbolic "$src/keybindings" "$out/share/gnome-control-center/keybindings"
+      '';
+    });
   };
 
   emacsPackages = prev.emacsPackages // {
