@@ -35,6 +35,9 @@
     ];
   };
 
+  # Enable nix-darwin's Linux builder.
+  nix.linux-builder.enable = true;
+
   users.users.epetousis = {
     name = "epetousis";
     home = "/Users/epetousis";
