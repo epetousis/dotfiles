@@ -51,16 +51,12 @@ let
     epkgs.doom-themes
     epkgs.editorconfig
     epkgs.eglot
-    epkgs.elfeed
-    epkgs.ement
     epkgs.envrc
     epkgs.magit
     epkgs.markdown-mode
     epkgs.melpaPackages.dired-sidebar
-    epkgs.melpaPackages.telega
     epkgs.melpaPackages.php-mode
     epkgs.nix-mode
-    epkgs.notmuch
     epkgs.ox-slack
     epkgs.rust-mode
     epkgs.typescript-mode
