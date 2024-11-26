@@ -54,7 +54,8 @@
     };
     iniContent = {
       gpg.format = "ssh";
-      "gpg \"ssh\"".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
+      # Don't reference _1password-gui on Darwin hosts, as nixpkgs has marked it as broken due to the lack of an activation script that links to /Applications. See https://github.com/NixOS/nixpkgs/issues/254944
+      "gpg \"ssh\"".program = lib.mkIf (!pkgs.stdenv.hostPlatform.isDarwin) "${pkgs._1password-gui}/bin/op-ssh-sign";
     };
     aliases = {
       log-graph = "log --graph --oneline --all";
