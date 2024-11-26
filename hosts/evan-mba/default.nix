@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../modules/symlink-mac-apps.nix
+    ../../modules/symlink-mac-apps.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
@@ -41,7 +41,7 @@
   };
 
   home-manager.users.epetousis.imports = [
-    ../modules/home.nix
+    ../../modules/home.nix
   ];
 
   # Create /etc/bashrc that loads the nix-darwin environment.
@@ -49,7 +49,7 @@
   # programs.fish.enable = true;
 
   nixpkgs.overlays = [
-    (import ../overlays)
+    (import ../../overlays)
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -64,6 +64,10 @@
 
   # Use 1Password agent for SSH.
   home-manager.users.epetousis.programs.ssh.matchBlocks."*".extraOptions.IdentityAgent = pkgs.lib.mkForce "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
+
+  # Use 1Password for Git commit signing.
+  home-manager.users.epetousis.programs.git.iniContent."gpg \"ssh\"".program = pkgs.lib.mkForce "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

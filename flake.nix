@@ -100,7 +100,7 @@
         nix-defaults
         home-manager.darwinModules.home-manager
         home-manager-defaults
-        ./hosts/evan-mba.nix
+        ./hosts/evan-mba
       ];
     };
 
