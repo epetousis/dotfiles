@@ -30,8 +30,10 @@ in {
       # Make sure the shell doesn't split by spaces in the path name
       IFS=$'\n'
 
+      shopt -s nullglob
+
       echo "symlinking system apps to /Applications..." >&2
-      for app in $(find ${config.system.build.applications}/Applications -maxdepth 1 -type l); do
+      for app in ${config.system.build.applications}/Applications/*.app; do
         src="$(/usr/bin/stat -f%Y "$app")"
         appname="$(/usr/bin/basename "$app")"
         # "
@@ -43,11 +45,11 @@ in {
       done
 
       echo "symlinking home-manager apps to /Applications..." >&2
-      for app in $(find ${pkgs.buildEnv {
+      for app in ${pkgs.buildEnv {
         name = "applications";
         paths = config.home-manager.users.epetousis.home.packages;
         pathsToLink = "/Applications";
-      }}/Applications -maxdepth 1 -type l); do
+      }}/Applications/*.app; do
         src="$(/usr/bin/stat -f%Y "$app")"
         appname="$(/usr/bin/basename "$app")"
         if [ -n "$appname" ]; then
@@ -58,11 +60,11 @@ in {
       done
 
       echo "copying copyPackage apps to /Applications..." >&2
-      for app in $(find ${pkgs.buildEnv {
+      for app in ${pkgs.buildEnv {
         name = "applications";
         paths = cfg.copiedPackages;
         pathsToLink = "/Applications";
-      }}/Applications -maxdepth 1 -type l); do
+      }}/Applications/*.app; do
         src="$(/usr/bin/stat -f%Y "$app")"
         appname="$(/usr/bin/basename "$app")"
         if [ -n "$appname" ]; then
