@@ -26,7 +26,6 @@
     nil.url = "github:oxalica/nil";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   nixConfig = {
