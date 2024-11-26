@@ -36,7 +36,7 @@ let
   });
   # Customise the app bundle with a new icon
   emacsPlusWithIcon = pkgs.callPackage ../../modules/icon-override.nix {
-    pkg = emacsPlus;
+    pkg = pkgs.emacs30-pgtk;
     iconPath = ./elrumo2.icns;
   };
   # On Linux, we use the pure GTK build to enable full Wayland support.
