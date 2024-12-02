@@ -97,13 +97,13 @@ in {
       ffmpeg
       fd
       fira-code
-      fira-code-nerdfont
       fzf
       hunspell
       hunspellDicts.en_AU
       jq
       mosh
       mpv
+      nerd-fonts.fira-code
       nil
       nix-output-monitor
       rclone
