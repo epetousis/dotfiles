@@ -126,5 +126,12 @@ in {
       defaultEditor = true;
     };
 
+    # Remove old generations automatically.
+    nix.gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than +15";
+    };
+
   };
 }
