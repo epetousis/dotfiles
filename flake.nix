@@ -27,6 +27,8 @@
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
+    impermanence.url = "github:nix-community/impermanence";
   };
 
   nixConfig = {
@@ -52,6 +54,7 @@
       home-manager,
       disko,
       emacs-lsp-booster,
+      impermanence,
       ...
   }@inputs:
   let
@@ -108,6 +111,7 @@
       system = "x86_64-linux";
       modules = [
         lix-module.nixosModules.default
+        impermanence.nixosModules.impermanence
         nix-defaults
         ./hosts/evan-pc
         home-manager.nixosModules.home-manager

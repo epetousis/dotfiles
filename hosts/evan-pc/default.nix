@@ -77,6 +77,26 @@
   # Get rid of root.
   users.users.root.hashedPassword = "!";
 
+  # This is the *path* to the persistent storage root, _not_ the device name.
+  environment.persistence."/@persistent" = {
+    hideMounts = true;
+    enableDebugging = true;
+    directories = [
+      "/var/tmp"
+      "/var/log"
+      "/var/lib/bluetooth"
+      "/var/lib/nixos"
+      "/var/lib/systemd/coredump"
+      "/etc/NetworkManager/system-connections"
+      { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
+      { directory = "/var/lib/syncthing"; user = "syncthing"; group = "syncthing"; mode = "u=rwx,g=rx,o="; }
+    ];
+    files = [
+      "/etc/machine-id"
+      "/etc/adjtime"
+    ];
+  };
+
   # Enable Steam
   # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.
   programs.steam = {
@@ -157,6 +177,8 @@
     "adbusers" # On this machine only, add my user to adbusers.
     "libvirt" # Add my user to libvirt's group.
   ];
+
+  users.users.epetousis.passwordFile = "/@persistent/passwords/epetousis";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
