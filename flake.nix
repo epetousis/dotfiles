@@ -23,8 +23,6 @@
     emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
     emacs-lsp-booster.inputs.nixpkgs.follows = "nixpkgs";
 
-    nil.url = "github:oxalica/nil";
-
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
@@ -58,7 +56,6 @@
       nixpkgs.overlays = [
         emacs-lsp-booster.overlays.default
         inputs.emacs-overlay.overlays.package
-        inputs.nil.overlays.nil
         (import ./overlays)
       ];
       nixpkgs.config.allowUnfree = true;
