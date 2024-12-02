@@ -133,5 +133,53 @@ in {
       options = "--delete-older-than +15";
     };
 
+    programs.dconf = {
+      enable = true;
+      profiles.user.databases = [{
+        settings = {
+          "org/gnome/desktop/wm/keybindings" = {
+            close = ["<Super>q" "<Alt>F4"];
+            toggle-maximized = ["<Super>m"];
+            minimize = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            move-to-monitor-down = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            move-to-monitor-left = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            move-to-monitor-right = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            move-to-monitor-up = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+          };
+
+          "org/gnome/shell/keybindings" = {
+            show-screenshot-ui = ["<Shift><Super>s"];
+          };
+
+          "org/gnome/mutter/keybindings" = {
+            # Unbind these, as defaults conflict with focus-left and focus-right
+            toggle-tiled-left = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            toggle-tiled-right = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+          };
+
+          "org/gnome/shell/extensions/pop-shell" = {
+            toggle-tiling = ["<Super>y"];
+            toggle-floating = ["<Super>g"];
+            tile-enter = ["<Super>Return"];
+            tile-accept = ["Return"];
+            tile-reject = ["Escape"];
+            toggle-stacking-global = ["<Super>s"];
+            tile-move-down = ["<Shift><Super>Down" "<Shift><Super>j"];
+            tile-move-up = ["<Shift><Super>Up" "<Shift><Super>k"];
+            tile-move-left = ["<Shift><Super>Left" "<Shift><Super>h"];
+            tile-move-right = ["<Shift><Super>Right" "<Shift><Super>l"];
+            pop-monitor-down = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            pop-monitor-up = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            pop-monitor-left = ["<Ctrl><Shift><Super>Left" "<Ctrl><Shift><Super>h"];
+            pop-monitor-right = ["<Ctrl><Shift><Super>Right" "<Ctrl><Shift><Super>l"];
+            focus-left = ["<Super>Left" "<Super>h"];
+            focus-down = ["<Super>Down" "<Super>j"];
+            focus-up = ["<Super>Up" "<Super>k"];
+            focus-right = ["<Super>Right" "<Super>l"];
+          };
+        };
+      }];
+    };
+
   };
 }
