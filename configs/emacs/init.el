@@ -230,6 +230,21 @@ The argument LOCATION can be any path to a Nix flake."
 (add-hook 'markdown-mode-hook 'flyspell-mode)
 (add-hook 'markdown-mode-hook 'flyspell-buffer)
 
+;; Configure markdown-mode headings to look more like org-mode
+(require 'font-lock)
+(custom-set-faces
+ '(markdown-header-face-1 ((t :inherit font-lock-function-name-face :weight bold)))
+ '(markdown-header-face-2 ((t :inherit font-lock-variable-name-face :weight bold)))
+ '(markdown-header-face-3 ((t :inherit font-lock-keyword-face :weight bold)))
+ '(markdown-header-face-4 ((t :inherit font-lock-comment-face :weight bold)))
+ '(markdown-header-face-5 ((t :inherit font-lock-type-face :weight bold)))
+ '(markdown-header-face-6 ((t :inherit font-lock-constant-face :weight bold))))
+
+;; Apply syntax highlighting to whole header
+(setq markdown-fontify-whole-heading-line t)
+;; Apply syntax highlighting to code blocks
+(setq markdown-fontify-code-blocks-natively t)
+
 ;; Org configuration
 (setq org-directory "~/Documents/iCloudOrg")
 (setq org-default-notes-file (concat org-directory "/daily.org"))
