@@ -186,7 +186,15 @@ if one already exists."
 (add-to-list 'project-switch-commands '(project-vterm "Vterm") t)
 
 ;; Add a bind for creating non-project vterm buffer
-(keymap-global-set "C-c v" (lambda () (interactive) (vterm t)))
+(keymap-global-set "C-c v" (lambda (prefix)
+                             "Open a terminal in the current directory.
+
+With C-u as prefix argument, open a directory on the host."
+                             (interactive "p")
+                             (if (eq prefix 4)
+                                 (let ((default-directory "~"))
+                                     (vterm t))
+                               (vterm t))))
 
 ;; Add a bind for avy
 (define-key key-translation-map (kbd "A-x") nil) ;; Remove this macOS-duplicating key translation bind
