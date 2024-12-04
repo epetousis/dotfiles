@@ -137,6 +137,10 @@ in {
       enable = true;
       profiles.user.databases = [{
         settings = {
+          "org/gnome/desktop/interface" = {
+            color-scheme = "prefer-dark";
+          };
+
           "org/gnome/desktop/wm/keybindings" = {
             close = ["<Super>q" "<Alt>F4"];
             toggle-maximized = ["<Super>m"];
@@ -170,6 +174,12 @@ in {
             www = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
             terminal = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
             email = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+          };
+
+          "org/gnome/settings-daemon/plugins/color" = {
+            night-light-enabled = true;
+            night-light-schedule-automatic = false;
+            night-light-temperature = 2700;
           };
 
           "org/gnome/desktop/peripherals/keyboard" = {
