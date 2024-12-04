@@ -140,15 +140,22 @@ in {
           "org/gnome/desktop/wm/keybindings" = {
             close = ["<Super>q" "<Alt>F4"];
             toggle-maximized = ["<Super>m"];
-            minimize = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            minimize = ["<Super>comma"];
             move-to-monitor-down = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
             move-to-monitor-left = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
             move-to-monitor-right = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
             move-to-monitor-up = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            switch-to-workspace-down = ["<Primary><Super>Down"];
+            switch-to-workspace-up = ["<Primary><Super>Up"];
+            switch-to-workspace-left = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            switch-to-workspace-right = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            maximize = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            unmaximize = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
           };
 
           "org/gnome/shell/keybindings" = {
             show-screenshot-ui = ["<Shift><Super>s"];
+            toggle-message-tray = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
           };
 
           "org/gnome/mutter/keybindings" = {
@@ -157,19 +164,29 @@ in {
             toggle-tiled-right = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
           };
 
+          "org/gnome/settings-daemon/plugins/media-keys" = {
+            screensaver = ["<Super>e"]; # Lock screen shortcut
+            home = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            www = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            terminal = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            email = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+          };
+
           "org/gnome/shell/extensions/pop-shell" = {
-            toggle-tiling = ["<Super>y"];
+            toggle-tiling = lib.gvariant.mkEmptyArray (lib.gvariant.type.string); # ["<Super>y"];
             toggle-floating = ["<Super>g"];
+            toggle-stacking-global = ["<Super>s"];
             tile-enter = ["<Super>Return"];
             tile-accept = ["Return"];
             tile-reject = ["Escape"];
-            toggle-stacking-global = ["<Super>s"];
             tile-move-down = ["<Shift><Super>Down" "<Shift><Super>j"];
             tile-move-up = ["<Shift><Super>Up" "<Shift><Super>k"];
             tile-move-left = ["<Shift><Super>Left" "<Shift><Super>h"];
             tile-move-right = ["<Shift><Super>Right" "<Shift><Super>l"];
             pop-monitor-down = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
             pop-monitor-up = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            pop-workspace-down = ["<Shift><Super>Down" "<Shift><Super>j"];
+            pop-workspace-up = ["<Shift><Super>Up" "<Shift><Super>k"];
             pop-monitor-left = ["<Ctrl><Shift><Super>Left" "<Ctrl><Shift><Super>h"];
             pop-monitor-right = ["<Ctrl><Shift><Super>Right" "<Ctrl><Shift><Super>l"];
             focus-left = ["<Super>Left" "<Super>h"];
