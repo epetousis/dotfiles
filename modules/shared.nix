@@ -172,6 +172,12 @@ in {
             email = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
           };
 
+          "org/gnome/desktop/peripherals/keyboard" = {
+            # Set delay until key repeat begins
+            delay = 250;
+            repeat-interval = 30;
+          };
+
           "org/gnome/shell/extensions/pop-shell" = {
             # Disable tiling toggle until https://github.com/pop-os/shell/issues/1733 is fixed
             toggle-tiling = lib.gvariant.mkEmptyArray (lib.gvariant.type.string); # ["<Super>y"];
