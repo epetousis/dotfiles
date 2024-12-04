@@ -179,13 +179,13 @@ in {
           "org/gnome/settings-daemon/plugins/color" = {
             night-light-enabled = true;
             night-light-schedule-automatic = false;
-            night-light-temperature = 2700;
+            night-light-temperature = lib.gvariant.mkUint32 2700;
           };
 
           "org/gnome/desktop/peripherals/keyboard" = {
             # Set delay until key repeat begins
-            delay = 250;
-            repeat-interval = 30;
+            delay = lib.gvariant.mkUint32 250;
+            repeat-interval = lib.gvariant.mkUint32 30;
           };
 
           "org/gnome/shell/extensions/pop-shell" = {
