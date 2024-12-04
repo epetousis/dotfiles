@@ -173,6 +173,7 @@ in {
           };
 
           "org/gnome/shell/extensions/pop-shell" = {
+            # Disable tiling toggle until https://github.com/pop-os/shell/issues/1733 is fixed
             toggle-tiling = lib.gvariant.mkEmptyArray (lib.gvariant.type.string); # ["<Super>y"];
             toggle-floating = ["<Super>g"];
             toggle-stacking-global = ["<Super>s"];
