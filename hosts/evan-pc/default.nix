@@ -44,7 +44,6 @@
   services.desktopManager.gnomeEvan = {
     enable = true;
     monitorConfig = ./monitors.xml;
-    user = "epetousis";
   };
 
   # Enable my general NixOS settings.
@@ -69,13 +68,6 @@
     # Enable experimental framebuffer console support
     "nvidia_drm.fbdev=1"
   ];
-
-  # Replace sudo with run0
-  security.sudo.enable = false;
-  environment.shellAliases.sudo = "run0";
-
-  # Get rid of root.
-  users.users.root.hashedPassword = "!";
 
   # Enable Steam
   # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.
@@ -161,7 +153,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    gnomeExtensions.pop-shell
     gamescope
     gamemode
     mangohud
