@@ -44,6 +44,7 @@
   services.desktopManager.gnomeEvan = {
     enable = true;
     monitorConfig = ./monitors.xml;
+    user = "epetousis";
   };
 
   # Enable my general NixOS settings.
