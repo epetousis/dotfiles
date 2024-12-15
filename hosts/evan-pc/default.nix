@@ -148,6 +148,7 @@
   users.users.epetousis.extraGroups = [
     "adbusers" # On this machine only, add my user to adbusers.
     "libvirt" # Add my user to libvirt's group.
+    "plugdev"
   ];
 
   # List packages installed in system profile. To search, run:
@@ -161,6 +162,7 @@
     libreoffice
     thunderbird
     vesktop
+    keymapp
   ];
 
   # Apply udev rules from packages.
@@ -168,6 +170,14 @@
     rpcs3 # Needed so that USB gamepads can be detected
     solaar # Needed to detect connected mice
   ];
+
+  services.udev.extraRules = ''
+  # Keymapp / Wally Flashing rules for the Moonlander and Planck EZ
+  SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666", SYMLINK+="stm32_dfu"
+  # Rules for Oryx web flashing and live training
+  KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
+  KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
+  '';
 
   users.users.epetousis.packages = with pkgs; [
     beeper
