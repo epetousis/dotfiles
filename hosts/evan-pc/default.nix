@@ -56,16 +56,12 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = with pkgs; [ nvidia-vaapi-driver ];
-  hardware.nvidia.open = true;
+  hardware.nvidia.open = false;
+  hardware.nvidia.gsp.enable = false;
   # Enable systemd-based power management (should be enabled by default)
   hardware.nvidia.powerManagement.enable = true;
 
-  # Enable Wayland on Nvidia.
-  hardware.nvidia.modesetting.enable = true;
-
   boot.kernelParams = [
-    # FIXME: remove when GSP firmware doesn't cause Firefox Wayland to crash on explicit sync
-    "nvidia.NVreg_EnableGpuFirmware=0"
     # Enable experimental framebuffer console support
     "nvidia_drm.fbdev=1"
   ];
