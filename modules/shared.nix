@@ -174,6 +174,7 @@ in {
             www = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
             terminal = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
             email = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
+            custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
           };
 
           "org/gnome/settings-daemon/plugins/color" = {
@@ -210,6 +211,12 @@ in {
             focus-down = ["<Super>Down" "<Super>j"];
             focus-up = ["<Super>Up" "<Super>k"];
             focus-right = ["<Super>Right" "<Super>l"];
+          };
+
+          "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+            binding = "<Shift><Control>space";
+            command = "1password --quick-access";
+            name = "Show 1Password Quick Access";
           };
         };
       }];
