@@ -160,6 +160,7 @@
     thunderbird
     vesktop
     keymapp
+    blender
   ];
 
   # Apply udev rules from packages.
