@@ -60,7 +60,7 @@ let
     epkgs.nix-mode
     epkgs.ox-slack
     epkgs.rust-mode
-    epkgs.typescript-mode
+    epkgs.treesit-grammars.with-all-grammars
     epkgs.vterm
     epkgs.web-mode
   ]);

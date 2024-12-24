@@ -46,8 +46,8 @@ apps are not started from a shell."
           :vue (list :hybridMode :json-false))))
 
 ;; Language specific major modes
-(require 'typescript-mode)
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 (require 'nix-mode)
 (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
 ;; Define a custom mode just for Vue, so that eglot sends the correct languageId.
