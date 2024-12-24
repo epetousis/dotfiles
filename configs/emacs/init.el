@@ -67,6 +67,10 @@ apps are not started from a shell."
 (require 'editorconfig)
 (editorconfig-mode 1)
 
+;; Enable a global project breadcrumb header line
+(require 'breadcrumb)
+(breadcrumb-mode)
+
 ;;; UI Configuration
 ;;; Theme
 ;; Add Tokyonight theme
@@ -257,24 +261,6 @@ The argument LOCATION can be any path to a Nix flake."
 (setq org-directory "~/Documents/iCloudOrg")
 (setq org-default-notes-file (concat org-directory "/daily.org"))
 (setq org-refile-targets `((,org-default-notes-file :maxlevel . 2)))
-
-;; Taken from https://emacs.stackexchange.com/a/30901 - make which-function show multiple headings
-(defun org-which-function ()
-  (interactive)
-  (when (eq major-mode 'org-mode)
-    (mapconcat 'identity (org-get-outline-path t)
-               " > ")
-    ))
-
-;; Enable which-function-mode, customise org-mode's output, then add it to the header line.
-(add-hook 'org-mode-hook (lambda ()
-                           (which-function-mode)
-                           (add-to-list 'which-func-functions #'org-which-function)
-                           (setq-local header-line-format
-                                                '(:eval
-                                                  (list
-                                                   (which-function)
-                                                   )))))
 
 ;; Set a custom-file so emacs doesn't freak out over this immutable init.el
 (setq custom-file "~/.emacs.d/custom.el")

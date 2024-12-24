@@ -46,6 +46,7 @@ let
   evansEmacs = (pkgs.emacsPackagesFor appropriateEmacs).emacsWithPackages (epkgs: [
     # emacs packages
     epkgs.avy
+    epkgs.breadcrumb
     epkgs.company
     epkgs.dtrt-indent
     epkgs.doom-themes
