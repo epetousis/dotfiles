@@ -51,6 +51,7 @@ in {
       gnomeExtensions.appindicator
       gnomeExtensions.night-theme-switcher
       gnomeExtensions.dash-to-dock
+      gnomeExtensions.paperwm
     ];
 
     # Link our monitor config to gdm's config directory, so we can do things like have a high refresh rate login screen!
