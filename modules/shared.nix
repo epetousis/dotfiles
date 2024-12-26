@@ -133,6 +133,9 @@ in {
       options = "--delete-older-than +15";
     };
 
+    # Allow running binaries that weren't built for NixOS.
+    programs.nix-ld.enable = true;
+
     programs.dconf = {
       enable = true;
       profiles.user.databases = [{
