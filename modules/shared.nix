@@ -81,11 +81,6 @@ in {
         "networkmanager" # Allow editing network configurations without requiring sudo.
       ];
       packages = with pkgs; [
-        (chromium.override {
-          commandLineArgs = [
-            "--enable-features=TouchpadOverscrollHistoryNavigation"
-          ];
-        })
       ];
       shell = pkgs.zsh;
     };
@@ -93,6 +88,12 @@ in {
     home-manager.users.epetousis = import ./home.nix;
 
     environment.systemPackages = with pkgs; [
+      (chromium.override {
+        enableWideVine = true;
+        commandLineArgs = [
+          "--enable-features=TouchpadOverscrollHistoryNavigation"
+        ];
+      })
       emacs-lsp-booster
       ffmpeg
       fd

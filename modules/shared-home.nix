@@ -34,11 +34,6 @@ in {
       ];
       packages = with pkgs; [
         axel
-        (chromium.override {
-          commandLineArgs = [
-            "--enable-features=TouchpadOverscrollHistoryNavigation"
-          ];
-        })
         deluge
         drawio
         easyeffects
