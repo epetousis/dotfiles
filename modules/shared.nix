@@ -193,30 +193,6 @@ in {
             repeat-interval = lib.gvariant.mkUint32 30;
           };
 
-          "org/gnome/shell/extensions/pop-shell" = {
-            # Disable tiling toggle until https://github.com/pop-os/shell/issues/1733 is fixed
-            toggle-tiling = lib.gvariant.mkEmptyArray (lib.gvariant.type.string); # ["<Super>y"];
-            toggle-floating = ["<Super>g"];
-            toggle-stacking-global = ["<Super>s"];
-            tile-enter = ["<Super>Return"];
-            tile-accept = ["Return"];
-            tile-reject = ["Escape"];
-            tile-move-down = ["<Shift><Super>Down" "<Shift><Super>j"];
-            tile-move-up = ["<Shift><Super>Up" "<Shift><Super>k"];
-            tile-move-left = ["<Shift><Super>Left" "<Shift><Super>h"];
-            tile-move-right = ["<Shift><Super>Right" "<Shift><Super>l"];
-            pop-monitor-down = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
-            pop-monitor-up = lib.gvariant.mkEmptyArray (lib.gvariant.type.string);
-            pop-workspace-down = ["<Shift><Super>Down" "<Shift><Super>j"];
-            pop-workspace-up = ["<Shift><Super>Up" "<Shift><Super>k"];
-            pop-monitor-left = ["<Ctrl><Shift><Super>Left" "<Ctrl><Shift><Super>h"];
-            pop-monitor-right = ["<Ctrl><Shift><Super>Right" "<Ctrl><Shift><Super>l"];
-            focus-left = ["<Super>Left" "<Super>h"];
-            focus-down = ["<Super>Down" "<Super>j"];
-            focus-up = ["<Super>Up" "<Super>k"];
-            focus-right = ["<Super>Right" "<Super>l"];
-          };
-
           "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
             binding = "<Shift><Control>space";
             command = "1password --quick-access";
