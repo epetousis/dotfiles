@@ -151,7 +151,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    steamtinkerlaunch # Don't forget to link the compatibility tool: https://gist.github.com/jakehamilton/632edeb9d170a2aedc9984a0363523d3#install
+    steamtinkerlaunch # Don't forget to link the compatibility tool using `steamtinkerlaunch compat add`
     gamescope
     gamemode
     mangohud
