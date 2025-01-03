@@ -20,8 +20,6 @@ in {
     time.timeZone = "Australia/Melbourne";
     i18n.defaultLocale = "en_AU.utf8";
 
-    # Allow unfree packages in Nix
-    nixpkgs.config.allowUnfree = true;
     nixpkgs.overlays = [
       (import ../overlays)
     ];
