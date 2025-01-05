@@ -119,6 +119,13 @@ in {
     # Disable nano (which is normally included by default).
     programs.nano.enable = false;
 
+    # Enable appimage support.
+    programs.appimage = {
+      enable = true;
+      # Allow executing app images with a double click.
+      binfmt = true;
+    };
+
     services.emacs = {
       enable = true;
       package = pkgs.emacsPackages.evansEmacs;
