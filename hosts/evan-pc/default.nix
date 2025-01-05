@@ -61,6 +61,11 @@
   # Enable systemd-based power management (should be enabled by default)
   hardware.nvidia.powerManagement.enable = true;
 
+  /* Disable systemd-sleep's user session freezing behaviour - seems like
+  a good idea in practice, but incompatible with Nvidia's proprietary
+  drivers. */
+  systemd.services.systemd-suspend.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
+
   boot.kernelParams = [
     # Enable experimental framebuffer console support
     "nvidia_drm.fbdev=1"
