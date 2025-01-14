@@ -49,8 +49,8 @@ let
     epkgs.breadcrumb
     epkgs.company
     epkgs.dtrt-indent
-    epkgs.doom-themes
     epkgs.editorconfig
+    epkgs.ef-themes
     epkgs.eglot
     epkgs.envrc
     epkgs.magit

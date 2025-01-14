@@ -73,9 +73,9 @@ apps are not started from a shell."
 
 ;;; UI Configuration
 ;;; Theme
-;; Add Tokyonight theme
-(load-theme 'doom-tokyo-night t)
-(doom-themes-org-config)
+;; Add ef-duo-dark
+(require 'ef-themes)
+(load-theme 'ef-duo-dark t)
 ;; Hide scroll bars
 (set-scroll-bar-mode nil)
 ;; Hide menubar
