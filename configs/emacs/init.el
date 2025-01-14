@@ -246,7 +246,7 @@ The argument LOCATION can be any path to a Nix flake."
 (require 'delight)
 (delight '((editorconfig-mode nil editorconfig)
            (dtrt-indent-mode nil dtrt-indent)
-           (auto-revert-mode nil t)
+           (auto-revert-mode nil autorevert)
            (eldoc-mode nil eldoc)
            (company-mode nil company)))
 
