@@ -33,6 +33,8 @@ in {
     ];
     boot.initrd.verbose = false;
 
+    nix.package = pkgs.lix;
+
     # Allow Nix command
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

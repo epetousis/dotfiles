@@ -8,11 +8,6 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -43,7 +38,6 @@
   outputs = {
     self,
       darwin,
-      lix-module,
       nixpkgs,
       nixpkgs-stable,
       home-manager,
@@ -65,12 +59,10 @@
       nix.settings.trusted-substituters = [
         "https://nix-community.cachix.org"
         "https://epetousis.cachix.org"
-        "https://cache.lix.systems"
       ];
       nix.settings.trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "epetousis.cachix.org-1:c87cgNPjvPjqoZX7dbedzBo/cx2ULiGjSNN12VV5bKw="
-        "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
       ];
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -92,7 +84,6 @@
     darwinConfigurations."evan-mba-macos" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
-        lix-module.nixosModules.default
         nix-defaults
         home-manager.darwinModules.home-manager
         home-manager-defaults
@@ -103,7 +94,6 @@
     nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        lix-module.nixosModules.default
         nix-defaults
         ./hosts/evan-pc
         home-manager.nixosModules.home-manager
