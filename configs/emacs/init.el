@@ -242,6 +242,14 @@ The argument LOCATION can be any path to a Nix flake."
 (add-hook 'markdown-mode-hook 'flyspell-mode)
 (add-hook 'markdown-mode-hook 'flyspell-buffer)
 
+;; Hide unnecessary minor mode lighters
+(require 'delight)
+(delight '((editorconfig-mode nil editorconfig)
+           (dtrt-indent-mode nil dtrt-indent)
+           (auto-revert-mode nil t)
+           (eldoc-mode nil eldoc)
+           (company-mode nil company)))
+
 ;; Configure markdown-mode headings to look more like org-mode
 (require 'font-lock)
 (custom-set-faces

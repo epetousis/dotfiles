@@ -48,6 +48,7 @@ let
     epkgs.avy
     epkgs.breadcrumb
     epkgs.company
+    epkgs.delight
     epkgs.dtrt-indent
     epkgs.editorconfig
     epkgs.ef-themes
