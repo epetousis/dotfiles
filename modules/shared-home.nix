@@ -90,13 +90,6 @@ in {
     # Enable flatpak support
     services.flatpak.enable = true;
 
-    # Enable Japanese keyboard support
-    i18n.inputMethod = {
-      enable = true;
-      type = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ mozc ];
-    };
-
     # Ensure Gnome Keyring is present.
     services.gnome.gnome-keyring.enable = true;
     programs.seahorse.enable = true;
