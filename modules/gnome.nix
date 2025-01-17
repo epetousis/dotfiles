@@ -83,7 +83,7 @@ in {
     environment.variables.FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   })
   # Disable hinting
-  (lib.mkIf (cfg.macStyleFonts && config.home-manager != null && cfg.user != null) {
+  (lib.mkIf (cfg.enable && cfg.macStyleFonts && config.home-manager != null && cfg.user != null) {
     home-manager.users.${cfg.user} = {
       gtk = {
         gtk4.extraConfig = {
