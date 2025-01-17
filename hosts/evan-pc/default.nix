@@ -40,12 +40,14 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Enable my desktop manager of choice.
-  services.desktopManager.gnomeEvan = {
+  # Enable my Plasma config.
+  services.displayManager.sddm = {
     enable = true;
-    monitorConfig = ./monitors.xml;
-    user = "epetousis";
+    wayland.enable = true;
   };
+
+  services.desktopManager.plasma6.enable = true;
+  programs.kdeconnect.enable = true;
 
   # Enable my general NixOS settings.
   system.epetousis.enable = true;
@@ -97,11 +99,11 @@
   # Enable Waydroid.
   virtualisation.waydroid.enable = true;
 
-  # Make Steam match Gnome's internal resolution for Xwayland (2x), which will then be downscaled to 1.5x to match my monitor.
-  environment.sessionVariables.STEAM_FORCE_DESKTOPUI_SCALING = "2.0";
+  # Make Steam match my monitor scaling on Plasma.
+  environment.sessionVariables.STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
 
-  # Apply 2x scaling on Xwayland cursor to match internal resolution, to be downscaled to 1.5x
-  environment.sessionVariables.XCURSOR_SIZE = "48";
+  # Apply 1.5x scaling on Xwayland cursor to match primary display
+  environment.sessionVariables.XCURSOR_SIZE = "36";
 
   # Enable Game Mode.
   programs.gamemode.enable = true;
