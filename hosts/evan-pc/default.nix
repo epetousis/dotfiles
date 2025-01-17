@@ -169,6 +169,7 @@
     vesktop
     keymapp
     blender
+    adwaita-icon-theme
   ];
 
   # Apply udev rules from packages.
