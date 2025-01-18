@@ -138,7 +138,7 @@ in {
     nix.gc = {
       automatic = true;
       dates = "daily";
-      options = "--delete-older-than +15";
+      options = "--delete-older-than 15d";
     };
 
     # Allow running binaries that weren't built for NixOS.
