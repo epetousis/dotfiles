@@ -55,29 +55,17 @@
   system.epetousis.enable = true;
   system.epetousis.enableExtras = true;
 
-  system.epetousis.nvidia.enable = false;
-  system.epetousis.nvk.enable = true;
+  system.epetousis.nvidia.enable = true;
 
   # Enable Steam
   # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.
   programs.steam = {
     enable = true;
+    gamescopeSession.enable = true;
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
     package = pkgs.steam.override {
       extraArgs = "-pipewire -pipewire-dmabuf";
-      extraLibraries = pkgs: with pkgs; [
-        xorg.libXcursor
-        xorg.libXi
-        xorg.libXinerama
-        xorg.libXScrnSaver
-        libpng
-        libpulseaudio
-        libvorbis
-        stdenv.cc.cc.lib
-        libkrb5
-        keyutils
-      ];
     };
   };
 
@@ -144,7 +132,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     steamtinkerlaunch # Don't forget to link the compatibility tool using `steamtinkerlaunch compat add`
-    gamescope
     gamemode
     mangohud
     rpcs3
