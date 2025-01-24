@@ -12,6 +12,8 @@
       ../../modules/shared.nix
       ../../modules/shared-home.nix
       ../../modules/rclone-mount.nix
+      ./nvidia.nix
+      ./nvk.nix
     ];
 
   # Bootloader.
@@ -53,25 +55,8 @@
   system.epetousis.enable = true;
   system.epetousis.enableExtras = true;
 
-  # Enable the (unfortunately proprietary) Nvidia driver.
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
-  hardware.graphics.extraPackages = with pkgs; [ nvidia-vaapi-driver ];
-  hardware.nvidia.open = false;
-  hardware.nvidia.gsp.enable = false;
-  # Enable systemd-based power management (should be enabled by default)
-  hardware.nvidia.powerManagement.enable = true;
-
-  /* Disable systemd-sleep's user session freezing behaviour - seems like
-  a good idea in practice, but incompatible with Nvidia's proprietary
-  drivers. */
-  systemd.services.systemd-suspend.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
-
-  boot.kernelParams = [
-    # Enable experimental framebuffer console support
-    "nvidia_drm.fbdev=1"
-  ];
+  system.epetousis.nvidia.enable = false;
+  system.epetousis.nvk.enable = true;
 
   # Enable Steam
   # NB: it is *essential* that you restart Steam after switching generations, otherwise Proton will fail to work.

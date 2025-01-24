@@ -5,6 +5,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -43,6 +45,7 @@
       home-manager,
       disko,
       emacs-lsp-booster,
+      chaotic,
       ...
   }@inputs:
   let
@@ -95,6 +98,7 @@
       system = "x86_64-linux";
       modules = [
         nix-defaults
+        chaotic.nixosModules.default
         ./hosts/evan-pc
         home-manager.nixosModules.home-manager
         home-manager-defaults
