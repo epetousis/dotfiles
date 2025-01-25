@@ -144,6 +144,10 @@ in {
     # Allow running binaries that weren't built for NixOS.
     programs.nix-ld.enable = true;
 
+    # Enable a Nix flake 
+    programs.command-not-found.enable = false;
+    programs.nix-index.enable = true;
+
     programs.dconf = {
       enable = true;
       profiles.user.databases = [{

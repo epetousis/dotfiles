@@ -21,6 +21,10 @@
     emacs-lsp-booster.inputs.nixpkgs.follows = "nixpkgs";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+
+    # Use a pregenerated nix-index database instead of generating on device.
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   nixConfig = {
@@ -46,6 +50,7 @@
       disko,
       emacs-lsp-booster,
       chaotic,
+      nix-index-database,
       ...
   }@inputs:
   let
@@ -103,6 +108,7 @@
         home-manager.nixosModules.home-manager
         home-manager-defaults
         disko.nixosModules.disko
+        nix-index-database.nixosModules.nix-index
       ];
     };
 
