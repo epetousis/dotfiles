@@ -100,5 +100,8 @@ in {
       openDefaultPorts = true;
     };
 
+    # Enable iOS device support
+    services.usbmuxd.enable = true;
+
   };
 }

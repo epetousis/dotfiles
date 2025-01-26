@@ -59,9 +59,6 @@ in {
       ''L+ /run/gdm/.config/monitors.xml - gdm gdm - ${cfg.monitorConfig}''
     ];
 
-    # Enable iOS device support
-    services.usbmuxd.enable = true;
-
     # Enable KDE Connect
     programs.kdeconnect = {
       enable = true;
