@@ -39,20 +39,6 @@ final: prev: {
 
   openai-whisper-cpp = prev.openai-whisper-cpp.override { cudaSupport = true; };
 
-  rclone = prev.callPackage "${prev.path}/pkgs/applications/networking/sync/rclone" {
-    buildGoModule = args: prev.buildGoModule (args // {
-      version = "unstable-2024-04-11";
-      # Add rclone fork with iCloud Drive support (I am very impatient)
-      src = final.fetchFromGitHub {
-        owner = "lostb1t";
-        repo = "rclone";
-        rev = "791bc98f440788ba18fe32cde7cbc417874f7330";
-        sha256 = "sha256-Nb/gd64MSnMvEA25JRftjwmSlNevhgrHBqUHdRE3Pyk=";
-      };
-      vendorHash = "sha256-5h47Kh7DKX41mAGdMN9kH88ekjLy2POHzMK+0XcUpz8=";
-    });
-  };
-
   apple-color-emoji = final.stdenv.mkDerivation rec {
     name = "apple-color-emoji";
     version = "17.4";
