@@ -48,6 +48,7 @@ let
     epkgs.avy
     epkgs.breadcrumb
     epkgs.company
+    epkgs.csv-mode
     epkgs.delight
     epkgs.dtrt-indent
     epkgs.editorconfig
