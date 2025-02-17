@@ -11,9 +11,6 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
-  # Allow unfree packages in Nix flake commands (still requires `--impure`)
-  nixpkgs.config.allowUnfree = true;
-
   fonts.fontconfig.enable = pkgs.stdenv.isLinux;
 
   # Make this config work better on non-NixOS distros
