@@ -55,6 +55,7 @@ let
     epkgs.ef-themes
     epkgs.eglot
     epkgs.envrc
+    epkgs.fireplace
     epkgs.magit
     epkgs.markdown-mode
     epkgs.melpaPackages.dired-sidebar
