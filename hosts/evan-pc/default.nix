@@ -142,6 +142,7 @@
     keymapp
     blender
     adwaita-icon-theme
+    calibre
   ];
 
   # Apply udev rules from packages.
