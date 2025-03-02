@@ -143,6 +143,7 @@
     blender
     adwaita-icon-theme
     calibre
+    prismlauncher
   ];
 
   # Apply udev rules from packages.
