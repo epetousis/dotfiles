@@ -138,7 +138,7 @@
     solaar
     libreoffice
     thunderbird
-    vesktop
+    discord
     keymapp
     blender
     adwaita-icon-theme
