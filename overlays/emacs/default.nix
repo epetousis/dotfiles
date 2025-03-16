@@ -40,7 +40,7 @@ let
     iconPath = ./elrumo2.icns;
   };
   # On Linux, we use the pure GTK build to enable full Wayland support.
-  appropriateEmacs = if pkgs.stdenv.hostPlatform.isDarwin then emacsPlusWithIcon else pkgs.emacs29-pgtk;
+  appropriateEmacs = if pkgs.stdenv.hostPlatform.isDarwin then emacsPlusWithIcon else pkgs.emacs30-pgtk;
   # Finally, provide our customised emacs with our preferred packages.
   # (This should come as late as possible in the process.)
   evansEmacs = (pkgs.emacsPackagesFor appropriateEmacs).emacsWithPackages (epkgs: [
