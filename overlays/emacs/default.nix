@@ -55,7 +55,7 @@ let
     epkgs.ef-themes
     epkgs.eglot
     epkgs.envrc
-    epkgs.evil-mode
+    epkgs.evil
     epkgs.fireplace
     epkgs.magit
     epkgs.markdown-mode
