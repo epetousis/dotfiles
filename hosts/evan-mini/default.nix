@@ -15,13 +15,9 @@
 
   system.symlinkApps.enable = true;
 
-  # Use a custom configuration.nix location.
-  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
-  # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
-
-  networking.hostName = "evan-mba-macos";
+  networking.hostName = "evan-mini";
   # Use U+2019 apostrophe due to string not being escaped by nix-darwin
-  networking.computerName = "Evan’s MacBook Air";
+  networking.computerName = "Evan’s Mac mini";
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -70,7 +66,6 @@
 
   # Use 1Password for Git commit signing.
   home-manager.users.epetousis.programs.git.iniContent."gpg \"ssh\"".program = pkgs.lib.mkForce "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

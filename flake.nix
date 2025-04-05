@@ -89,13 +89,13 @@
       sharedSettings = import ./modules/shared.nix;
     };
 
-    darwinConfigurations."evan-mba-macos" = darwin.lib.darwinSystem {
+    darwinConfigurations."evan-mini" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
         nix-defaults
         home-manager.darwinModules.home-manager
         home-manager-defaults
-        ./hosts/evan-mba
+        ./hosts/evan-mini
       ];
     };
 
