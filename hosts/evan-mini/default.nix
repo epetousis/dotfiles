@@ -31,7 +31,8 @@
   };
 
   # Enable nix-darwin's Linux builder.
-  nix.linux-builder.enable = true;
+  # Disabled until https://github.com/nix-darwin/nix-darwin/issues/1081 is resolved.
+  nix.linux-builder.enable = false;
 
   users.users.epetousis = {
     name = "epetousis";
