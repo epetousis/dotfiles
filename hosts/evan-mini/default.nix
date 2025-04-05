@@ -19,8 +19,7 @@
   # Use U+2019 apostrophe due to string not being escaped by nix-darwin
   networking.computerName = "Evan’s Mac mini";
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  nix.package = pkgs.lix;
 
   nix.settings = {
     extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
