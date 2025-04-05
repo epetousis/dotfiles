@@ -46,9 +46,12 @@
   # Lix installs with this nixbld identifier, so define it for nix-darwin
   ids.gids.nixbld = 350;
 
-  # Create /etc/bashrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;  # default shell on catalina
-  # programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    shellInit = ''
+    direnv hook fish | source
+    '';
+  };
 
   nixpkgs.overlays = [
     (import ../../overlays)
