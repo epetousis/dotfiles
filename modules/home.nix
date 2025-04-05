@@ -11,6 +11,25 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
+  home.shellAliases = {
+    nxrb = "${if pkgs.stdenv.hostPlatform.isDarwin
+              then "darwin-rebuild"
+              else "nixos-rebuild"} --flake ~/.local/share/dotfiles ${if pkgs.stdenv.hostPlatform.isDarwin
+                                                                      then "--option log-format multiline-with-logs"
+                                                                      else "--log-format multiline-with-logs"}";
+  };
+
+  home.sessionPath = [
+    "$HOME/.local/share/npm-packages/bin"
+  ];
+
+  home.sessionVariables = {
+    iCloudDrive = "$HOME/Library/Mobile Documents/com~apple~CloudDocs";
+    FZF_DEFAULT_COMMAND = "rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*}'";
+  };
+
+  programs.fish.enable = true;
+
   fonts.fontconfig.enable = pkgs.stdenv.isLinux;
 
   # Make this config work better on non-NixOS distros
@@ -74,73 +93,6 @@
         then {
           credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
         } else {});
-  };
-
-  programs.zsh = {
-    enable = true;
-    plugins = [
-      {
-        name = "zsh-nix-shell";
-        file = "nix-shell.plugin.zsh";
-        src = pkgs.fetchFromGitHub {
-          owner = "chisui";
-          repo = "zsh-nix-shell";
-          rev = "v0.7.0";
-          sha256 = "149zh2rm59blr2q458a5irkfh82y3dwdich60s9670kl3cl5h2m1";
-        };
-      }
-      {
-        file = "powerlevel10k.zsh-theme";
-        name = "powerlevel10k";
-        src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k";
-      }
-      {
-        file = "p10k.zsh";
-        name = "powerlevel10k-config";
-        src = ../configs/p10k;
-      }
-    ];
-    sessionVariables = {
-      iCloudDrive = "$HOME/Library/Mobile Documents/com~apple~CloudDocs";
-      FZF_DEFAULT_COMMAND = "rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*}'";
-    };
-    localVariables = {
-      # Kill key timeout so escape is instant
-      KEYTIMEOUT = 1;
-      PROMPT = "%n@%m:%(4~|...|)%3~ %(!.#.$) ";
-    };
-    initExtra = ''
-    # Discourage instinctively opening default macOS Terminal
-    if [[ $TERM_PROGRAM == "Apple_Terminal" ]]; then
-      tput setab 3;echo "=== STOP! You are using the built-in macOS terminal when you have opted for an alternative terminal. ==="
-      tput setab 3;echo "Disregard if opening Terminal was intended."
-    fi
-
-    # If this distro uses GSSAPIKexAlgorithms in its config, fallback to system SSH for Git!
-    if cat /etc/crypto-policies/back-ends/openssh.config 2>/dev/null | rg -q GSSAPIKexAlgorithms ; then
-      export GIT_SSH=/usr/bin/ssh
-    fi
-
-    bindkey "^H" backward-delete-char
-    bindkey "^?" backward-delete-char
-
-    # Enable Ctrl-x-e for CLI editing
-    autoload -U edit-command-line
-    zle -N edit-command-line
-    bindkey '^xe' edit-command-line
-    bindkey '^x^e' edit-command-line
-
-    alias nxrb='${if pkgs.stdenv.hostPlatform.isDarwin
-                  then "darwin-rebuild"
-                  else "sudo nixos-rebuild"} --flake ~/.local/share/dotfiles --log-format multiline-with-logs'
-
-    alias e='emacsclient -r --no-wait'
-
-    eval "$(direnv hook zsh)"
-
-    # Set path in zsh init to work around `home.sessionPath` being broken
-    export PATH="$HOME/.local/share/npm-packages/bin":$PATH
-    '';
   };
 
   programs.ssh = {
