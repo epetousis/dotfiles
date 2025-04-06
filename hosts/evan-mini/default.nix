@@ -34,9 +34,13 @@
   # Disabled until https://github.com/nix-darwin/nix-darwin/issues/1081 is resolved.
   nix.linux-builder.enable = false;
 
+  # Make nix-darwin manage my user. The docs say not to add the admin user to this, but Michael says it's fine! https://github.com/nix-darwin/nix-darwin/issues/1237#issuecomment-2562247579
+  users.knownUsers = [ "epetousis" ];
   users.users.epetousis = {
     name = "epetousis";
     home = "/Users/epetousis";
+    shell = pkgs.fish;
+    uid = 501; # The initial macOS admin user should have a UID of 501.
   };
 
   home-manager.users.epetousis.imports = [
