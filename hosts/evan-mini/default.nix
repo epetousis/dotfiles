@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../modules/symlink-mac-apps.nix
+    ../../modules/copy-mac-apps.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
@@ -13,7 +13,7 @@
       pkgs.emacsPackages.evansEmacs
     ];
 
-  system.symlinkApps.enable = true;
+  system.copyApps.enable = true;
 
   networking.hostName = "evan-mini";
   # Use U+2019 apostrophe due to string not being escaped by nix-darwin
