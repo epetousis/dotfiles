@@ -232,6 +232,11 @@ The argument LOCATION can be any path to a Nix flake."
 (require 'envrc)
 (envrc-global-mode)
 
+;; Always use my desired shell (fish).
+(setq config-shell "/run/current-system/sw/bin/fish")
+(if (file-exists-p config-shell)
+    (setq vterm-shell config-shell))
+
 ;; Run eglot-booster-mode on eglot start
 ;; (require 'eglot-booster)
 ;; (add-hook 'eglot-managed-mode-hook 'eglot-booster-mode)
