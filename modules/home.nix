@@ -147,5 +147,8 @@
     '';
   };
 
+  # Linking is a bad solution, and I don't install stuff using home-manager anyway.
+  targets.darwin.linkApps.enable = false;
+
   programs.home-manager.enable = true;
 }
