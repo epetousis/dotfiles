@@ -19,7 +19,8 @@
   # Use U+2019 apostrophe due to string not being escaped by nix-darwin
   networking.computerName = "Evan’s Mac mini";
 
-  nix.package = pkgs.lix;
+  # Temporarily use Lix module @ main while waiting for https://git.lix.systems/lix-project/lix/commit/5339ffb23499662e8afe4719f24740b35e1cc784 to make its way to a release.
+  # nix.package = pkgs.lix;
 
   nix.settings = {
     extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
@@ -30,9 +31,12 @@
     ];
   };
 
-  # Enable nix-darwin's Linux builder.
-  # Disabled until https://github.com/nix-darwin/nix-darwin/issues/1081 is resolved.
-  nix.linux-builder.enable = false;
+  # Enable nix-rosetta-builder.
+  # Note that due to https://github.com/nix-darwin/nix-darwin/issues/1081, this silly hack at https://wiki.nixos.org/wiki/NixOS_virtual_machines_on_macOS#linux-builder is required to bootstrap the virtual machine, beyond what's in the nix-rosetta-builder readme. This does not need to be committed.
+  nix-rosetta-builder = {
+    onDemand = true;
+    onDemandLingerMinutes = 15;
+  };
 
   # Make nix-darwin manage my user. The docs say not to add the admin user to this, but Michael says it's fine! https://github.com/nix-darwin/nix-darwin/issues/1237#issuecomment-2562247579
   users.knownUsers = [ "epetousis" ];

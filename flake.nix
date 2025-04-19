@@ -25,6 +25,17 @@
     # Use a pregenerated nix-index database instead of generating on device.
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-rosetta-builder = {
+      url = "github:cpick/nix-rosetta-builder";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # TODO: Remove when https://git.lix.systems/lix-project/lix/commit/5339ffb23499662e8afe4719f24740b35e1cc784 makes its way into a release
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -51,6 +62,7 @@
       emacs-lsp-booster,
       chaotic,
       nix-index-database,
+      nix-rosetta-builder,
       ...
   }@inputs:
   let
@@ -93,6 +105,8 @@
       system = "aarch64-darwin";
       modules = [
         nix-defaults
+        nix-rosetta-builder.darwinModules.default
+        inputs.lix-module.nixosModules.default
         home-manager.darwinModules.home-manager
         home-manager-defaults
         ./hosts/evan-mini
