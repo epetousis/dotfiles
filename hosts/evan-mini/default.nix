@@ -43,7 +43,6 @@
   users.users.epetousis = {
     name = "epetousis";
     home = "/Users/epetousis";
-    shell = pkgs.fish;
     uid = 501; # The initial macOS admin user should have a UID of 501.
   };
 
@@ -53,6 +52,21 @@
 
   # Lix installs with this nixbld identifier, so define it for nix-darwin
   ids.gids.nixbld = 350;
+
+  programs.zsh = {
+    enable = true;
+    promptInit = ''
+      if [[ $(${pkgs.procps}/bin/ps -o 'comm=' -p $PPID) != "fish" && -z ''${ZSH_EXECUTION_STRING} && ''${SHLVL} == 1 ]]
+      then
+        if [[ -o login ]]; then
+          LOGIN_OPTION='--login'
+        else
+          LOGIN_OPTION='''
+        fi
+        exec fish $LOGIN_OPTION
+      fi
+    '';
+  };
 
   programs.fish = {
     enable = true;
