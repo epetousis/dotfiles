@@ -36,6 +36,7 @@
   nix-rosetta-builder = {
     onDemand = true;
     onDemandLingerMinutes = 15;
+    permitNonRootSshAccess = true;
   };
 
   # Make nix-darwin manage my user. The docs say not to add the admin user to this, but Michael says it's fine! https://github.com/nix-darwin/nix-darwin/issues/1237#issuecomment-2562247579
