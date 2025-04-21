@@ -14,9 +14,7 @@
   home.shellAliases = {
     nxrb = "${if pkgs.stdenv.hostPlatform.isDarwin
               then "darwin-rebuild"
-              else "nixos-rebuild"} --flake ~/.local/share/dotfiles ${if pkgs.stdenv.hostPlatform.isDarwin
-                                                                      then "--option log-format multiline-with-logs"
-                                                                      else "--log-format multiline-with-logs"}";
+              else "nixos-rebuild"} --flake ~/.local/share/dotfiles";
   };
 
   home.sessionPath = [
