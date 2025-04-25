@@ -111,6 +111,8 @@ apps are not started from a shell."
 ;; Define an alternative key for eldoc
 (global-set-key (kbd "C-h ,") #'eldoc-doc-buffer)
 ;; Define a key to allow sending bound keys in vterm (for example, sending C-x to nano)
+
+(require 'vterm)
 (define-key vterm-mode-map (kbd "C-q") #'vterm-send-next-key)
 
 ;; Taken from https://gist.github.com/ethan-leba/760054f36a2f7c144c6b06ab6458fae6
