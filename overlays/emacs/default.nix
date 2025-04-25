@@ -17,6 +17,7 @@ let
     epkgs.company
     epkgs.csv-mode
     epkgs.delight
+    epkgs.dired-preview
     epkgs.dtrt-indent
     epkgs.editorconfig
     epkgs.ef-themes

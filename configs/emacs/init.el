@@ -99,6 +99,9 @@ apps are not started from a shell."
 
 (require 'dired-sidebar)
 
+(require 'dired-preview)
+(dired-preview-global-mode 1)
+
 ;;; Keybinds
 ;; Ignore F18 (used for PTT)
 (global-set-key (kbd "<f18>") 'ignore)
