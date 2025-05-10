@@ -36,10 +36,6 @@ apps are not started from a shell."
                                                   (web-mode-set-universal-padding 0))))
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 
-;; Add dropdown autocorrect menu
-(require 'company)
-(add-hook 'eglot-managed-mode-hook 'company-mode)
-
 (defclass eglot-volar (eglot-lsp-server) ()
   :documentation "A custom class for Volar's langserver.")
 
@@ -93,6 +89,8 @@ apps are not started from a shell."
 (setq inhibit-splash-screen t)
 ;; Enable icomplete-mode everywhere
 (icomplete-mode 1)
+;; Enable completion-preview-mode
+(global-completion-preview-mode)
 ;; Enable native full screen
 (add-to-list 'default-frame-alist '(ns-use-native-fullscreen . t))
 ;; Disable title bar
@@ -256,8 +254,7 @@ The argument LOCATION can be any path to a Nix flake."
 (delight '((editorconfig-mode nil editorconfig)
            (dtrt-indent-mode nil dtrt-indent)
            (auto-revert-mode nil autorevert)
-           (eldoc-mode nil eldoc)
-           (company-mode nil company)))
+           (eldoc-mode nil eldoc)))
 
 ;; Configure markdown-mode headings to look more like org-mode
 (require 'font-lock)

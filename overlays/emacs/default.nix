@@ -14,7 +14,6 @@ let
   evansEmacs = (pkgs.emacsPackagesFor appropriateEmacs).emacsWithPackages (epkgs: [
     # emacs packages
     epkgs.breadcrumb
-    epkgs.company
     epkgs.csv-mode
     epkgs.delight
     epkgs.dired-preview
