@@ -27,7 +27,6 @@ let
     epkgs.magit
     epkgs.markdown-mode
     epkgs.melpaPackages.dired-sidebar
-    epkgs.melpaPackages.php-mode
     epkgs.nix-mode
     epkgs.ox-slack
     epkgs.rust-mode
