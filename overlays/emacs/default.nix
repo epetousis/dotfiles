@@ -13,7 +13,6 @@ let
   # (This should come as late as possible in the process.)
   evansEmacs = (pkgs.emacsPackagesFor appropriateEmacs).emacsWithPackages (epkgs: [
     # emacs packages
-    epkgs.avy
     epkgs.breadcrumb
     epkgs.company
     epkgs.csv-mode

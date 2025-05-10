@@ -19,7 +19,9 @@ apps are not started from a shell."
 ;; Make sure that emacs runs as a server.
 (server-start)
 
-;; LSP
+;;;; LSP
+
+;;; Set up eglot
 (require 'eglot)
 (add-to-list 'eglot-server-programs
              '(vue-mode . (eglot-volar "vue-language-server" "--stdio"))
@@ -27,12 +29,14 @@ apps are not started from a shell."
 
 (add-hook 'vue-mode-hook 'eglot-ensure)
 (add-hook 'nix-mode-hook 'eglot-ensure)
+
 ;; Override editorconfig when in vue-mode - seems to be wrong about padding settings
 (add-hook 'editorconfig-after-apply-functions (lambda (props)
                                                 (when (derived-mode-p 'vue-mode)
                                                   (web-mode-set-universal-padding 0))))
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 
+;; Add dropdown autocorrect menu
 (require 'company)
 (add-hook 'eglot-managed-mode-hook 'company-mode)
 
@@ -55,9 +59,6 @@ apps are not started from a shell."
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
 (require 'rust-mode)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-;; Replace php-mode with web-mode
-(define-derived-mode php-mode web-mode "PHP (Web)")
-(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
 ;; Guess indentation automatically
 (require 'dtrt-indent)
@@ -206,10 +207,6 @@ With C-u as prefix argument, open a directory on the host."
                                  (let ((default-directory "~"))
                                      (vterm t))
                                (vterm t))))
-
-;; Add a bind for avy
-(define-key key-translation-map (kbd "A-x") nil) ;; Remove this macOS-duplicating key translation bind
-(global-set-key (kbd "A-x") 'avy-goto-char)
 
 ;;; Custom functions
 (defun current-project-root ()
