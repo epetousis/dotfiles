@@ -88,21 +88,12 @@ in {
     home-manager.users.epetousis = import ./home.nix;
 
     environment.systemPackages = with pkgs; [
-      (chromium.override {
-        enableWideVine = true;
-        commandLineArgs = [
-          "--enable-features=TouchpadOverscrollHistoryNavigation"
-        ];
-      })
       emacs-lsp-booster
-      ffmpeg
-      fd
       fira-code
       fzf
       hunspell
       hunspellDicts.en_AU
       jq
-      mosh
       mpv
       nerd-fonts.fira-code
       nil
