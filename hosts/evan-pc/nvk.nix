@@ -11,9 +11,6 @@ in {
     hardware.graphics.enable = true;
     hardware.graphics.enable32Bit = true;
 
-    # Stable NVK performance is generally much worse than bleeding edge.
-    chaotic.mesa-git.enable = true;
-
     boot.kernelParams = [
       # Make sure the GSP is used.
       "nouveau.config=NvGspRm=1"
