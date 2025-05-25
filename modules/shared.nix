@@ -18,7 +18,7 @@ in {
   config = mkIf cfg.enable {
     # Set locale defaults.
     time.timeZone = "Australia/Melbourne";
-    i18n.defaultLocale = "en_AU.utf8";
+    i18n.defaultLocale = "en_AU.UTF-8";
 
     nixpkgs.overlays = [
       (import ../overlays)
