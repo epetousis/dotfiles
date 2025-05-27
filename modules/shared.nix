@@ -72,7 +72,6 @@ in {
     environment.sessionVariables.QT_ENABLE_HIGHDPI_SCALING = "1";
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
-    programs.zsh.enable = true;
     users.users.epetousis = {
       description = "Evangelos Petousis";
       isNormalUser = true;
@@ -82,7 +81,6 @@ in {
       ];
       packages = with pkgs; [
       ];
-      shell = pkgs.zsh;
     };
 
     home-manager.users.epetousis = import ./home.nix;
