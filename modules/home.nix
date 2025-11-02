@@ -61,7 +61,7 @@
 
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
+    package = pkgs.gitFull;
     userName = "Evan Petousis";
     userEmail = "evan@petousis.net";
     signing = {
@@ -86,7 +86,7 @@
       };
     } // (if pkgs.stdenv.hostPlatform.isLinux
         then {
-          credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
+          credential.helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
         } else {});
   };
 

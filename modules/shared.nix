@@ -119,7 +119,7 @@ in {
 
     services.emacs = {
       enable = true;
-      package = pkgs.emacsPackages.evansEmacs;
+      package = pkgs.evansEmacs;
       defaultEditor = true;
     };
 

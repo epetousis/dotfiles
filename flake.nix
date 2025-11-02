@@ -98,7 +98,7 @@
       sharedSettings = import ./modules/shared.nix;
     };
 
-    darwinConfigurations."evan-mini" = darwin.lib.darwinSystem {
+    darwinConfigurations."evan-mbp" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
         nix-defaults
@@ -106,7 +106,7 @@
         inputs.lix-module.nixosModules.default
         home-manager.darwinModules.home-manager
         home-manager-defaults
-        ./hosts/evan-mini
+        ./hosts/evan-mbp
       ];
     };
 

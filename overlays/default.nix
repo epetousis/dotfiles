@@ -19,10 +19,7 @@ final: prev: {
     scaletoggle = final.callPackage ./scaletoggle {};
   };
 
-  emacsPackages = prev.emacsPackages // {
-    nano-theme-git = final.emacsPackages.callPackage ./emacs-nano-theme {};
-    evansEmacs = final.callPackage ./emacs {};
-  };
+  evansEmacs = final.callPackage ./emacs {};
 
   weechat = prev.weechat.override {
     configure = { availablePlugins, ... }: {

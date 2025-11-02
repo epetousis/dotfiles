@@ -10,17 +10,14 @@
   environment.systemPackages =
     [
       pkgs.pngpaste # Required to paste images into telega.el
-      pkgs.emacsPackages.evansEmacs
+      pkgs.evansEmacs
     ];
 
-  system.copyApps.enable = true;
-
-  networking.hostName = "evan-mini";
+  networking.hostName = "evan-mbp";
   # Use U+2019 apostrophe due to string not being escaped by nix-darwin
-  networking.computerName = "Evan’s Mac mini";
+  networking.computerName = "Evan’s MacBook Pro";
 
-  # Temporarily use Lix module @ main while waiting for https://git.lix.systems/lix-project/lix/commit/5339ffb23499662e8afe4719f24740b35e1cc784 to make its way to a release.
-  # nix.package = pkgs.lix;
+  nix.package = pkgs.lix;
 
   nix.settings = {
     extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
@@ -46,6 +43,7 @@
     home = "/Users/epetousis";
     uid = 501; # The initial macOS admin user should have a UID of 501.
   };
+  system.primaryUser = "epetousis";
 
   home-manager.users.epetousis.imports = [
     ../../modules/home.nix
@@ -84,7 +82,7 @@
 
   services.emacs = {
     enable = true;
-    package = pkgs.emacsPackages.evansEmacs;
+    package = pkgs.evansEmacs;
     # HACK: traverse out of bin/ to open the Emacs app binary instead.
     # This means that the Emacs daemon will use the correct name and icon.
     exec = "../Applications/Emacs.app/Contents/MacOS/Emacs";
