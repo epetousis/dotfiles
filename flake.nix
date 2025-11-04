@@ -28,12 +28,6 @@
       url = "github:cpick/nix-rosetta-builder";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # TODO: Remove when https://git.lix.systems/lix-project/lix/commit/5339ffb23499662e8afe4719f24740b35e1cc784 makes its way into a release
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   nixConfig = {
@@ -103,7 +97,6 @@
       modules = [
         nix-defaults
         nix-rosetta-builder.darwinModules.default
-        inputs.lix-module.nixosModules.default
         home-manager.darwinModules.home-manager
         home-manager-defaults
         ./hosts/evan-mbp
