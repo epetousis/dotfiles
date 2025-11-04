@@ -94,6 +94,28 @@
   # Use 1Password for Git commit signing.
   home-manager.users.epetousis.programs.git.iniContent."gpg \"ssh\"".program = pkgs.lib.mkForce "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
 
+  system = {
+    defaults = {
+      NSGlobalDomain = {
+        # Disable the press and hold accent menu system-wide
+        ApplePressAndHoldEnabled = false;
+        # Set key repeat to be quick
+        KeyRepeat = 2;
+        InitialKeyRepeat = 15;
+        # Set trackpad speed to a reasonable amount
+        "com.apple.trackpad.scaling" = 1.5;
+        # Enable tap to click
+        "com.apple.mouse.tapBehavior" = 1;
+      };
+      dock.autohide = true;
+    };
+
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
+  };
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
