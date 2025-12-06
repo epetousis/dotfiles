@@ -12,7 +12,7 @@ Please feel free to use my overlays, modules, or any part of my dotfiles you fee
 2. Clone this repo to `~/.local/share/dotfiles`.
 3. Run `sudo nix run nix-darwin -- switch --flake ~/.local/share/dotfiles`.
 
-After nix-darwin has finished installing, use `darwin-rebuild switch --flake ~/.local/share/.dotfiles` to build new system generations in future.
+After nix-darwin has finished installing, use `sudo darwin-rebuild switch --flake ~/.local/share/dotfiles` to build new system generations in future.
 
 ###### NixOS Host
 
