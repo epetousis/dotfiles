@@ -46,7 +46,7 @@
 
   services.gpg-agent = {
     enable = pkgs.stdenv.hostPlatform.isLinux;
-    pinentryPackage = pkgs.pinentry-gnome3;
+    pinentry.package = pkgs.pinentry-gnome3;
   };
 
   # Run the Gnome Keyring daemon
@@ -62,8 +62,6 @@
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    userName = "Evan Petousis";
-    userEmail = "evan@petousis.net";
     signing = {
       key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQChegsj+4jJRiuVi8Ci7zS/Gm7VvBnXBB4LnHbAEBgv5+O0sB059ejc5Qc4ErqKYIc97/Kyh/twvhKOmitGMpr2O70fTzgZBr0jHW5vJNsH9vT0QuQ49rXxF3TXPaYY0TcsQgUg0oOkJdnLovX+KMDDWZKGzPaRV88A/OiJjTIp+beWieYjK5CtApya1ER04bTsnbRq9WGI6U62ypDjbR4R4BImQvpFFy7fTsQutPOA4P1F8qgK58O1cHhcg4HJ51fZZDoRc2UQnn5wWi4grPBaqVx9Z9gSfVR7FJvgrhpi8q9KWuMoVwrvKw3LOSOq6f/NZ9acRdb1vwcZ+VyJY4ikprfe6LpypklDqsklpXkzNZny1z2zoByKryQa5UuDCyybwtQPX+zAC8DxqH55un04ryAcFLXYDbpgRnI/pov03Vjs71BKNW35eyCCijmv33KA6WNDS3mGHDcqofNPHtb0hildDS8vNJsFKzybQkM3euN0TaltPRkBPruL7QCrYersLedI/py6VvUqeU3LOyiwCs6nHMd5DTAxGH92ElPNbLximnqZfEjMQ0J8C7CNXG8cg3ZjJG9tuz1+NH3jfSxJ8UpjTuntrRMFbKvzz1HBspgFGYCkVP3fdFvojCk0a+MneiUmovDatfQmckb3sLjmSmxyCppu4bTtZRn48tK2JQ==";
       signByDefault = true;
@@ -71,10 +69,14 @@
       signer = if pkgs.stdenv.hostPlatform.isDarwin then "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" else "${pkgs._1password-gui}/bin/op-ssh-sign";
       format = "ssh";
     };
-    aliases = {
-      log-graph = "log --graph --oneline --all";
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Evan Petousis";
+        email = "evan@petousis.net";
+      };
+      alias = {
+        log-graph = "log --graph --oneline --all";
+      };
       init = {
         defaultBranch = "main";
       };
@@ -92,8 +94,20 @@
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
-    matchBlocks."*".extraOptions.IdentityAgent = "/run/user/1000/keyring/ssh";
+    enableDefaultConfig = false;
+    matchBlocks."*" = {
+      addKeysToAgent = "yes";
+      extraOptions.IdentityAgent = "/run/user/1000/keyring/ssh";
+      forwardAgent = false;
+      compression = false;
+      serverAliveInterval = 0;
+      serverAliveCountMax = 3;
+      hashKnownHosts = false;
+      userKnownHostsFile = "~/.ssh/known_hosts";
+      controlMaster = "no";
+      controlPath = "~/.ssh/master-%r@%n:%p";
+      controlPersist = "no";
+    };
   };
 
   programs.tmux = {
