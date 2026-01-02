@@ -11,6 +11,7 @@
     [
       pkgs.pngpaste # Required to paste images into telega.el
       pkgs.evansEmacs
+      pkgs.container
     ];
 
   networking.hostName = "evan-mbp";
