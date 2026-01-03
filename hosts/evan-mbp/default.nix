@@ -11,9 +11,10 @@
     [
       pkgs.pngpaste # Required to paste images into telega.el
       pkgs.evansEmacs
-      pkgs.container
       pkgs.ripgrep
       pkgs.witr
+      pkgs.colima
+      pkgs.docker
     ];
 
   networking.hostName = "evan-mbp";
