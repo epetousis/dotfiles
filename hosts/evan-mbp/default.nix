@@ -15,6 +15,7 @@
       pkgs.witr
       pkgs.colima
       pkgs.docker
+      pkgs.yt-dlp
     ];
 
   networking.hostName = "evan-mbp";
