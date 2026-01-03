@@ -24,11 +24,6 @@
     # Use a pregenerated nix-index database instead of generating on device.
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs-unstable";
-
-    nix-rosetta-builder = {
-      url = "github:cpick/nix-rosetta-builder";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   nixConfig = {
@@ -55,7 +50,6 @@
       disko,
       emacs-lsp-booster,
       nix-index-database,
-      nix-rosetta-builder,
       ...
   }@inputs:
   let

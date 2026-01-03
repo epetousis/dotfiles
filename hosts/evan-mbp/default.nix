@@ -31,14 +31,6 @@
     ];
   };
 
-  # Enable nix-rosetta-builder.
-  # Note that due to https://github.com/nix-darwin/nix-darwin/issues/1081, this silly hack at https://wiki.nixos.org/wiki/NixOS_virtual_machines_on_macOS#linux-builder is required to bootstrap the virtual machine, beyond what's in the nix-rosetta-builder readme. This does not need to be committed.
-  nix-rosetta-builder = {
-    onDemand = true;
-    onDemandLingerMinutes = 15;
-    permitNonRootSshAccess = true;
-  };
-
   # Make nix-darwin manage my user. The docs say not to add the admin user to this, but Michael says it's fine! https://github.com/nix-darwin/nix-darwin/issues/1237#issuecomment-2562247579
   users.knownUsers = [ "epetousis" ];
   users.users.epetousis = {
