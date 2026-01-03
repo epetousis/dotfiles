@@ -2,31 +2,32 @@
   description = "Evan's system";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-nixos-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Install Disko for disk partitioning
     disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko.inputs.nixpkgs.follows = "nixpkgs-nixos-unstable";
 
     emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
-    emacs-lsp-booster.inputs.nixpkgs.follows = "nixpkgs";
+    emacs-lsp-booster.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     # Use a pregenerated nix-index database instead of generating on device.
     nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     nix-rosetta-builder = {
       url = "github:cpick/nix-rosetta-builder";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -47,8 +48,9 @@
   outputs = {
     self,
       darwin,
-      nixpkgs,
-      nixpkgs-stable,
+      nixpkgs-unstable,
+      nixpkgs-nixos-unstable,
+      nixpkgs-nixos-stable,
       home-manager,
       disko,
       emacs-lsp-booster,
@@ -96,14 +98,13 @@
       system = "aarch64-darwin";
       modules = [
         nix-defaults
-        nix-rosetta-builder.darwinModules.default
         home-manager.darwinModules.home-manager
         home-manager-defaults
         ./hosts/evan-mbp
       ];
     };
 
-    nixosConfigurations."evan-pc" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."evan-pc" = nixpkgs-nixos-unstable.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         nix-defaults
@@ -115,7 +116,7 @@
       ];
     };
 
-    nixosConfigurations.raspberry = nixpkgs-stable.lib.nixosSystem {
+    nixosConfigurations.raspberry = nixpkgs-nixos-stable.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
         ./hosts/raspberry
@@ -124,7 +125,7 @@
     };
 
     homeConfigurations."epetousis" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
       modules = [
         nixpkgs-defaults
         ./modules/home.nix
@@ -137,7 +138,7 @@
     };
 
     homeConfigurations."epetousis@aarch64" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.aarch64-linux;
+      pkgs = nixpkgs-unstable.legacyPackages.aarch64-linux;
       modules = [
         nixpkgs-defaults
         ./modules/home.nix
