@@ -16,6 +16,7 @@
       pkgs.colima
       pkgs.docker
       pkgs.yt-dlp
+      pkgs.ffmpeg
     ];
 
   networking.hostName = "evan-mbp";
