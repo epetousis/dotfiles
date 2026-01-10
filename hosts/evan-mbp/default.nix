@@ -5,19 +5,17 @@
     ../../modules/copy-mac-apps.nix
   ];
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-    [
-      pkgs.pngpaste # Required to paste images into telega.el
-      pkgs.evansEmacs
-      pkgs.ripgrep
-      pkgs.witr
-      pkgs.colima
-      pkgs.docker
-      pkgs.yt-dlp
-      pkgs.ffmpeg
-    ];
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      pngpaste # Required to paste images into telega.el
+      evansEmacs
+      ripgrep
+      witr
+      colima
+      docker
+      yt-dlp
+      ffmpeg;
+  };
 
   networking.hostName = "evan-mbp";
   # Use U+2019 apostrophe due to string not being escaped by nix-darwin
