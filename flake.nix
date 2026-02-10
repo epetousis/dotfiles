@@ -72,12 +72,6 @@
         "epetousis.cachix.org-1:c87cgNPjvPjqoZX7dbedzBo/cx2ULiGjSNN12VV5bKw="
       ];
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-      # Make Nix trust admin users
-      nix.settings.trusted-users = [
-        "root"
-        "@wheel"
-      ];
     } // nixpkgs-defaults;
 
     home-manager-defaults = {
