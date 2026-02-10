@@ -124,11 +124,6 @@
     '';
   };
 
-  home.file.emacs = {
-    source = ../configs/emacs/init.el;
-    target = ".emacs.d/init.el";
-  };
-
   home.file.".npmrc".text = "prefix = ~/.local/share/npm-packages";
 
   # Add direnv support - among other things, this can be used for automatically loading shell.nix files

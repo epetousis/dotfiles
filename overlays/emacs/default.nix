@@ -12,27 +12,36 @@ let
   # Finally, provide our customised emacs with our preferred packages.
   # (This should come as late as possible in the process.)
   evansEmacs = (pkgs.emacsPackagesFor appropriateEmacs).emacsWithPackages (epkgs: [
-    # emacs packages
-    epkgs.breadcrumb
-    epkgs.csv-mode
-    epkgs.delight
-    epkgs.dired-preview
-    epkgs.dtrt-indent
-    epkgs.editorconfig
-    epkgs.ef-themes
-    epkgs.eglot
-    epkgs.envrc
-    epkgs.evil
-    epkgs.fireplace
-    epkgs.magit
-    epkgs.markdown-mode
-    epkgs.melpaPackages.dired-sidebar
-    epkgs.nix-mode
-    epkgs.ox-slack
-    epkgs.rust-mode
-    epkgs.treesit-grammars.with-all-grammars
-    epkgs.vterm
-    epkgs.web-mode
+    (epkgs.trivialBuild {
+      pname = "evan-config";
+      version = "1970-01-01";
+      src = builtins.path {
+        path = ../../configs/emacs/init.el;
+        name = "default.el";
+      };
+      packageRequires = [
+        epkgs.breadcrumb
+        epkgs.csv-mode
+        epkgs.delight
+        epkgs.dired-preview
+        epkgs.dtrt-indent
+        epkgs.editorconfig
+        epkgs.ef-themes
+        epkgs.eglot
+        epkgs.envrc
+        epkgs.evil
+        epkgs.fireplace
+        epkgs.magit
+        epkgs.markdown-mode
+        epkgs.melpaPackages.dired-sidebar
+        epkgs.nix-mode
+        epkgs.ox-slack
+        epkgs.rust-mode
+        epkgs.treesit-grammars.with-all-grammars
+        epkgs.vterm
+        epkgs.web-mode
+      ];
+    })
   ]);
 in
 

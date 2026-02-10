@@ -88,6 +88,11 @@
       sharedSettings = import ./modules/shared.nix;
     };
 
+    overlays = {
+      default = import ./overlays;
+      emacs = import ./overlays/emacs/overlay.nix;
+    };
+
     darwinConfigurations."evan-mbp" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
