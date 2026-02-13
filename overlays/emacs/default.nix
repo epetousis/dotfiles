@@ -31,6 +31,7 @@ let
         epkgs.envrc
         epkgs.evil
         epkgs.fireplace
+        epkgs.htmlize
         epkgs.magit
         epkgs.markdown-mode
         epkgs.melpaPackages.dired-sidebar
