@@ -38,12 +38,6 @@ in {
     # Allow Nix command
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    # Make Lix trust admin users
-    nix.settings.trusted-users = [
-      "root"
-      "@wheel"
-    ];
-
     # Add a localhost.local hosts record.
     networking.hosts = {
       "127.0.0.1" = [ "localhost.local" ];
