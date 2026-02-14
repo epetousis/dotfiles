@@ -26,20 +26,6 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  nixConfig = {
-    extra-substituters = [
-      # If you update this, update the nix-defaults variable in the output.
-      "https://nix-community.cachix.org"
-      "https://epetousis.cachix.org"
-      "https://cache.lix.systems"
-    ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "epetousis.cachix.org-1:c87cgNPjvPjqoZX7dbedzBo/cx2ULiGjSNN12VV5bKw="
-      "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
-    ];
-  };
-
   outputs = {
     self,
       darwin,
