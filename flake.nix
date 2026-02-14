@@ -12,18 +12,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    # Install Disko for disk partitioning
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs-nixos-unstable";
-
     emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
     emacs-lsp-booster.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-
-    # Use a pregenerated nix-index database instead of generating on device.
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = {
@@ -33,9 +25,7 @@
       nixpkgs-nixos-unstable,
       nixpkgs-nixos-stable,
       home-manager,
-      disko,
       emacs-lsp-booster,
-      nix-index-database,
       ...
   }@inputs:
   let
@@ -83,49 +73,11 @@
       ];
     };
 
-    nixosConfigurations."evan-pc" = nixpkgs-nixos-unstable.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        nix-defaults
-        ./hosts/evan-pc
-        home-manager.nixosModules.home-manager
-        home-manager-defaults
-        disko.nixosModules.disko
-        nix-index-database.nixosModules.nix-index
-      ];
-    };
-
     nixosConfigurations.raspberry = nixpkgs-nixos-stable.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
         ./hosts/raspberry
         nix-defaults
-      ];
-    };
-
-    homeConfigurations."epetousis" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-      modules = [
-        nixpkgs-defaults
-        ./modules/home.nix
-        home-manager-defaults
-        {
-          home.username = "epetousis";
-          home.homeDirectory = "/home/epetousis";
-        }
-      ];
-    };
-
-    homeConfigurations."epetousis@aarch64" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs-unstable.legacyPackages.aarch64-linux;
-      modules = [
-        nixpkgs-defaults
-        ./modules/home.nix
-        home-manager-defaults
-        {
-          home.username = "epetousis";
-          home.homeDirectory = "/home/epetousis";
-        }
       ];
     };
   };
