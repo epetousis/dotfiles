@@ -38,6 +38,7 @@ let
         epkgs.nix-mode
         epkgs.ox-slack
         epkgs.rust-mode
+        (epkgs.callPackage ./simple-html {})
         epkgs.treesit-grammars.with-all-grammars
         epkgs.vterm
         epkgs.web-mode

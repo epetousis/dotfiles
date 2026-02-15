@@ -275,6 +275,7 @@ The argument LOCATION can be any path to a Nix flake."
 (setq org-directory "~/Documents/iCloudOrg")
 (setq org-default-notes-file (concat org-directory "/daily.org"))
 (setq org-refile-targets `((,org-default-notes-file :maxlevel . 2)))
+(require 'simple-html)
 
 ;; Set a custom-file so emacs doesn't freak out over this immutable init.el
 (setq custom-file "~/.emacs.d/custom.el")
