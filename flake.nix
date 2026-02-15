@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-nixos-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     darwin.url = "github:lnl7/nix-darwin/master";
@@ -20,7 +19,6 @@
     self,
       darwin,
       nixpkgs-unstable,
-      nixpkgs-nixos-unstable,
       nixpkgs-nixos-stable,
       home-manager,
       my-emacs,
