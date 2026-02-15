@@ -24,7 +24,8 @@
     "emacs-lsp-booster": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "my-emacs",
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -47,11 +48,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1770973752,
-        "narHash": "sha256-DwXRwDowPFoor2b8Ta126XX+KPzW9SQMnLiXrp4hQ7M=",
+        "lastModified": 1771124256,
+        "narHash": "sha256-rfSiNMep0fUsenlx72ooQOxYEbUK4puai5+34gui2uI=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "9ed60fddf4ba6cd44061955702f9607d7eab4307",
+        "rev": "9f7213cb27707bd7f2ef6445eccdd9160c9c778e",
         "type": "github"
       },
       "original": {
@@ -80,13 +81,35 @@
         "type": "github"
       }
     },
+    "my-emacs": {
+      "inputs": {
+        "emacs-lsp-booster": "emacs-lsp-booster",
+        "emacs-overlay": "emacs-overlay",
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771149395,
+        "narHash": "sha256-wcS5bVz5m+bfdIif7SDi0XEGc0vjhPJTQNQeo+sAGmM=",
+        "owner": "epetousis",
+        "repo": "my-emacs",
+        "rev": "c4c66ac40f510a46ae56379d0454507d4b06bb83",
+        "type": "github"
+      },
+      "original": {
+        "owner": "epetousis",
+        "repo": "my-emacs",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1770841267,
-        "narHash": "sha256-9xejG0KoqsoKEGp2kVbXRlEYtFFcDTHjidiuX8hGO44=",
+        "lastModified": 1771008912,
+        "narHash": "sha256-gf2AmWVTs8lEq7z/3ZAsgnZDhWIckkb+ZnAo5RzSxJg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ec7c70d12ce2fc37cb92aff673dcdca89d187bae",
+        "rev": "a82ccc39b39b621151d6732718e3e250109076fa",
         "type": "github"
       },
       "original": {
@@ -163,9 +186,8 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
-        "emacs-lsp-booster": "emacs-lsp-booster",
-        "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
+        "my-emacs": "my-emacs",
         "nixpkgs-nixos-stable": "nixpkgs-nixos-stable",
         "nixpkgs-nixos-unstable": "nixpkgs-nixos-unstable",
         "nixpkgs-unstable": "nixpkgs-unstable"

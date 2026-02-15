@@ -12,10 +12,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
-    emacs-lsp-booster.inputs.nixpkgs.follows = "nixpkgs-unstable";
-
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    my-emacs.url = "github:epetousis/my-emacs";
+    my-emacs.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = {
@@ -25,14 +23,13 @@
       nixpkgs-nixos-unstable,
       nixpkgs-nixos-stable,
       home-manager,
-      emacs-lsp-booster,
+      my-emacs,
       ...
   }@inputs:
   let
     nixpkgs-defaults = {
       nixpkgs.overlays = [
-        emacs-lsp-booster.overlays.default
-        inputs.emacs-overlay.overlays.package
+        my-emacs.overlays.default
         (import ./overlays)
       ];
       nixpkgs.config.allowUnfree = true;
@@ -56,11 +53,6 @@
   in {
     nixosModules = {
       sharedSettings = import ./modules/shared.nix;
-    };
-
-    overlays = {
-      default = import ./overlays;
-      emacs = import ./overlays/emacs/overlay.nix;
     };
 
     darwinConfigurations."evan-mbp" = darwin.lib.darwinSystem {

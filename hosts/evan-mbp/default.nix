@@ -8,7 +8,7 @@
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
       pngpaste # Required to paste images into telega.el
-      evansEmacs
+      evans-emacs
       ripgrep
       witr
       colima
@@ -75,7 +75,7 @@
 
   services.emacs = {
     enable = true;
-    package = pkgs.evansEmacs;
+    package = pkgs.evans-emacs;
     # HACK: traverse out of bin/ to open the Emacs app binary instead.
     # This means that the Emacs daemon will use the correct name and icon.
     exec = "../Applications/Emacs.app/Contents/MacOS/Emacs";
