@@ -14,7 +14,10 @@
       colima
       docker
       yt-dlp
-      ffmpeg;
+      ffmpeg
+      _1password-cli
+      colima
+      docker;
   };
 
   networking.hostName = "evan-mbp";
