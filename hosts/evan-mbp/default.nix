@@ -17,7 +17,8 @@
       ffmpeg
       _1password-cli
       colima
-      docker;
+      docker
+      nixos-rebuild-ng;
   };
 
   networking.hostName = "evan-mbp";
