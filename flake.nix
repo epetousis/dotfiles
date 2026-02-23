@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-nixos-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-nixos-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -66,6 +66,13 @@
         home-manager-defaults
         nix-rosetta-builder.darwinModules.default
         ./hosts/evan-mbp
+      ];
+    };
+
+    nixosConfigurations.testbed-vm = nixpkgs-nixos-stable.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [
+        ./hosts/testbed-vm
       ];
     };
 
