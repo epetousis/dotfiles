@@ -90,11 +90,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771149395,
-        "narHash": "sha256-wcS5bVz5m+bfdIif7SDi0XEGc0vjhPJTQNQeo+sAGmM=",
+        "lastModified": 1771841113,
+        "narHash": "sha256-4rtwWrYtvJIb2dDfEqk672Forjnflx2lrijRfLxmVVU=",
         "owner": "epetousis",
         "repo": "my-emacs",
-        "rev": "c4c66ac40f510a46ae56379d0454507d4b06bb83",
+        "rev": "af0ab9febb1ecce58c4d6dfb7927a43750f4f0c3",
         "type": "github"
       },
       "original": {
