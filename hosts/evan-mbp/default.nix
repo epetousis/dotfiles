@@ -16,8 +16,6 @@
       yt-dlp
       ffmpeg
       _1password-cli
-      colima
-      docker
       nixos-rebuild-ng;
   };
 
