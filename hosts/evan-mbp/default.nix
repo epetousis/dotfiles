@@ -86,10 +86,7 @@
   };
 
   # Use 1Password agent for SSH.
-  home-manager.users.epetousis.programs.ssh.matchBlocks."*".extraOptions.IdentityAgent = pkgs.lib.mkForce "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
-
-  # Use 1Password for Git commit signing.
-  home-manager.users.epetousis.programs.git.iniContent."gpg \"ssh\"".program = pkgs.lib.mkForce "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+  home-manager.users.epetousis.programs.ssh.matchBlocks."*".extraOptions.IdentityAgent = pkgs.lib.mkForce "\"~/.bitwarden-ssh-agent.sock\"";
 
   system = {
     defaults = {
@@ -115,6 +112,11 @@
 
   environment.variables = {
     EDITOR = "emacsclient";
+    SSH_AUTH_SOCK = "/Users/epetousis/.bitwarden-ssh-agent.sock";
+  };
+
+  launchd.user.envVariables = {
+    SSH_AUTH_SOCK = "/Users/epetousis/.bitwarden-ssh-agent.sock";
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
