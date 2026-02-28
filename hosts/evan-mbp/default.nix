@@ -15,7 +15,7 @@
       docker
       yt-dlp
       ffmpeg
-      _1password-cli
+      bitwarden-cli
       nixos-rebuild-ng;
   };
 
