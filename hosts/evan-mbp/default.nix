@@ -84,6 +84,7 @@
     # This means that the Emacs daemon will use the correct name and icon.
     exec = "../Applications/Emacs.app/Contents/MacOS/Emacs";
   };
+  launchd.user.agents.emacs.serviceConfig.EnvironmentVariables.SSH_AUTH_SOCK = "/Users/epetousis/.bitwarden-ssh-agent.sock";
 
   # Use 1Password agent for SSH.
   home-manager.users.epetousis.programs.ssh.matchBlocks."*".extraOptions.IdentityAgent = pkgs.lib.mkForce "\"~/.bitwarden-ssh-agent.sock\"";
