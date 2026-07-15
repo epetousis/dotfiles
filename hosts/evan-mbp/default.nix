@@ -7,16 +7,16 @@
 
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
-      pngpaste # Required to paste images into telega.el
-      evans-emacs
-      ripgrep
-      witr
+      bitwarden-cli
       colima
       docker
-      yt-dlp
+      evans-emacs
       ffmpeg
-      bitwarden-cli
-      nixos-rebuild-ng;
+      nixos-rebuild-ng
+      pngpaste # Required to paste images into telega.el
+      ripgrep
+      witr
+      yt-dlp;
   };
 
   networking.hostName = "evan-mbp";
