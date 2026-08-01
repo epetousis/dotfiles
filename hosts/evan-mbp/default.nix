@@ -10,6 +10,7 @@
       bitwarden-cli
       colima
       docker
+      dolphin-emu
       evans-emacs
       ffmpeg
       nixos-rebuild-ng
