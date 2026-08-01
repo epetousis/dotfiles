@@ -75,13 +75,5 @@
         ./hosts/testbed-vm
       ];
     };
-
-    nixosConfigurations.raspberry = nixpkgs-nixos-stable.lib.nixosSystem {
-      system = "aarch64-linux";
-      modules = [
-        ./hosts/raspberry
-        nix-defaults
-      ];
-    };
   };
 }
