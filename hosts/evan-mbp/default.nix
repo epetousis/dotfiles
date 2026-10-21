@@ -17,7 +17,8 @@
       pngpaste # Required to paste images into telega.el
       ripgrep
       witr
-      yt-dlp;
+      yt-dlp
+      python3;
   };
 
   networking.hostName = "evan-mbp";
