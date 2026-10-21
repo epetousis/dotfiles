@@ -13,9 +13,6 @@
 
     my-emacs.url = "github:epetousis/my-emacs";
     my-emacs.inputs.nixpkgs.follows = "nixpkgs-unstable";
-
-    nix-rosetta-builder.url = "github:cpick/nix-rosetta-builder";
-    nix-rosetta-builder.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = {
@@ -25,7 +22,6 @@
       nixpkgs-nixos-stable,
       home-manager,
       my-emacs,
-      nix-rosetta-builder,
       ...
   }@inputs:
   let
@@ -57,14 +53,12 @@
       sharedSettings = import ./modules/shared.nix;
     };
 
-    # When bootstrapping this machine, nix-rosetta-builder will need to be disabled, then re-enabled. See https://github.com/cpick/nix-rosetta-builder#nix-darwin-flake-setup
     darwinConfigurations."evan-mbp" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
         nix-defaults
         home-manager.darwinModules.home-manager
         home-manager-defaults
-        nix-rosetta-builder.darwinModules.default
         ./hosts/evan-mbp
       ];
     };
