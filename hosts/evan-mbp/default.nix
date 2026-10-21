@@ -32,6 +32,15 @@
     sandbox = true;
   };
 
+  nix.gc = {
+    automatic = true;
+    interval = {
+      Hour = 3;
+      Minute = 15;
+      Weekday = 0;
+    };
+    options = "--delete-older-than 7d";
+  };
 
   # Make nix-darwin manage my user. The docs say not to add the admin user to this, but Michael says it's fine! https://github.com/nix-darwin/nix-darwin/issues/1237#issuecomment-2562247579
   users.knownUsers = [ "epetousis" ];
