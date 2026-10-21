@@ -29,7 +29,8 @@
   nix.settings = {
     extra-platforms = [ "x86_64-darwin" "aarch64-darwin" ];
     experimental-features = [ "nix-command" "flakes" ];
-    sandbox = true;
+    # FIXME: revert when https://git.lix.systems/lix-project/lix/issues/1304 is fixed
+    sandbox = false;
   };
 
   nix.gc = {
